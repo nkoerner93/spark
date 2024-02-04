@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 export default {
-  content: ['./app/**/*.{ts,tsx}', './content/**/*.mdx', './public/**/*.svg'],
+  content: ['./src/app/**/*.{ts,tsx}', './content/**/*.mdx', './public/**/*.svg'],
   theme: {},
   future: {
     hoverOnlyWhenSupported: true,
