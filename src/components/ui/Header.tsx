@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-import { Input } from "../ui/shad-cn/input";
-import Searchbar from "../ui/Searchbar";
-import { Button } from "../ui/shad-cn/button";
+import { Input } from "./shad-cn/input";
+import Searchbar from "./Searchbar";
+import { Button } from "./shad-cn/button";
 import Link from "next/link";
 
 const Header = () => {

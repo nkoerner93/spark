@@ -1,4 +1,4 @@
-import Header from "@/components/layout/Header";
+import Header from "@/components/ui/Header";
 import HeroSection from "@/components/ui/HeroSection";
 
 export default function Page() {
@@ -7,7 +7,7 @@ export default function Page() {
       <Header />
       <HeroSection
         title="Kickstart your NEXT Project"
-        subtitle="Unlock the Power of Prebuilt NextJS Projects with Spark with seamless database integration and built-in authentication. Based on ShadCN and completely Open Source."
+        subtitle="Accelerate your NextJS project with prebuilt projects for seamless "
         button1="Get Started"
         button1link="/"
         button2="Github"
