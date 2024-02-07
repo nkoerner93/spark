@@ -1,0 +1,1 @@
+export const AUTHIMAGES = ["/images/auth/auth_background.jpg", "/images/auth/auth_background2.jpg", "/images/auth/auth_background3.jpg" ]

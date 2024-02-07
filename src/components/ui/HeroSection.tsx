@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Button } from "./shad-cn/button";
-import { Github } from "lucide-react";
+import { Github, Target } from "lucide-react";
 import Link from "next/link";
 
 interface HeroSectionProps {
@@ -33,7 +33,11 @@ const HeroSection: FC<HeroSectionProps> = ({
           <Link href={`${button1link}`}>{button1}</Link>
         </Button>
         <Button className="h-9 items-center justify-center whitespace-nowrap rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-primary shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
-          <Link className="flex flex-row items-center" href={`${button2link}`}>
+          <Link
+            className="flex flex-row items-center"
+            href={`${button2link}`}
+            target="_blank"
+          >
             <Github strokeWidth={0.9} />
             {button2}
           </Link>
