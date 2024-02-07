@@ -1,4 +1,3 @@
-// LoginForm.tsx
 import React, { useState } from "react";
 import { Button } from "@/components/ui/shad-cn/button";
 import { Zap, Loader2 } from "lucide-react";
@@ -18,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { registerSchema } from "src/schemas/form";
-import { signIn } from "next-auth/react";
+import { createUserToDB } from "src/server/actions/createUser";
 
 const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,17 +32,21 @@ const RegisterForm = () => {
     },
   });
 
-  async function signUp(values: z.infer<typeof registerSchema>) {
+  const signUp = async (values: z.infer<typeof registerSchema>) => {
     try {
       setIsLoading(true);
-      const signup = await signIn("google");
-      return signup;
+
+      // Call the server action to create the user
+      const user = await createUserToDB(values);
+
+      // Handle success, redirect, show message, etc.
+      console.log("User created:", user);
     } catch (error) {
-      console.log(error);
+      console.error("Error creating user:", error);
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className="flex w-full max-w-[700px] flex-col items-center justify-center px-20">
