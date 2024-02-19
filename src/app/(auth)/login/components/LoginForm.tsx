@@ -75,12 +75,12 @@ const LoginForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Submi t</Button>
           </form>
         </Form>
         <div className="mt-5 flex justify-center text-sm">
           <Link href="/register">
-            <span>Don't have an account yet? </span>
+            <span>Don&apos;t have an account yet? </span>
             <span className="font-bold">Register</span>
           </Link>
         </div>
