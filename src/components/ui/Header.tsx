@@ -17,9 +17,9 @@ const Header = () => {
         {isLoggedIn ? (
           <span>My Profile</span>
         ) : (
-          <Button>
-            <Link href={"/login"}>Login</Link>
-          </Button>
+          <Link href={"/login"}>
+            <Button>Login</Button>
+          </Link>
         )}
       </div>
     </header>
