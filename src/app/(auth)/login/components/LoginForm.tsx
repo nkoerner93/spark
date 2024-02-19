@@ -18,6 +18,7 @@ import { z } from "zod";
 
 import { loginSchema } from "src/schemas/form";
 import { signIn } from "next-auth/react";
+import Link from "next/link";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -77,6 +78,12 @@ const LoginForm = () => {
             <Button type="submit">Submit</Button>
           </form>
         </Form>
+        <div className="mt-5 flex justify-center text-sm">
+          <Link href="/register">
+            <span>Don't have an account yet? </span>
+            <span className="font-bold">Register</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

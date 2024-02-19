@@ -1,3 +1,4 @@
+import { Toaster } from "@/components/ui/shad-cn/toaster";
 import "./globals.css";
 
 import { GeistSans } from "geist/font/sans";
@@ -25,6 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${GeistSans.variable} bg-slate-50`}>{children}</body>
+      <Toaster />
     </html>
   );
 }

@@ -18,9 +18,12 @@ import { z } from "zod";
 
 import { registerSchema } from "src/schemas/form";
 import { createUserToDB } from "src/server/actions/createUser";
+import Link from "next/link";
+import { useToast } from "@/components/ui/shad-cn/use-toast";
 
 const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -41,8 +44,16 @@ const RegisterForm = () => {
 
       // Handle success, redirect, show message, etc.
       console.log("User created:", user);
+      toast({
+        title: "Success!",
+        description: "Account has been created. You can now login.",
+      });
     } catch (error) {
       console.error("Error creating user:", error);
+      toast({
+        title: "Error!",
+        description: "An error occured. Please try again later.",
+      });
     } finally {
       setIsLoading(false);
     }
@@ -132,6 +143,12 @@ const RegisterForm = () => {
             </Button>
           </form>
         </Form>
+        <div className="mt-5 flex justify-center text-sm">
+          <Link href="/register">
+            <span>Already have an account? </span>
+            <span className="font-bold">Login</span>
+          </Link>
+        </div>
       </div>
     </div>
   );
