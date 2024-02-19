@@ -1,5 +1,6 @@
 "use client";
 
+import { Toaster } from "@/components/ui/shad-cn/toaster";
 import { FC, ReactNode, useEffect, useState } from "react";
 import { AUTHIMAGES } from "src/constants/authImageConstants";
 
@@ -23,6 +24,7 @@ const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
       <div className="hidden h-screen w-1/2 lg:block">
         <img className="h-full w-full object-cover" src={randomImage} />
       </div>
+      <Toaster />
     </div>
   );
 };
