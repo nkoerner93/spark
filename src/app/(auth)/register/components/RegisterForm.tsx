@@ -144,7 +144,7 @@ const RegisterForm = () => {
           </form>
         </Form>
         <div className="mt-5 flex justify-center text-sm">
-          <Link href="/register">
+          <Link href="/login">
             <span>Already have an account? </span>
             <span className="font-bold">Login</span>
           </Link>
