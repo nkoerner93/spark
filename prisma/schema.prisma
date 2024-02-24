@@ -22,6 +22,7 @@ model Session {
   sessionId String   @unique
   userId    Int
   createdAt DateTime
+  expiresAt DateTime
 
   // Prisma will infer the relationship based on naming conventions
   user Users @relation(fields: [userId], references: [id])

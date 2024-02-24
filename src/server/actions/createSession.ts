@@ -1,19 +1,24 @@
 import { PrismaClient, Session, Users } from '@prisma/client';
-import { v4 as uuidv4 } from 'uuid'; // Import UUID generator
+import * as crypto from "crypto";
+
 
 const prisma = new PrismaClient();
 
-export const createSession = async (userId: number): Promise<Session> => {
+export const createSessionInDb = async (userId: number): Promise<Session> => {
     try {
-        // Generate a unique session ID using UUID
-        const sessionId = uuidv4();
+        // Calculate expiration date (1 week from now)
+        const expiresAt = new Date();
+        expiresAt.setDate(expiresAt.getDate() + 7);
 
+        // Generate a unique session ID using UUID
+        const sessionId = crypto.randomBytes(16).toString('hex');
         // Create a new session record in the database
         const session = await prisma.session.create({
             data: {
                 sessionId: sessionId,
                 userId: userId,
-                createdAt: new Date() // Set session creation timestamp
+                createdAt: new Date(),
+                expiresAt: expiresAt, // one week from now
             }
         });
 
