@@ -1,3 +1,4 @@
+// LoginForm.tsx
 import React, { useState } from "react";
 import { Button } from "@/components/ui/shad-cn/button";
 import { Zap, Loader2 } from "lucide-react";
@@ -16,30 +17,8 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { loginSchema } from "src/schemas/form";
+import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { signIn as signInNextAuth } from "next-auth/react"; // Import signIn from NextAuth
-import { getUserFromDB } from "src/server/actions/getUser";
-
-// Define signIn function outside of the component
-const signIn = async ({
-  email,
-  password,
-  redirect,
-  callbackUrl,
-}: {
-  email: string;
-  password: string;
-  redirect: boolean;
-  callbackUrl: string;
-}) => {
-  // Call the signIn function provided by NextAuth
-  return signInNextAuth("credentials", {
-    email,
-    password,
-    redirect,
-    callbackUrl,
-  });
-};
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -52,23 +31,7 @@ const LoginForm = () => {
     },
   });
 
-  async function handleSignin(values: z.infer<typeof loginSchema>) {
-    try {
-      const user = await getUserFromDB(values);
-      if (user) {
-        signInNextAuth("credentials", {
-          email: values.email,
-          password: values.password,
-          redirect: false, // Prevent automatic redirection after sign-in
-          callbackUrl: "/", // Redirect URL after sign-in
-        });
-      } else {
-        console.log("no user found");
-      }
-    } catch (error) {
-      console.error("Error signing in:", error);
-    }
-  }
+  async function signIn(values: z.infer<typeof loginSchema>) {}
 
   return (
     <div className="flex w-full max-w-[700px] flex-col items-center justify-center px-20">
@@ -77,10 +40,7 @@ const LoginForm = () => {
           <Zap color="#d2e826" /> Spark
         </h2>
         <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(handleSignin)}
-            className="space-y-8"
-          >
+          <form onSubmit={form.handleSubmit(signIn)} className="space-y-8">
             <FormField
               control={form.control}
               name="email"
@@ -115,7 +75,7 @@ const LoginForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">Submi t</Button>
           </form>
         </Form>
         <div className="mt-5 flex justify-center text-sm">
