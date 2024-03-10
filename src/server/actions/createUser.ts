@@ -1,7 +1,6 @@
 "use server"
 
-import { PrismaClient, users } from '@prisma/client'
-import { registerSchema } from 'src/schemas/form';
+import { PrismaClient, Users } from '@prisma/client'
 import bcrypt from 'bcrypt';
 
 const prisma = new PrismaClient();
@@ -10,7 +9,7 @@ export const createUserToDB = async (userData: {
     username: string;
     email: string;
     password: string;
-  }): Promise<users> => {
+  }): Promise<Users> => {
     try {
       const hashedPassword = await bcrypt.hash(userData.password, 10);
       console.log(`Hashed Password: ${hashedPassword}`);

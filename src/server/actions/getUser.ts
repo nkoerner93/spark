@@ -1,11 +1,9 @@
-"use server"
-
 import { PrismaClient, Users } from '@prisma/client'
-import { registerSchema } from 'src/schemas/form';
 import bcrypt from 'bcrypt';
-import { toast } from '@/components/ui/shad-cn/use-toast';
+import { useToast } from '@/components/ui/shad-cn/use-toast';
 
 const prisma = new PrismaClient();
+const { toast } = useToast();
 
 export const getUserFromDB = async (userData: {
     email: string;
@@ -20,6 +18,7 @@ export const getUserFromDB = async (userData: {
       });
       
       if (user) {
+        console.log(user);
         // Compare hashed password stored in the database with the provided password
         const passwordMatch = await bcrypt.compare(userData.password, user.password);
       
