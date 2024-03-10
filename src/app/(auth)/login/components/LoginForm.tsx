@@ -75,7 +75,7 @@ const LoginForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submi t</Button>
+            <Button type="submit">Submit</Button>
           </form>
         </Form>
         <div className="mt-5 flex justify-center text-sm">
