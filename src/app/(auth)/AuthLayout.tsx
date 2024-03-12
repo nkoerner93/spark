@@ -18,7 +18,7 @@ const AuthLayout: FC<AuthLayoutProps> = ({ children }) => {
 
   return (
     <div className="flex h-screen w-full flex-row items-center justify-center">
-      <div className="flex h-screen w-1/2 items-center justify-center bg-slate-950">
+      <div className="flex h-screen w-full items-center justify-center bg-slate-950 lg:w-1/2">
         {children}
       </div>
       <div className="hidden h-screen w-1/2 lg:block">

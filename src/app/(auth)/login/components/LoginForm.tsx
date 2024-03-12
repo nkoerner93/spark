@@ -17,11 +17,15 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { loginSchema } from "src/schemas/form";
-import { signIn } from "next-auth/react";
 import Link from "next/link";
+import { loginUser } from "src/server/actions/loginUser";
+import { useToast } from "@/components/ui/shad-cn/use-toast";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
@@ -31,7 +35,23 @@ const LoginForm = () => {
     },
   });
 
-  async function signIn(values: z.infer<typeof loginSchema>) {}
+  const signIn = async (values: z.infer<typeof loginSchema>) => {
+    try {
+      const loggedIn = await loginUser(values.email, values.password);
+      console.log(loggedIn);
+      if (loggedIn) {
+        toast({
+          title: "Success!",
+          description: "Account found!",
+        });
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 1500);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="flex w-full max-w-[700px] flex-col items-center justify-center px-20">
