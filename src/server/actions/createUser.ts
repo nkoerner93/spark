@@ -1,8 +1,7 @@
 "use server";
-import { PrismaClient, Users } from "@prisma/client";
+import prisma from "@/app/prisma";
+import { Users } from "@prisma/client";
 import bcrypt from "bcrypt";
-
-const prisma = new PrismaClient();
 
 export const createUserToDB = async (userData: {
   username: string;

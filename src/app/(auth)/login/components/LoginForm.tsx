@@ -18,9 +18,9 @@ import { z } from "zod";
 
 import { loginSchema } from "src/schemas/form";
 import Link from "next/link";
-import { loginUser } from "src/server/actions/loginUser";
 import { useToast } from "@/components/ui/shad-cn/use-toast";
 import { useRouter } from "next/navigation";
+import { loginUser } from "src/server/actions/loginUser";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);

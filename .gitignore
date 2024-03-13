@@ -35,3 +35,7 @@ yarn-error.log*
 # vercel
 .vercel
 .env*.local
+
+# Experimental
+_lib2.ts
+_loginUser2.ts

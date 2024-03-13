@@ -1,10 +1,12 @@
 "use server";
+
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
+import { encrypt, decrypt } from "@/lib/lib";
+import { cookies } from "next/headers";
+import prisma from "@/app/prisma";
 
-const prisma = new PrismaClient();
-
-export const loginUser = async (email: string, password: string) => {
+export async function loginUser(email: string, password: string) {
   try {
     const user = await prisma.users.findUnique({ where: { email } });
     // Does the User exist?
@@ -18,12 +20,20 @@ export const loginUser = async (email: string, password: string) => {
       throw new Error("Invalid password");
     }
 
-    // Session Management
-    const expire = new Date(Date.now() + 10 * 1000);
-    const session = await { user, expires };
+    // Create the session
+    const expires = new Date(Date.now() + 10000 * 36000); // 1 hour from now
+    const session = await encrypt({ userId: user.id, pw: user.id, expires });
+
+    // Save the session in a cookie
+    cookies().set("sprk_session", session, { expires, httpOnly: true });
 
     return true;
   } catch (error) {
     throw new Error("Error logging in: " + error);
   }
-};
+}
+
+export async function logout() {
+  // Destroy the session
+  cookies().set("sprk_session", "", { expires: new Date(0) });
+}
