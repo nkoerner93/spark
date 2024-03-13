@@ -1,6 +1,5 @@
 "use server";
 
-import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import { encrypt, decrypt } from "@/lib/lib";
 import { cookies } from "next/headers";
