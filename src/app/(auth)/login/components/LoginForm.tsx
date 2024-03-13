@@ -20,7 +20,7 @@ import { loginSchema } from "src/schemas/form";
 import Link from "next/link";
 import { useToast } from "@/components/ui/shad-cn/use-toast";
 import { useRouter } from "next/navigation";
-import { loginUser } from "src/server/actions/loginUser";
+import { loginUser } from "@/app/actions/actions";
 
 const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -37,19 +37,22 @@ const LoginForm = () => {
 
   const signIn = async (values: z.infer<typeof loginSchema>) => {
     try {
+      setIsLoading(true);
       const loggedIn = await loginUser(values.email, values.password);
-      console.log(loggedIn);
+
       if (loggedIn) {
         toast({
           title: "Success!",
-          description: "Account found!",
+          description: "Logging in...",
         });
         setTimeout(() => {
+          setIsLoading(false);
           router.push("/dashboard");
-        }, 1500);
+        }, 1000);
       }
     } catch (error) {
       console.log(error);
+    } finally {
     }
   };
 
@@ -71,6 +74,7 @@ const LoginForm = () => {
                     <Input
                       type="email"
                       placeholder="Enter your Email"
+                      autoComplete="email"
                       {...field}
                     />
                   </FormControl>
@@ -88,6 +92,7 @@ const LoginForm = () => {
                     <Input
                       type="password"
                       placeholder="Enter password"
+                      autoComplete="current-password"
                       {...field}
                     />
                   </FormControl>
@@ -95,7 +100,13 @@ const LoginForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type="submit">
+              {isLoading ? (
+                <Loader2 className="animate-spin" />
+              ) : (
+                <span>Submit</span>
+              )}
+            </Button>
           </form>
         </Form>
         <div className="mt-5 flex justify-center text-sm">
