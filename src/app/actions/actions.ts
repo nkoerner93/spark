@@ -25,6 +25,7 @@ export async function loginUser(email: string, password: string) {
     session.email = user.email;
     session.userId = user.id;
     session.username = user.username;
+    session.isLoggedIn = true;
 
     const savedSession = await session.save();
 

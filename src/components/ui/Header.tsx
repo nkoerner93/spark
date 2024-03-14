@@ -13,7 +13,7 @@ const Header = async () => {
         <span className="text-2xl font-bold">Spark</span>
         <Searchbar />
         {session.isLoggedIn ? (
-          <span>My Profile</span>
+          <span>Welcome {session.username}</span>
         ) : (
           <Link href={"/login"}>
             <Button>Login</Button>
