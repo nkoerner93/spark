@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 import { registerSchema } from "src/schemas/form";
-import { createUserToDB } from "src/server/actions/createUser";
+import { createUserToDB } from "src/actions/actions";
 import Link from "next/link";
 import { useToast } from "@/components/ui/shad-cn/use-toast";
 
