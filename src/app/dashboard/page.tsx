@@ -1,3 +1,5 @@
+import Header from "@/components/ui/Header";
+
 export default async function Dashboard() {
-  return <div>Logged In</div>;
+  return <Header />;
 }

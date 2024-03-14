@@ -1,3 +1,4 @@
+import SessionProvider from "./context/sessionContext";
 import "./globals.css";
 
 import { GeistSans } from "geist/font/sans";

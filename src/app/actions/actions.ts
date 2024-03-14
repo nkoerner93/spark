@@ -4,6 +4,8 @@ import { cookies } from "next/headers";
 import { sessionOptions, SessionData, defaultSession } from "@/lib/lib";
 import { getIronSession } from "iron-session";
 import prisma from "../prisma";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 // ===============================
 // LOGIN
@@ -39,8 +41,10 @@ export async function loginUser(email: string, password: string) {
 // LOGOUT
 // ===============================
 export async function logout() {
-  // Destroy the session
-  cookies().set("spark_session", "", { expires: new Date(0) });
+  // false => no db call for logout
+  const session = await getSession();
+  session.destroy();
+  redirect("/");
 }
 
 // ===============================
