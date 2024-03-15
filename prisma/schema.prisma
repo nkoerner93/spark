@@ -26,3 +26,38 @@ model Session {
   // Prisma will infer the relationship based on naming conventions
   user Users @relation(fields: [userId], references: [id])
 }
+
+model Anime {
+  // Unique identifier for each anime
+  id Int @id @default(autoincrement())
+
+  // Title of the anime
+  title String
+
+  // Description of the anime
+  description String?
+
+  // Year when the anime was released
+  year Int?
+
+  // Season in which the anime was released (e.g., Spring, Summer, Fall, Winter)
+  season String?
+
+  // Genre(s) of the anime (e.g., Action, Adventure, Comedy)
+  genres String[]
+
+  // Rating of the anime (e.g., PG, PG-13, R)
+  rating String?
+
+  // Number of episodes in the anime
+  episodes Int?
+
+  // Studio that produced the anime
+  studio String?
+
+  // Date when the anime was added to the database
+  createdAt DateTime @default(now())
+
+  // Date when the anime record was last updated
+  updatedAt DateTime @updatedAt
+}
