@@ -57,7 +57,7 @@ const LoginForm = () => {
         setIsLoading(false);
       }
     } catch (error) {
-      throw new Error();
+      return error;
     }
   };
 

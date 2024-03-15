@@ -22,7 +22,7 @@ export async function loginUser(email: string, password: string) {
     const isPasswordValid = await bcrypt.compare(password, user.password);
 
     if (!isPasswordValid) {
-      throw new Error("Invalid password");
+      return false;
     }
     session.email = user.email;
     session.userId = user.id;
@@ -33,7 +33,7 @@ export async function loginUser(email: string, password: string) {
 
     return true;
   } catch (error) {
-    throw new Error("Error logging in: " + error);
+    return { success: false, error: error }; // Return error response
   }
 }
 
