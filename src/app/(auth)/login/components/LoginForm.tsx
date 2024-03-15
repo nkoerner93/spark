@@ -49,10 +49,15 @@ const LoginForm = () => {
           setIsLoading(false);
           router.push("/dashboard");
         }, 1000);
+      } else {
+        toast({
+          title: "Error!",
+          description: "The entered credentials are invalid. Please try again!",
+        });
+        setIsLoading(false);
       }
     } catch (error) {
-      console.log(error);
-      setIsLoading(false);
+      throw new Error();
     }
   };
 
