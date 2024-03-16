@@ -25,7 +25,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.variable} bg-slate-50`}>{children}</body>
+      <body
+        className={`${GeistSans.variable} container items-center justify-between gap-8 bg-slate-50`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

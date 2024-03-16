@@ -20,14 +20,3 @@ export const sessionOptions: SessionOptions = {
     secure: true,
   },
 };
-
-// Extract Session Data
-
-function extractSessionData(session: SessionData) {
-  return {
-    isLoggedIn: session.isLoggedIn,
-    email: session.email,
-    userId: session.userId,
-    username: session.username,
-  };
-}
