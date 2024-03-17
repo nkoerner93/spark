@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/shad-cn/dropdown-menu";
 import { SessionData } from "@/lib/lib";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
   const handleLogout = async () => {
@@ -32,7 +33,9 @@ export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Profile</DropdownMenuItem>
+          <DropdownMenuItem>
+            <Link href={"/settings/profile"}>Profile</Link>
+          </DropdownMenuItem>
           <DropdownMenuItem>Billing</DropdownMenuItem>
           <DropdownMenuItem>Settings</DropdownMenuItem>
           <DropdownMenuItem>Keyboard shortcuts</DropdownMenuItem>
