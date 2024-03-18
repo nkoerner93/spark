@@ -16,6 +16,7 @@ import {
 } from "@/components/ui/shad-cn/dropdown-menu";
 import { SessionData } from "@/lib/lib";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
   const handleLogout = async () => {
@@ -31,12 +32,14 @@ export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>
-            <Link href={"/dashboard/settings/profile"}>Profile</Link>
-          </DropdownMenuItem>
-          <DropdownMenuItem>Billing</DropdownMenuItem>
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Keyboard shortcuts</DropdownMenuItem>
+          <MenuItemWithHover
+            link="/dashboard/settings/profile"
+            name="Profile"
+          />
+          <MenuItemWithHover
+            link="/dashboard/settings/preferences"
+            name="Preferences"
+          />
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
@@ -52,11 +55,26 @@ export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
               </DropdownMenuSubContent>
             </DropdownMenuPortal>
           </DropdownMenuSub>
-          <DropdownMenuItem>New Team</DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
+  );
+}
+
+export function MenuItemWithHover({
+  link,
+  name,
+}: {
+  link: string;
+  name: string;
+}) {
+  return (
+    <Link href={link}>
+      <DropdownMenuItem className="hover:cursor-pointer">
+        {name}
+      </DropdownMenuItem>
+    </Link>
   );
 }

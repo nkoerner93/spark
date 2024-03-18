@@ -7,8 +7,8 @@ export default function Page() {
       <div className="relative flex min-h-screen flex-col">
         <Header />
         <HeroSection
-          title="All-In-One Entertainment Dashboard"
-          subtitle="Accelerate your NextJS project with prebuilt projects for seamless"
+          title="All-In-One Utility Dashboard"
+          subtitle="Spark is your all-in-one utility toolbox for entertainment & productivity, from planning your day, discovering your favorite new tv/anime series or using popular gaming tools."
           button1="Register Now"
           button1link="/register"
           button2="Github"
