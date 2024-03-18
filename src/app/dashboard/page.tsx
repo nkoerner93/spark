@@ -3,10 +3,8 @@ import HeroSection from "@/components/ui/HeroSection";
 export default async function Dashboard() {
   return (
     <HeroSection
-      title="Discover new Animes"
-      subtitle="Check out the list of currently running animes in this season."
-      button1="Get Started"
-      button1link="/"
+      title="What are you interested in today?"
+      subtitle="What are you interested in today?"
     />
   );
 }

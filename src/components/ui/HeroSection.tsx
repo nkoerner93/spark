@@ -6,8 +6,8 @@ import Link from "next/link";
 interface HeroSectionProps {
   title: string;
   subtitle: string;
-  button1: string;
-  button1link: URL | string;
+  button1?: string;
+  button1link?: URL | string;
   button2?: string;
   button2link?: URL | string;
 }

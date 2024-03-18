@@ -9,14 +9,12 @@ import {
   DropdownMenuLabel,
   DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/shad-cn/dropdown-menu";
 import { SessionData } from "@/lib/lib";
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
@@ -34,7 +32,7 @@ export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <DropdownMenuItem>
-            <Link href={"/settings/profile"}>Profile</Link>
+            <Link href={"/dashboard/settings/profile"}>Profile</Link>
           </DropdownMenuItem>
           <DropdownMenuItem>Billing</DropdownMenuItem>
           <DropdownMenuItem>Settings</DropdownMenuItem>
