@@ -80,6 +80,7 @@ const LoginForm = () => {
                       type="email"
                       placeholder="Enter your Email"
                       autoComplete="email"
+                      data-login="input-username"
                       {...field}
                     />
                   </FormControl>
@@ -98,6 +99,7 @@ const LoginForm = () => {
                       type="password"
                       placeholder="Enter password"
                       autoComplete="current-password"
+                      data-login="input-password"
                       {...field}
                     />
                   </FormControl>
@@ -105,7 +107,7 @@ const LoginForm = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">
+            <Button type="submit" data-login="button-submit">
               {isLoading ? (
                 <Loader2 className="animate-spin" />
               ) : (

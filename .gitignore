@@ -39,3 +39,7 @@ yarn-error.log*
 # Experimental
 _lib2.ts
 _loginUser2.ts
+
+# Cypress
+cypress.env.json
+cypress.env

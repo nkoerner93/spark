@@ -16,7 +16,7 @@ export async function loginUser(email: string, password: string) {
     const user = await prisma.users.findUnique({ where: { email } });
     // Does the User exist?
     if (!user) {
-      throw new Error("User not found");
+      return false;
     }
     // Password Validation
     const isPasswordValid = await bcrypt.compare(password, user.password);
@@ -29,7 +29,7 @@ export async function loginUser(email: string, password: string) {
     session.username = user.username;
     session.isLoggedIn = true;
 
-    const savedSession = await session.save();
+    await session.save();
 
     return true;
   } catch (error) {

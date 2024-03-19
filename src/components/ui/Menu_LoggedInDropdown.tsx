@@ -57,7 +57,12 @@ export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
           </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
+        <DropdownMenuItem
+          className="hover:cursor-pointer"
+          onClick={handleLogout}
+        >
+          Logout
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
