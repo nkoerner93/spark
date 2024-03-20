@@ -15,14 +15,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/shad-cn/dropdown-menu";
 import { SessionData } from "@/lib/lib";
+import { handleLogout } from "@/lib/utils/utils";
 import Link from "next/link";
 import { ReactNode } from "react";
 
 export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
-  const handleLogout = async () => {
-    await logout();
-  };
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
