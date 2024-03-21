@@ -9,9 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: "20.x"
+        using: "node20"
         ## install pnpm
       - name: Install pnpm
         run: npm install -g pnpm@8
