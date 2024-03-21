@@ -86,10 +86,14 @@ export const createUserToDB = async (userData: {
 
 // GET ANIME LIST from MyAnimeList API
 
-export const getAnimeList = async (year: number, season: string) => {
+export const getAnimeList = async (
+  year: number,
+  season: string,
+  offset: number = 0,
+) => {
   try {
     const res = await axios.get(
-      `https://api.myanimelist.net/v2/anime/season/${year}/${season}`,
+      `https://api.myanimelist.net/v2/anime/season/${year}/${season}?offset=${offset}`,
       {
         headers: {
           "X-MAL-CLIENT-ID": "55c19f03ea57271a9b33ff0edbaed468",
@@ -97,7 +101,8 @@ export const getAnimeList = async (year: number, season: string) => {
       },
     );
     const animes = await res.data.data;
-    return animes; // Return the data property of the response's data
+    const animepage = await res.data.paging;
+    return { animes, animepage }; // Return the data property of the response's data
   } catch (error) {
     // Handle errors if needed
     console.error("Error fetching anime list:", error);

@@ -26,3 +26,12 @@ export function getCurrentSeason() {
     return "Winter";
   }
 }
+
+export const extractOffsetFromUrl = (url: string) => {
+  const match = url.match(/offset=(\d+)/); // Match the offset value using a regular expression
+  if (match && match[1]) {
+    return parseInt(match[1], 10); // Extracted offset value as integer
+  } else {
+    return null; // Return null if offset is not found in the URL
+  }
+};
