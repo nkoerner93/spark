@@ -12,10 +12,10 @@ and have a centralized website tab for productivity or entertainment purposes.
 
 ## Tech Stack
 
-NextJS14 + Server Actions
-Vercel Serverless PostgreSQL
-Prisma for ORM
-Iron Sessions Stateless (Authentication)
+- NextJS14 + Server Actions
+- Vercel Serverless PostgreSQL
+- Prisma for ORM
+- Iron Sessions Stateless (Authentication)
 
 # External APIs
 
