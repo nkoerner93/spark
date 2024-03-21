@@ -15,12 +15,14 @@ and have a centralized website tab for productivity or entertainment purposes.
 - NextJS14 + Server Actions
 - Vercel Serverless PostgreSQL
 - Prisma for ORM
-- Iron Sessions Stateless (Authentication)
+- Iron Sessions Stateless Authentication
+- Cypress E2E Testing
 
-# External APIs
+## External APIs
 
 The Application currently uses the following external APIs:
-[MyAnimeList](https://myanimelist.net/apiconfig/references/api/v2)
+
+- [MyAnimeList](https://myanimelist.net/apiconfig/references/api/v2)
 
 ## Authentication
 
