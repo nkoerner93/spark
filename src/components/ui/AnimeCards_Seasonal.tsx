@@ -1,14 +1,30 @@
 import { getAnimeList } from "@/app/actions/actions";
 import React from "react";
 
-const AnimeCards_Seasonal = async () => {
+interface AnimeCards_SeasonalProps {
+  year: number;
+  season: string;
+}
+
+type Anime_Seasonal = {
+  node: {
+    id: number;
+    title: string;
+    img: URL;
+  };
+};
+
+const AnimeCards_Seasonal = async ({
+  year,
+  season,
+}: AnimeCards_SeasonalProps) => {
   try {
-    const animes = await getAnimeList(2024, "spring");
+    const animes = await getAnimeList(year, season);
 
     return (
       <div>
         <ul>
-          {animes.map((anime) => (
+          {animes.map((anime: Anime_Seasonal) => (
             <li key={anime.node.id}>
               <div className="font-medium">{anime.node.title}</div>
             </li>
