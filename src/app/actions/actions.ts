@@ -1,4 +1,5 @@
 "use server";
+import axios from "axios";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { sessionOptions, SessionData, defaultSession } from "@/lib/lib";
@@ -80,5 +81,26 @@ export const createUserToDB = async (userData: {
     return user;
   } catch (error) {
     throw new Error("Error creating user: " + error);
+  }
+};
+
+// GET ANIME LIST from MyAnimeList API
+
+export const getAnimeList = async (year: number, season: string) => {
+  try {
+    const res = await axios.get(
+      `https://api.myanimelist.net/v2/anime/season/${year}/${season}`,
+      {
+        headers: {
+          "X-MAL-CLIENT-ID": "55c19f03ea57271a9b33ff0edbaed468",
+        },
+      },
+    );
+    const animes = await res.data.data;
+    return animes; // Return the data property of the response's data
+  } catch (error) {
+    // Handle errors if needed
+    console.error("Error fetching anime list:", error);
+    throw error; // Re-throw the error to propagate it
   }
 };

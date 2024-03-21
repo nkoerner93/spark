@@ -1,7 +1,7 @@
-import React from "react";
 
 const AnimeDashboard = () => {
-  return <div>AnimeDashboard</div>;
+    return (
+    )
 };
 
 export default AnimeDashboard;
