@@ -14,8 +14,6 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     url.pathname = "/login";
     return NextResponse.redirect(url);
   }
-
-  console.log("Session found");
   return NextResponse.next();
 }
 

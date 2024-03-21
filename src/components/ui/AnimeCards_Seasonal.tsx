@@ -10,7 +10,10 @@ type Anime_Seasonal = {
   node: {
     id: number;
     title: string;
-    img: URL;
+    main_picture: {
+      medium: string;
+      large: string;
+    };
   };
 };
 
@@ -23,10 +26,19 @@ const AnimeCards_Seasonal = async ({
 
     return (
       <div>
-        <ul>
+        <ul className="flex flex-row flex-wrap justify-center gap-8 text-center">
           {animes.map((anime: Anime_Seasonal) => (
-            <li key={anime.node.id}>
-              <div className="font-medium">{anime.node.title}</div>
+            <li
+              key={anime.node.id}
+              className=" hover:cursor-pointer hover:contrast-125"
+            >
+              <div className="flex flex-col gap-4">
+                <img
+                  className="object-cover"
+                  src={anime.node.main_picture.large}
+                />
+                <div className="font-medium">{anime.node.title}</div>
+              </div>
             </li>
           ))}
         </ul>
