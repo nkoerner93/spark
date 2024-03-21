@@ -4,8 +4,8 @@ Spark is an "under-development" Productivity & Entertainment Dashboard.
 The goal is to provide a centralized solution for entertainment & productivy - for example:
 
 - Productivity Tools
-- Gaming Tools (custom calculators)
-- Discovering new TV/Anime Series
+- Gaming Tools
+- Entertainment Information (i.E. release dates)
 
 The final goal is to have a filterable feature selection where users can subscribe to their desired functionalities
 and have a centralized website tab for productivity or entertainment purposes.
