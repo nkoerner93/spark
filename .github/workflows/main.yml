@@ -9,7 +9,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Setup Node.js
-        uses: "node20"
+        uses: node20
         ## install pnpm
       - name: Install pnpm
         run: npm install -g pnpm@8
