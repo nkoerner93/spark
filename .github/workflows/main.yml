@@ -12,12 +12,22 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "20.x"
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+        ## install pnpm
+      - name: Install pnpm
+        run: npm install -g pnpm@8
+      - name: Get pnpm store directory
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+        ## SETUP pnpm cache
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
         with:
-          version: "8"
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
+          path: ${{ env.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('examples/basic-pnpm/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+        ## Start Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
