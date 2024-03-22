@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getIronSession } from "iron-session";
-import { SessionData } from "./lib/lib";
+import { SessionData } from "@/lib/lib";
 
 export async function middleware(req: NextRequest, res: NextResponse) {
   const session = await getIronSession<SessionData>(req, res, {
@@ -9,7 +9,6 @@ export async function middleware(req: NextRequest, res: NextResponse) {
   });
 
   if (session.username === undefined) {
-    console.log("No session");
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);

@@ -7,7 +7,7 @@ export default function DashboardLayout({
 }) {
   return (
     <section className="container max-w-screen-2xl gap-8">
-      <div className="relative flex min-h-screen flex-col items-center">
+      <div className="relative flex min-h-screen flex-col">
         <Header />
         <div className="mt-12"></div>
         {children}

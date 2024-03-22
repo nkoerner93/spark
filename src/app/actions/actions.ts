@@ -93,7 +93,7 @@ export const getAnimeList = async (
 ) => {
   try {
     const res = await axios.get(
-      `https://api.myanimelist.net/v2/anime/season/${year}/${season}?offset=${offset}`,
+      `https://api.myanimelist.net/v2/anime/season/${year}/${season}?offset=${offset}&limit=50`,
       {
         headers: {
           "X-MAL-CLIENT-ID": "55c19f03ea57271a9b33ff0edbaed468",

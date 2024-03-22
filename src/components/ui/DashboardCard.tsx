@@ -18,8 +18,8 @@ export enum CardCategory {
 // Define enum for card descriptions
 export enum CardDescriptionEnum {
   Anime = "Discover the latest animes in",
-  Productivity = "Boost your productivity with",
-  Gaming = "Improve your gameplay with useful gaming tools.",
+  Productivity = "Boost your productivity with planning tools, task tracking and more.",
+  Gaming = "Improve your gameplay with useful gaming tools like POE Map Tracking, POE Currency Coverter and more.",
 }
 
 interface DashboardCardProps {
