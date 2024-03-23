@@ -92,7 +92,7 @@ export const getAnimeList = async (
   year: number,
   season: string,
   offset: number = 0,
-): Promise<Anime_Data_Seasonal> => {
+): Promise<Anime_Data_Seasonal[]> => {
   // Specify the return type as an array of Anime_Data_Seasonal
   try {
     const res = await fetch(

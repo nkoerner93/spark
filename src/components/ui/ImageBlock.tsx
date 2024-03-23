@@ -8,6 +8,7 @@ interface ImageBlockProps {
   description?: string;
   link?: string;
   buttontext?: string;
+  alt: string;
 }
 
 const ImageBlock: FC<ImageBlockProps> = ({
@@ -16,6 +17,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
   description,
   link,
   buttontext,
+  alt,
 }) => {
   return (
     <div
@@ -27,6 +29,8 @@ const ImageBlock: FC<ImageBlockProps> = ({
             <img
               className="rounded-lg contrast-[115%]"
               src="/images/cards/card_anime.jpg"
+              alt={alt}
+              sizes="100vw"
             />
           </div>
           <div className="flex flex-col gap-4 lg:w-1/2">
@@ -58,6 +62,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
             <img
               className="rounded-lg contrast-[115%]"
               src="/images/cards/card_anime.jpg"
+              alt={alt}
             />
           </div>
         </>

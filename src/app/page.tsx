@@ -23,6 +23,7 @@ export default function Page() {
         Quam ex quas dolorem totam sunt adipisci maxime eius dolore quis asperiores ipsam tenetur corrupti quae sed eveniet eum minima officiis, voluptatem nam ea aperiam? Sint tempora corrupti nulla non."
           link="/dashboard/anime"
           buttontext="Check Anime Series"
+          alt="Animes"
         />
       </div>
     </section>

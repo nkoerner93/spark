@@ -11,7 +11,7 @@ const AnimeCards_Seasonal = ({ animes }: { animes: Anime_Data_Seasonal[] }) => {
     <div>
       <Slider {...sliderSettings}>
         {animes.map((anime: Anime_Data_Seasonal) => (
-          <div key={anime.node.id} className="flex flex-col px-2">
+          <div key={anime.node.id} className="px-2">
             <div className="flex flex-col items-center">
               <img
                 className="h-[600px] object-cover hover:contrast-125"

@@ -68,7 +68,7 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         <CardHeader>
           <Link href={link}>
             <img
-              className="h-[350px] rounded object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
+              className="h-[350px] w-full rounded object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
               src={getImagePath(title)} // Use getImagePath function
               alt={`${title} Card`}
             />
