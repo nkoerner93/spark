@@ -13,13 +13,15 @@ export enum CardCategory {
   Anime = "Anime",
   Productivity = "Productivity",
   Gaming = "Gaming",
+  Seasonal = "Seasonal",
 }
 
 // Define enum for card descriptions
 export enum CardDescriptionEnum {
-  Anime = "Discover the latest animes in",
+  Anime = "Discover the latest anime or current anime rankings.",
   Productivity = "Boost your productivity with planning tools, task tracking and more.",
   Gaming = "Improve your gameplay with useful gaming tools like POE Map Tracking, POE Currency Coverter and more.",
+  Seasonal = "Discover new seasonal animes from",
 }
 
 interface DashboardCardProps {
@@ -37,6 +39,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return "/images/cards/card_productivity.jpg";
       case CardCategory.Gaming:
         return "/images/cards/card_gaming.jpg";
+      case CardCategory.Seasonal:
+        return "/images/cards/card_anime_seasonal.jpg";
       default:
         return "";
     }
@@ -46,11 +50,13 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
   const getDescription = (title: CardCategory) => {
     switch (title) {
       case CardCategory.Anime:
-        return `${CardDescriptionEnum.Anime} ${getCurrentSeason()} Season.`;
+        return `${CardDescriptionEnum.Anime}`;
       case CardCategory.Productivity:
         return CardDescriptionEnum.Productivity;
       case CardCategory.Gaming:
         return CardDescriptionEnum.Gaming;
+      case CardCategory.Seasonal:
+        return `${CardDescriptionEnum.Seasonal} ${getCurrentSeason()} Season.`;
       default:
         return "";
     }

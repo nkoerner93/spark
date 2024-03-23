@@ -1,23 +1,23 @@
 "use server";
 import { getAnimeList } from "@/app/actions/actions";
 import AnimeCards_Seasonal from "@/components/ui/AnimeCards_Seasonal";
-import { CardCategory, DashboardCard } from "@/components/ui/DashboardCard";
 import HeroSection from "@/components/ui/HeroSection";
 import { getCurrentSeason } from "@/lib/utils/utils";
 
 const AnimeDashboard = async () => {
   const season = getCurrentSeason();
 
+  const animes = await getAnimeList(2024, "spring");
+  // Sort anime results alphabetically by title
+  animes.sort((a: any, b: any) => a.node.title.localeCompare(b.node.title));
+
   return (
     <section>
       <HeroSection
-        title="Animes"
-        subtitle={`Which animes are you looking for?`}
+        title="Seasonal Animes"
+        subtitle={`Discover all the animes from ${season} season.`}
       />
-      <DashboardCard
-        title={CardCategory.Seasonal}
-        link="/dashboard/anime/seasonal"
-      />
+      <AnimeCards_Seasonal animes={animes} />
     </section>
   );
 };
