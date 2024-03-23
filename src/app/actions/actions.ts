@@ -1,5 +1,4 @@
 "use server";
-import axios from "axios";
 import bcrypt from "bcrypt";
 import { cookies } from "next/headers";
 import { sessionOptions, SessionData, defaultSession } from "@/lib/lib";
@@ -7,6 +6,7 @@ import { getIronSession } from "iron-session";
 import prisma from "../prisma";
 import { redirect } from "next/navigation";
 import { Users } from "@prisma/client";
+import { Anime_Data_Seasonal } from "src/types/types";
 
 // ===============================
 // LOGIN
@@ -86,23 +86,40 @@ export const createUserToDB = async (userData: {
 
 // GET ANIME LIST from MyAnimeList API
 
+// GET ANIME LIST from MyAnimeList API
+
 export const getAnimeList = async (
   year: number,
   season: string,
   offset: number = 0,
-) => {
+): Promise<Anime_Data_Seasonal> => {
+  // Specify the return type as an array of Anime_Data_Seasonal
   try {
-    const res = await axios.get(
+    const res = await fetch(
       `https://api.myanimelist.net/v2/anime/season/${year}/${season}?offset=${offset}&limit=50`,
       {
         headers: {
           "X-MAL-CLIENT-ID": "55c19f03ea57271a9b33ff0edbaed468",
         },
+        cache: "force-cache",
       },
     );
-    const animes = await res.data.data;
-    const animepage = await res.data.paging;
-    return { animes, animepage }; // Return the data property of the response's data
+
+    // Check if response is not ok
+    if (!res.ok) {
+      throw new Error("Failed to fetch anime list");
+    }
+
+    // Parse response body as JSON
+    const data = await res.json();
+
+    // Ensure data.data is an array
+    if (!Array.isArray(data.data)) {
+      throw new Error("Unexpected data format: Expected an array");
+    }
+
+    // Return the parsed JSON data
+    return data.data;
   } catch (error) {
     // Handle errors if needed
     console.error("Error fetching anime list:", error);

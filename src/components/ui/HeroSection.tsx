@@ -30,7 +30,7 @@ const HeroSection: FC<HeroSectionProps> = ({
       </span>
       {button1link && button1 ? (
         <div className="flex w-full items-center justify-center space-x-4 py-4 md:pb-10">
-          <Button className="h-9 items-center justify-center whitespace-nowrap rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
+          <Button className="h-9 items-center justify-center whitespace-nowrap rounded-md bg-orange-600 px-4 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-orange-600/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50">
             <Link href={`${button1link}`}>{button1}</Link>
           </Button>
           {button2link && button2 ? (

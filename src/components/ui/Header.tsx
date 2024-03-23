@@ -9,8 +9,8 @@ const Header = async () => {
   const sessionData = JSON.parse(JSON.stringify(session));
 
   return (
-    <header className="sticky top-0 z-50 my-4 w-full">
-      <div className="flex h-14 items-center justify-between gap-8">
+    <header className="sticky top-0 z-50 my-4 w-full bg-slate-50">
+      <div className="flex h-14 items-center justify-between">
         <span className="text-2xl font-bold">
           <Link href={session.isLoggedIn ? "/dashboard" : "/"}>Spark</Link>
         </span>

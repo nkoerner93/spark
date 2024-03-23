@@ -1,5 +1,4 @@
 "use client";
-import { getSession, logout } from "@/app/actions/actions";
 import { Button } from "@/components/ui/shad-cn/button";
 import {
   DropdownMenu,
