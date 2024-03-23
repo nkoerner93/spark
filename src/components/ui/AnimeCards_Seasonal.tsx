@@ -10,10 +10,7 @@ import { sliderSettings } from "@/lib/lib";
 import { Loader2 } from "lucide-react";
 import { AnimeCards_SeasonalProps, Anime_Data_Seasonal } from "src/types/types";
 
-const AnimeCards_Seasonal: React.FC<AnimeCards_SeasonalProps> = ({
-  year,
-  season,
-}: AnimeCards_SeasonalProps) => {
+const AnimeCards_Seasonal = ({ year, season }: AnimeCards_SeasonalProps) => {
   const [animes, setAnimes] = useState<Anime_Data_Seasonal[]>([]);
   const [nextPageUrl, setNextPageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
@@ -25,7 +22,9 @@ const AnimeCards_Seasonal: React.FC<AnimeCards_SeasonalProps> = ({
         season,
       );
       // Sort anime results alphabetically by title
-      initialAnimes.sort((a, b) => a.node.title.localeCompare(b.node.title));
+      initialAnimes.sort((a: any, b: any) =>
+        a.node.title.localeCompare(b.node.title),
+      );
       setAnimes(initialAnimes);
       setNextPageUrl(animepage.next);
       setLoading(false);
