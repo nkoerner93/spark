@@ -24,7 +24,7 @@ export const sessionOptions: SessionOptions = {
 export const sliderSettings = {
   dots: false,
   speed: 500,
-  slidesToShow: 4,
+  slidesToShow: 5,
   slidesToScroll: 4,
   focusOnSelect: false,
   arrows: false,

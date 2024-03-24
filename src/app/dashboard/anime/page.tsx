@@ -1,6 +1,5 @@
 "use server";
-import { getAnimeList } from "@/app/actions/actions";
-import AnimeCards_Seasonal from "@/components/ui/AnimeCards_Seasonal";
+
 import { CardCategory, DashboardCard } from "@/components/ui/DashboardCard";
 import HeroSection from "@/components/ui/HeroSection";
 import { getCurrentSeason } from "@/lib/utils/utils";
@@ -17,6 +16,10 @@ const AnimeDashboard = async () => {
       <DashboardCard
         title={CardCategory.Seasonal}
         link="/dashboard/anime/seasonal"
+      />
+      <DashboardCard
+        title={CardCategory.Seasonal}
+        link="/dashboard/anime/ranking"
       />
     </section>
   );

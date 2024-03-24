@@ -14,7 +14,7 @@ const AnimeCards_Seasonal = ({ animes }: { animes: Anime_Data_Seasonal[] }) => {
           <div key={anime.node.id} className="flex flex-row px-2">
             <div className="flex flex-col items-center">
               <img
-                className="h-[600px] object-cover hover:contrast-125"
+                className="h-[400px] object-cover hover:contrast-125"
                 src={anime.node.main_picture.large}
                 alt={anime.node.title}
               />

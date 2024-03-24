@@ -1,13 +1,13 @@
 "use server";
-import { getAnimeList } from "@/app/actions/actions";
+import { getAnimeListBySeason } from "@/app/actions/actions";
 import AnimeCards_Seasonal from "@/components/ui/AnimeCards_Seasonal";
 import HeroSection from "@/components/ui/HeroSection";
 import { getCurrentSeason } from "@/lib/utils/utils";
 
-const AnimeDashboard = async () => {
+const AnimeSeasonal = async () => {
   const season = getCurrentSeason();
 
-  const animes = await getAnimeList(2024, "spring");
+  const animes = await getAnimeListBySeason(2024, "spring");
   // Sort anime results alphabetically by title
   animes.sort((a: any, b: any) => a.node.title.localeCompare(b.node.title));
 
@@ -22,4 +22,4 @@ const AnimeDashboard = async () => {
   );
 };
 
-export default AnimeDashboard;
+export default AnimeSeasonal;
