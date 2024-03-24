@@ -6,7 +6,11 @@ import { getIronSession } from "iron-session";
 import prisma from "../prisma";
 import { redirect } from "next/navigation";
 import { Users } from "@prisma/client";
-import { Anime_Data_Seasonal } from "src/types/types";
+import {
+  AnimeRankingType,
+  Anime_Data_HighestRated,
+  Anime_Data_Seasonal,
+} from "src/types/types";
 
 // ===============================
 // LOGIN
@@ -84,11 +88,9 @@ export const createUserToDB = async (userData: {
   }
 };
 
-// GET ANIME LIST from MyAnimeList API
+// GET ANIME LIST BY SEASON from MyAnimeList API
 
-// GET ANIME LIST from MyAnimeList API
-
-export const getAnimeList = async (
+export const getAnimeListBySeason = async (
   year: number,
   season: string,
   offset: number = 0,
@@ -97,6 +99,46 @@ export const getAnimeList = async (
   try {
     const res = await fetch(
       `https://api.myanimelist.net/v2/anime/season/${year}/${season}?offset=${offset}&limit=50`,
+      {
+        headers: {
+          "X-MAL-CLIENT-ID": "55c19f03ea57271a9b33ff0edbaed468",
+        },
+        cache: "force-cache",
+      },
+    );
+
+    // Check if response is not ok
+    if (!res.ok) {
+      throw new Error("Failed to fetch anime list");
+    }
+
+    // Parse response body as JSON
+    const data = await res.json();
+
+    // Ensure data.data is an array
+    if (!Array.isArray(data.data)) {
+      throw new Error("Unexpected data format: Expected an array");
+    }
+
+    // Return the parsed JSON data
+    return data.data;
+  } catch (error) {
+    // Handle errors if needed
+    console.error("Error fetching anime list:", error);
+    throw error; // Re-throw the error to propagate it
+  }
+};
+
+// GET ANIME LIST BY HIGHEST RATING from MyAnimeList API
+
+export const getAnimeListByRanking = async (
+  rankingtype: AnimeRankingType,
+  limit: number = 50,
+): Promise<Anime_Data_HighestRated[]> => {
+  // Specify the return type as an array of Anime_Data_Seasonal
+  try {
+    const res = await fetch(
+      `https://api.myanimelist.net/v2/anime/ranking?ranking_type=${rankingtype}&limit=${limit}`,
       {
         headers: {
           "X-MAL-CLIENT-ID": "55c19f03ea57271a9b33ff0edbaed468",

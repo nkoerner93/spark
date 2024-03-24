@@ -8,3 +8,28 @@ export type Anime_Data_Seasonal = {
     };
   };
 };
+
+export type Anime_Data_HighestRated = {
+  node: {
+    id: number;
+    title: string;
+    main_picture: {
+      medium: string;
+      large: string;
+    };
+  };
+  ranking: {
+    rank: number;
+  };
+};
+
+export type AnimeRankingType =
+  | "all"
+  | "airing"
+  | "upcoming"
+  | "tv"
+  | "ova"
+  | "movie"
+  | "special"
+  | "bypopularity"
+  | "favorite";
