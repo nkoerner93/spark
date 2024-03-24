@@ -72,7 +72,6 @@ export const sliderSettings_HighestRated = {
   arrows: false,
   rows: 12,
   swipe: false,
-  vertical: false,
   responsive: [
     {
       breakpoint: 1024,
@@ -101,6 +100,7 @@ export const sliderSettings_HighestRated = {
         slidesToScroll: 1,
         rows: 1,
         swipe: true,
+        arrows: true,
       },
     },
   ],

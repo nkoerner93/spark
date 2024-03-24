@@ -45,13 +45,13 @@ const AnimeCards_Ranking = () => {
           <div key={anime.node.id} className="px-2">
             <div className="flex flex-col items-center">
               <img
-                className="h-[400px] object-cover hover:contrast-125"
+                className="h-[400px] w-full object-cover hover:contrast-125"
                 src={anime.node.main_picture.large}
                 alt={anime.node.title}
               />
             </div>
-            <div className="flex min-h-[80px] flex-col items-center justify-center pb-8 pt-4">
-              <div className="text-xl font-bold">{anime.ranking.rank}</div>
+            <div className="flex min-h-[135px] flex-col items-center justify-center pb-8 pt-4">
+              <div className="text-3xl font-bold">{anime.ranking.rank}</div>
               <div className="font-medium">{anime.node.title}</div>
             </div>
           </div>
