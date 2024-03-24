@@ -14,6 +14,7 @@ export enum CardCategory {
   Productivity = "Productivity",
   Gaming = "Gaming",
   Seasonal = "Seasonal",
+  Ranking = "Highest Rated",
 }
 
 // Define enum for card descriptions
@@ -22,6 +23,7 @@ export enum CardDescriptionEnum {
   Productivity = "Boost your productivity with planning tools, task tracking and more.",
   Gaming = "Improve your gameplay with useful gaming tools like POE Map Tracking, POE Currency Coverter and more.",
   Seasonal = "Discover new seasonal animes from",
+  Ranking = "Check out the highest rated animes this season or of all time.",
 }
 
 interface DashboardCardProps {
@@ -41,6 +43,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return "/images/cards/card_gaming.jpg";
       case CardCategory.Seasonal:
         return "/images/cards/card_anime_seasonal.jpg";
+      case CardCategory.Ranking:
+        return "/images/cards/card_ranking.jpeg";
       default:
         return "";
     }
@@ -57,14 +61,16 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return CardDescriptionEnum.Gaming;
       case CardCategory.Seasonal:
         return `${CardDescriptionEnum.Seasonal} ${getCurrentSeason()} Season.`;
+      case CardCategory.Ranking:
+        return `${CardDescriptionEnum.Seasonal}`;
       default:
         return "";
     }
   };
 
   return (
-    <div className="flex max-w-[600px] md:w-[325px] lg:w-[400px] xl:w-[450px]">
-      <Card className="drop-shadow-md">
+    <div className="flex max-w-[600px]">
+      <Card className="drop-shadow-md md:w-[325px] lg:w-[400px] xl:w-[450px]">
         <CardHeader>
           <Link href={link}>
             <img

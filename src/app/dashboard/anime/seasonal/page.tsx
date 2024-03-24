@@ -18,7 +18,7 @@ const AnimeSeasonal = async () => {
         title="Seasonal Animes"
         subtitle={`Discover all the animes from ${season} season.`}
       />
-      <ReturnButton className="border font-bold" />
+      <ReturnButton className="pb-2" />
       <AnimeCards_Seasonal animes={animes} />
     </section>
   );

@@ -1,26 +1,30 @@
 "use client";
+import { Arrow } from "@radix-ui/react-dropdown-menu";
 import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { useMemo } from "react";
+import { useRouter } from "next/navigation";
 
 interface ReturnButtonProps {
   className?: string;
-  pages?: number;
 }
 
-const ReturnButton = ({ className = "", pages = 1 }: ReturnButtonProps) => {
-  const href = useMemo(() => {
-    return "../".repeat(pages);
-  }, [pages]);
+const ReturnButton = ({ className = "" }: ReturnButtonProps) => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.back();
+  };
 
   return (
-    <Link
-      href={href}
-      className={`inline-flex items-center space-x-2 py-4 text-primary ${className}`}
-    >
-      <ArrowLeft className="h-4 w-4" />
-      <span>Go Back</span>
-    </Link>
+    <div className="mb-2 flex flex-row items-center gap-1">
+      <ArrowLeft />
+      <button
+        className={`primary border-none font-bold ${className}`}
+        onClick={handleClick}
+      >
+        Back
+      </button>
+    </div>
   );
 };
 

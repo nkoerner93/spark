@@ -6,7 +6,7 @@ export default async function Dashboard() {
     <div>
       <HeroSection
         title="What are you interested in today?"
-        subtitle="What are you interested in today?"
+        subtitle="Please pick your dashboard by clicking on one of the categories below"
       />
       <section className="flex flex-row flex-wrap justify-center gap-8">
         <DashboardCard title={CardCategory.Anime} link="/dashboard/anime" />

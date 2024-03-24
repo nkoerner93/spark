@@ -8,8 +8,16 @@ import { AnimeRankingType, Anime_Data_HighestRated } from "src/types/types";
 import { getAnimeListByRanking } from "@/app/actions/actions";
 
 import { useState, useEffect } from "react";
+import ReturnButton from "./ReturnButton";
+import { Button } from "./shad-cn/button";
 
-const AnimeCards_Ranking = () => {
+interface AnimeCards_RankingProps {
+  returnButton?: boolean;
+}
+
+const AnimeCards_Ranking = ({
+  returnButton = false,
+}: AnimeCards_RankingProps) => {
   const [selectedRankingType, setSelectedRankingType] =
     useState<AnimeRankingType>("all");
   const [animes, setAnimes] = useState<Anime_Data_HighestRated[]>([]);
@@ -36,9 +44,24 @@ const AnimeCards_Ranking = () => {
 
   return (
     <div>
-      <button onClick={() => handleRankingTypeChange("all")}>All</button>
-      <button onClick={() => handleRankingTypeChange("airing")}>Airing</button>
-      {/* Add more buttons for other ranking types */}
+      {returnButton ? (
+        <div>
+          <button onClick={() => handleRankingTypeChange("all")}>All</button>
+          <button onClick={() => handleRankingTypeChange("airing")}>
+            Airing
+          </button>
+        </div>
+      ) : (
+        <div className="mb-4 flex flex-row justify-between px-2">
+          <ReturnButton />
+          <div className="flex flex-row gap-2">
+            <Button onClick={() => handleRankingTypeChange("all")}>All</Button>
+            <Button onClick={() => handleRankingTypeChange("airing")}>
+              Airing
+            </Button>
+          </div>
+        </div>
+      )}
 
       <Slider {...sliderSettings_HighestRated}>
         {animes.map((anime) => (
