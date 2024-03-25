@@ -8,6 +8,8 @@ describe("Test Login", () => {
   });
 
   it("should successfully log in with correct credentials", () => {
+    console.log("Username:", Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"));
+    console.log("Password:", Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"));
     LoginPage.fillUsername(Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"));
     LoginPage.fillPassword(Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"));
     LoginPage.submitLoginForm();
