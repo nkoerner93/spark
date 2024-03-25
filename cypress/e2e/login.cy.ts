@@ -15,3 +15,10 @@ describe("Test Login", () => {
 
   // Add more test cases to cover other scenarios
 });
+
+describe("Type Username", () => {
+  it("should display error message with incorrect credentials", () => {
+    LoginPage.visit();
+    LoginPage.fillUsername("invalid_username@randomxPl.com");
+  });
+});
