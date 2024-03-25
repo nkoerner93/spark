@@ -1,8 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import "../styles/_slick-theme.css";
-@import "../styles/_slick.css";
 
 
 @layer base {

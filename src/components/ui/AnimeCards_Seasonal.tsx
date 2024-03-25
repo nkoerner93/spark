@@ -3,8 +3,8 @@ import { sliderSettings } from "@/lib/lib";
 
 import { Anime_Data_Seasonal } from "src/types/types";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "@nkoerner93/slick-carousel/slick/slick.css";
+import "@nkoerner93/slick-carousel/slick/slick-theme.css";
 
 const AnimeCards_Seasonal = ({ animes }: { animes: Anime_Data_Seasonal[] }) => {
   return (

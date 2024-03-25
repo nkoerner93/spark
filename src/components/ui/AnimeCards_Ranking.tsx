@@ -1,8 +1,8 @@
 "use client";
 import Slider from "react-slick";
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import "@nkoerner93/slick-carousel/slick/slick.css";
+import "@nkoerner93/slick-carousel/slick/slick-theme.css";
 import { sliderSettings_HighestRated } from "@/lib/lib";
 
 import { AnimeRankingType, Anime_Data_HighestRated } from "src/types/types";
