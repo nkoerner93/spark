@@ -9,8 +9,12 @@ describe("Test Login", () => {
 
   it("should successfully log in with correct credentials", () => {
     LoginPage.fillUsername(Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"));
+    cy.log(Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"));
+    cy.wait(500);
     LoginPage.fillPassword(Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"));
+    cy.wait(500);
     LoginPage.submitLoginForm();
+    cy.wait(500);
     LoginPage.verifyLoginSuccess();
   });
 
