@@ -1,26 +1,31 @@
-// login.spec.js
-import LoginPage from "../classes/LoginPage";
-
 describe("Test Login", () => {
   beforeEach(() => {
     cy.reload();
-    LoginPage.visit();
+    cy.visit("http://localhost:3000/login");
   });
 
   it("should successfully log in with correct credentials", () => {
-    LoginPage.fillUsername(Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"));
-    LoginPage.fillPassword(Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"));
-    LoginPage.submitLoginForm();
+    cy.get('[data-login="input-username"]').type(
+      Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"),
+    );
+    cy.get('[data-login="input-password"]').type(
+      Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"),
+    );
+    cy.get('[data-login="button-submit"]').click();
     cy.wait(500);
-    LoginPage.verifyLoginSuccess();
+    cy.url().should("include", "/dashboard");
   });
 
   it("should display error message with incorrect credentials", () => {
-    LoginPage.fillUsername("invalid_username@randomxPl.com");
-    LoginPage.fillPassword("invalid_password@randomxPl.com");
-    LoginPage.submitLoginForm();
+    cy.get('[data-login="input-username"]').type(
+      "invalid_username@randomxPl.com",
+    );
+    cy.get('[data-login="input-password"]').type(
+      "invalid_password@randomxPl.com",
+    );
+    cy.get('[data-login="button-submit"]').click();
     cy.wait(10000);
-    LoginPage.verifyLoginFailure();
+    cy.get('[data-toast="toast-title"]').should("be.visible").contains("Error");
   });
 
   // Add more test cases to cover other scenarios
