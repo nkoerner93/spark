@@ -7,7 +7,7 @@ export default defineConfig({
     },
   },
   env: {
-    CYPRESS_LOGIN_USERNAME_ADMIN: "",
-    CYPRESS_LOGIN_PASSWORD_ADMIN: "",
+    CYPRESS_LOGIN_USERNAME_ADMIN: Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"),
+    CYPRESS_LOGIN_PASSWORD_ADMIN: Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"),
   },
 });
