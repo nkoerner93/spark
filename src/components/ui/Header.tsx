@@ -3,6 +3,8 @@ import { Button } from "./shad-cn/button";
 import Link from "next/link";
 import { getSession } from "@/app/actions/actions";
 import { Menu_LoggedInDropdown } from "./Menu_LoggedInDropdown";
+import Spark_Heading from "./Spark_Heading";
+import { Zap } from "lucide-react";
 
 const Header = async () => {
   const session = await getSession();
@@ -12,7 +14,15 @@ const Header = async () => {
     <header className="sticky top-0 z-50 my-4 w-full bg-slate-50">
       <div className="flex h-14 items-center justify-between">
         <span className="text-2xl font-bold">
-          <Link href={session.isLoggedIn ? "/dashboard" : "/"}>Spark</Link>
+          <Link href={session.isLoggedIn ? "/dashboard" : "/"}>
+            {" "}
+            <div className="flex flex-row items-center gap-2">
+              <Zap className="text-orange-600" />
+              <Spark_Heading fontweight="font-bold" size="text-2xl">
+                Spark
+              </Spark_Heading>
+            </div>
+          </Link>
         </span>
         <Searchbar />
         {session.isLoggedIn ? (

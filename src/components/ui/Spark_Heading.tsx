@@ -1,6 +1,13 @@
 import { FC, ReactNode } from "react";
 
-type HeadingSize = "sm" | "md" | "lg" | "xl" | "2xl";
+type HeadingSize =
+  | "text-sm"
+  | "text-md"
+  | "text-lg"
+  | "text-xl"
+  | "text-2xl"
+  | "text-4xl"
+  | "text-8xl";
 type HeadingWeight =
   | "font-medium"
   | "font-semibold"
