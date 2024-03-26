@@ -38,9 +38,9 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
   const getImagePath = (title: CardCategory) => {
     switch (title) {
       case CardCategory.Anime:
-        return "/images/cards/card_anime.jpg";
+        return "/images/cards/card_anime.webp";
       case CardCategory.Productivity:
-        return "/images/cards/card_productivity.jpg";
+        return "/images/cards/card_productivity.webp";
       case CardCategory.Gaming:
         return "/images/cards/card_gaming.jpg";
       case CardCategory.Seasonal:
