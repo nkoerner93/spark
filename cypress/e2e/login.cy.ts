@@ -1,3 +1,4 @@
+// login.spec.js
 import LoginPage from "../classes/LoginPage";
 
 describe("Test Login", () => {
@@ -7,24 +8,20 @@ describe("Test Login", () => {
   });
 
   it("should successfully log in with correct credentials", () => {
-    const username = Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN");
-    const password = Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN");
-
-    LoginPage.fillUsername(username);
-    LoginPage.fillPassword(password);
+    LoginPage.fillUsername(Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"));
+    LoginPage.fillPassword(Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"));
     LoginPage.submitLoginForm();
     cy.wait(500);
     LoginPage.verifyLoginSuccess();
   });
 
   it("should display error message with incorrect credentials", () => {
-    const invalidUsername = "invalid_username@randomxPl.com";
-    const invalidPassword = "invalid_password@randomxPl.com";
-
-    LoginPage.fillUsername(invalidUsername);
-    LoginPage.fillPassword(invalidPassword);
+    LoginPage.fillUsername("invalid_username@randomxPl.com");
+    LoginPage.fillPassword("invalid_password@randomxPl.com");
     LoginPage.submitLoginForm();
     cy.wait(10000);
     LoginPage.verifyLoginFailure();
   });
+
+  // Add more test cases to cover other scenarios
 });
