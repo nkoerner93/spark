@@ -20,20 +20,20 @@ const ImageBlock: FC<ImageBlockProps> = ({
   alt,
 }) => {
   return (
-    <div
-      className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-10 xl:gap-10 ${imageleft ? "xl:pl-20" : "pr-10"}`}
-    >
+    <div>
       {imageleft ? (
-        <>
+        <div
+          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-20 xl:gap-20`}
+        >
           <div className="lg:w-1/2 lg:max-w-[600px]">
             <img
-              className="rounded-lg contrast-[115%]"
+              className="rounded-lg object-cover contrast-[115%] lg:min-h-[350px] xl:min-h-[250px]"
               src="/images/cards/card_anime.jpg"
               alt={alt}
               sizes="100vw"
             />
           </div>
-          <div className="flex flex-col gap-4 lg:w-1/2">
+          <div className="flex flex-col justify-center gap-4 lg:w-1/2">
             <h2 className="text-3xl font-bold text-primary">{title}</h2>
             <p className="text-muted-foreground">{description}</p>
             {link && (
@@ -44,10 +44,12 @@ const ImageBlock: FC<ImageBlockProps> = ({
               </Link>
             )}
           </div>
-        </>
+        </div>
       ) : (
-        <>
-          <div className="flex flex-col gap-4 lg:w-1/2">
+        <div
+          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 md:flex-col-reverse lg:w-[85%] lg:flex-row lg:justify-center lg:gap-20 xl:gap-20`}
+        >
+          <div className="flex flex-col justify-center gap-4 lg:w-1/2">
             <h2 className="text-3xl font-bold text-primary">{title}</h2>
             <p className="text-muted-foreground">{description}</p>
             {link && (
@@ -60,12 +62,13 @@ const ImageBlock: FC<ImageBlockProps> = ({
           </div>
           <div className="lg:w-1/2 lg:max-w-[600px]">
             <img
-              className="rounded-lg contrast-[115%]"
+              className="rounded-lg object-cover contrast-[115%] lg:min-h-[350px] xl:min-h-[250px]"
               src="/images/cards/card_anime.jpg"
               alt={alt}
+              sizes="100vw"
             />
           </div>
-        </>
+        </div>
       )}
     </div>
   );
