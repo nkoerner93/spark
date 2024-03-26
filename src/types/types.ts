@@ -33,3 +33,8 @@ export type AnimeRankingType =
   | "special"
   | "bypopularity"
   | "favorite";
+
+export type MenuItems_MainMenu = {
+  title: string;
+  url: string;
+};

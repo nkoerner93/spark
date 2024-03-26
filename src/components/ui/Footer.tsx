@@ -5,7 +5,7 @@ import Link from "next/link";
 
 const Footer = () => {
   return (
-    <section className="mt-16">
+    <section className="mx-auto mt-16 max-w-screen-2xl">
       <Separator className="h-[1px] bg-slate-300" />
       <div className="p-6">
         <div className="flex flex-row justify-between">

@@ -6,15 +6,10 @@ const GamingDashboard = () => {
   return (
     <section>
       <HeroSection
-        title="Gaming"
-        subtitle={`Which games are you looking for?`}
+        title="Path of Exile"
+        subtitle={`Please select your tool from the list below`}
       />
-      <div className="flex flex-row justify-center gap-8">
-        <DashboardCard
-          title={CardCategory.PathOfExile}
-          link="/dashboard/gaming/pathofexile"
-        ></DashboardCard>
-      </div>
+      <div className="flex flex-row justify-center gap-8"></div>
     </section>
   );
 };

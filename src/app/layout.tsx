@@ -1,3 +1,4 @@
+import Footer from "@/components/ui/Footer";
 import "./globals.css";
 
 import { GeistSans } from "geist/font/sans";
@@ -26,6 +27,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${GeistSans.variable} w-screen bg-slate-50`}>
         {children}
+        <Footer />
       </body>
     </html>
   );

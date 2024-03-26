@@ -1,18 +1,18 @@
-import Searchbar from "./Searchbar";
 import { Button } from "./shad-cn/button";
 import Link from "next/link";
 import { getSession } from "@/app/actions/actions";
 import { Menu_LoggedInDropdown } from "./Menu_LoggedInDropdown";
 import Spark_Heading from "./Spark_Heading";
 import { Zap } from "lucide-react";
+import NavBar from "./NavBar";
 
 const Header = async () => {
   const session = await getSession();
   const sessionData = JSON.parse(JSON.stringify(session));
 
   return (
-    <header className="sticky top-0 z-50 my-4 w-full bg-slate-50">
-      <div className="flex h-14 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full bg-slate-50 p-4">
+      <div className="mx-auto flex h-14 max-w-screen-2xl items-center justify-between">
         <span className="text-2xl font-bold">
           <Link href={session.isLoggedIn ? "/dashboard" : "/"}>
             {" "}
@@ -24,7 +24,7 @@ const Header = async () => {
             </div>
           </Link>
         </span>
-        <Searchbar />
+        <NavBar />
         {session.isLoggedIn ? (
           <span>
             <Menu_LoggedInDropdown session={sessionData} />

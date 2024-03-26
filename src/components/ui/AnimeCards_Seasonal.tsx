@@ -20,7 +20,9 @@ const AnimeCards_Seasonal = ({ animes }: { animes: Anime_Data_Seasonal[] }) => {
               />
             </div>
             <div className="flex min-h-[80px] items-center justify-center">
-              <div className="my-4 font-medium">{anime.node.title}</div>
+              <div className="my-4 text-center font-medium">
+                {anime.node.title}
+              </div>
             </div>
           </div>
         ))}

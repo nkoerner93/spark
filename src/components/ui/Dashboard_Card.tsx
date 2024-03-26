@@ -15,6 +15,7 @@ export enum CardCategory {
   Gaming = "Gaming",
   Seasonal = "Seasonal",
   Ranking = "Highest Rated",
+  PathOfExile = "Path of Exile",
 }
 
 // Define enum for card descriptions
@@ -24,6 +25,7 @@ export enum CardDescriptionEnum {
   Gaming = "Improve your gameplay with useful gaming tools like POE Map Tracking, POE Currency Coverter and more.",
   Seasonal = "Discover new seasonal animes from",
   Ranking = "Check out the highest rated animes this season or of all time.",
+  PathOfExile = "Action-RPG",
 }
 
 interface DashboardCardProps {
@@ -45,6 +47,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return "/images/cards/card_anime_seasonal.jpg";
       case CardCategory.Ranking:
         return "/images/cards/card_ranking.jpeg";
+      case CardCategory.PathOfExile:
+        return "/images/cards/card_pathofexile.jpeg";
       default:
         return "";
     }
@@ -63,6 +67,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return `${CardDescriptionEnum.Seasonal} ${getCurrentSeason()} Season.`;
       case CardCategory.Ranking:
         return `${CardDescriptionEnum.Seasonal}`;
+      case CardCategory.PathOfExile:
+        return `${CardDescriptionEnum.PathOfExile}`;
       default:
         return "";
     }

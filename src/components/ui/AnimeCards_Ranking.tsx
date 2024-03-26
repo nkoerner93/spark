@@ -53,9 +53,9 @@ const AnimeCards_Ranking = ({
           </button>
         </div>
       ) : (
-        <div className="flex flex-row justify-between">
+        <div className="flex h-16 flex-row items-end justify-between">
           <ReturnButton />
-          <div className="mb-2 mr-2 flex flex-row gap-2">
+          <div className="flex flex-row gap-2 pb-1">
             <Button onClick={() => handleRankingTypeChange("all")}>All</Button>
             <Button onClick={() => handleRankingTypeChange("airing")}>
               Airing

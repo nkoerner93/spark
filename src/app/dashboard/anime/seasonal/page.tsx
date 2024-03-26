@@ -21,7 +21,6 @@ const AnimeSeasonal = async () => {
       />
       <ReturnButton />
       <AnimeCards_Seasonal animes={animes} />
-      <Footer />
     </section>
   );
 };
