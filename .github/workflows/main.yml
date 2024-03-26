@@ -1,3 +1,5 @@
+name: Cypress Tests
+
 on: push
 
 jobs:
@@ -10,14 +12,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      # install pnpm
+        ## install pnpm
       - name: Install pnpm
         run: npm install -g pnpm@8
       - name: Get pnpm store directory
         shell: bash
         run: |
           echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      # SETUP pnpm cache
+        ## SETUP pnpm cache
       - name: Setup pnpm cache
         uses: actions/cache@v4
         with:
@@ -25,19 +27,12 @@ jobs:
           key: ${{ runner.os }}-pnpm-store-${{ hashFiles('examples/basic-pnpm/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
-      # Start Cypress tests
+        ## Start Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
           build: pnpm next build
           start: pnpm next start
-          env:
-            CYPRESS_LOGIN_USERNAME_ADMIN: ${{ secrets.CYPRESS_LOGIN_USERNAME_ADMIN }}
-            CYPRESS_LOGIN_PASSWORD_ADMIN: ${{ secrets.CYPRESS_LOGIN_PASSWORD_ADMIN }}
-        # Add additional debugging steps
-      - name: Cypress Debugging
-        if: failure()
-        run: |
-          echo "Cypress test failed. Printing debug information:"
-          cypress run --config-file cypress.config.ts --config video=false --config-override '{"watchForFileChanges":true}' --debug
-          # Add more debugging steps as needed
+        env:
+          CYPRESS_LOGIN_USERNAME_ADMIN: ${{secrets.CYPRESS_LOGIN_USERNAME_ADMIN}}
+          CYPRESS_LOGIN_PASSWORD_ADMIN: ${{secrets.CYPRESS_LOGIN_PASSWORD_ADMIN}}
