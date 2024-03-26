@@ -9,6 +9,7 @@ interface ImageBlockProps {
   link?: string;
   buttontext?: string;
   alt: string;
+  imagepath: string;
 }
 
 const ImageBlock: FC<ImageBlockProps> = ({
@@ -18,17 +19,18 @@ const ImageBlock: FC<ImageBlockProps> = ({
   link,
   buttontext,
   alt,
+  imagepath,
 }) => {
   return (
     <div>
       {imageleft ? (
         <div
-          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-20 xl:gap-20`}
+          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-32`}
         >
-          <div className="lg:w-1/2 lg:max-w-[600px]">
+          <div className="lg:w-1/2">
             <img
               className="rounded-lg object-cover contrast-[115%] lg:min-h-[350px] xl:min-h-[250px]"
-              src="/images/cards/card_anime.jpg"
+              src={`/images/${imagepath}`}
               alt={alt}
               sizes="100vw"
             />
@@ -47,7 +49,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
         </div>
       ) : (
         <div
-          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 md:flex-col-reverse lg:w-[85%] lg:flex-row lg:justify-center lg:gap-20 xl:gap-20`}
+          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 md:flex-col-reverse lg:w-[85%] lg:flex-row lg:justify-center lg:gap-32`}
         >
           <div className="flex flex-col justify-center gap-4 lg:w-1/2">
             <h2 className="text-3xl font-bold text-primary">{title}</h2>
@@ -60,10 +62,10 @@ const ImageBlock: FC<ImageBlockProps> = ({
               </Link>
             )}
           </div>
-          <div className="lg:w-1/2 lg:max-w-[600px]">
+          <div className="lg:w-1/2">
             <img
               className="rounded-lg object-cover contrast-[115%] lg:min-h-[350px] xl:min-h-[250px]"
-              src="/images/cards/card_anime.jpg"
+              src={`/images/${imagepath}`}
               alt={alt}
               sizes="100vw"
             />
