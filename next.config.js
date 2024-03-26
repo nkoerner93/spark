@@ -4,4 +4,13 @@ module.exports = {
     // Specify the version of TypeScript being used
     ignoreBuildErrors: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "cdn.myanimelist.net",
+        port: "",
+      },
+    ],
+  },
 };

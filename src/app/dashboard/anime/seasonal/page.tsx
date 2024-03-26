@@ -1,6 +1,7 @@
 "use server";
 import { getAnimeListBySeason } from "@/app/actions/actions";
 import AnimeCards_Seasonal from "@/components/ui/AnimeCards_Seasonal";
+import Footer from "@/components/ui/Footer";
 import HeroSection from "@/components/ui/HeroSection";
 import ReturnButton from "@/components/ui/ReturnButton";
 import { getCurrentSeason } from "@/lib/utils/utils";
@@ -18,8 +19,9 @@ const AnimeSeasonal = async () => {
         title="Seasonal Animes"
         subtitle={`Discover all the animes from ${season} season.`}
       />
-      <ReturnButton className="pb-2" />
+      <ReturnButton />
       <AnimeCards_Seasonal animes={animes} />
+      <Footer />
     </section>
   );
 };
