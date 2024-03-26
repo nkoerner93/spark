@@ -33,6 +33,7 @@ jobs:
         with:
           build: pnpm next build
           start: pnpm next start
+          browser: chrome # Specify Chrome as the browser
         env:
           CYPRESS_LOGIN_USERNAME_ADMIN: ${{secrets.CYPRESS_LOGIN_USERNAME_ADMIN}}
           CYPRESS_LOGIN_PASSWORD_ADMIN: ${{secrets.CYPRESS_LOGIN_PASSWORD_ADMIN}}
