@@ -1,5 +1,5 @@
 "use server";
-import { CardCategory, DashboardCard } from "@/components/ui/DashboardCard";
+import { CardCategory, DashboardCard } from "@/components/ui/Dashboard_Card";
 import HeroSection from "@/components/ui/HeroSection";
 import { getCurrentSeason } from "@/lib/utils/utils";
 

@@ -17,8 +17,8 @@ export default function SettingsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="w-full">
-      <Card className="backdrop flex w-full flex-col rounded-lg border-slate-200 shadow-md md:w-[780px] md:flex-row lg:w-[1040px]">
+    <section>
+      <Card className="backdrop flex w-full flex-col rounded-lg border-slate-200 shadow-md md:flex-row">
         <CardHeader className="backdrop w-full rounded-t-lg border-slate-200 bg-primary p-5 md:w-[200px] md:rounded-bl-lg md:p-7">
           <CardTitle className="text-white">Settings</CardTitle>
           <CardDescription className="border-b border-slate-700 pb-4">

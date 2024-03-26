@@ -24,7 +24,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.variable} w-full bg-slate-50`}>
+      <body className={`${GeistSans.variable} w-screen bg-slate-50`}>
         {children}
       </body>
     </html>
