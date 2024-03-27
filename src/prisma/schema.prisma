@@ -8,13 +8,14 @@ datasource db {
 }
 
 model Users {
-  id         Int       @id @default(autoincrement())
-  email      String    @unique @db.VarChar(255)
-  password   String    @db.VarChar(255)
-  created_on DateTime? @default(now()) @db.Timestamp(6)
-  last_login DateTime? @db.Timestamp(6)
-  username   String    @db.VarChar(255)
-  sessions   Session[] // One-to-many relationship to Session model
+  id         Int         @id @default(autoincrement())
+  email      String      @unique @db.VarChar(255)
+  password   String      @db.VarChar(255)
+  created_on DateTime?   @default(now()) @db.Timestamp(6)
+  last_login DateTime?   @db.Timestamp(6)
+  username   String      @db.VarChar(255)
+  sessions   Session[] // One-to-many relationship with Session model
+  mapResults MapResult[] // One-to-many relationship with MapResult model
 }
 
 model Session {
@@ -24,6 +25,18 @@ model Session {
   createdAt DateTime
 
   // Prisma will infer the relationship based on naming conventions
+  user Users @relation(fields: [userId], references: [id])
+}
+
+model MapResult {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  map       String
+  divine    Int
+  chaos     Int
+  createdAt DateTime @default(now())
+
+  // Define the relationship with Users
   user Users @relation(fields: [userId], references: [id])
 }
 

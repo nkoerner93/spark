@@ -28,9 +28,11 @@ import {
   SelectValue,
 } from "./ui/shad-cn/select";
 import { poeMaps } from "src/constants/authImageConstants";
-import { cookies } from "next/headers";
+import { useState } from "react";
 
 const Poe_CurrencyMapCalculator: FC = () => {
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   // Initialize react-hook-form
   const form = useForm<z.infer<typeof currencyInMapFormSchema>>({
     resolver: zodResolver(currencyInMapFormSchema),
@@ -43,6 +45,7 @@ const Poe_CurrencyMapCalculator: FC = () => {
 
   // Form submission handler
   const onSubmit = (values: z.infer<typeof currencyInMapFormSchema>) => {
+    setFormSubmitted(true);
     // Serialize the values into an object
     const cookieValue = JSON.stringify({
       map: values.map,
