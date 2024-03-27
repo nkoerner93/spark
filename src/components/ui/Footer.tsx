@@ -2,6 +2,7 @@ import { Github, Zap } from "lucide-react";
 import { Separator } from "./shad-cn/separator";
 import Spark_Heading from "./Spark_Heading";
 import Link from "next/link";
+import { ThemeToggle } from "../ThemeToggle";
 
 const Footer = () => {
   return (
@@ -15,15 +16,18 @@ const Footer = () => {
               Spark
             </Spark_Heading>
           </div>
-          <Spark_Heading fontweight="font-semibold" size="text-md">
-            <Link
-              href="https://github.com/nkoerner93/spark"
-              target="_blank"
-              className="flex flex-row gap-2"
-            >
-              <Github /> Github
-            </Link>
-          </Spark_Heading>
+          <div className="flex flex-row items-center gap-2">
+            <ThemeToggle />
+            <Spark_Heading fontweight="font-semibold" size="text-md">
+              <Link
+                href="https://github.com/nkoerner93/spark"
+                target="_blank"
+                className="flex flex-row gap-2"
+              >
+                <Github /> Github
+              </Link>
+            </Spark_Heading>
+          </div>
         </div>
       </div>
     </section>

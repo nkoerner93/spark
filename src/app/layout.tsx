@@ -2,6 +2,7 @@ import Footer from "@/components/ui/Footer";
 import "./globals.css";
 
 import { GeistSans } from "geist/font/sans";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 let title = "Spark - Anime, Gaming and Gaming-Tools all in one place!";
 let description =
@@ -25,9 +26,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.variable} w-screen bg-slate-50`}>
-        {children}
-        <Footer />
+      <body className={`${GeistSans.variable} max-w-screen bg-slate-50`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

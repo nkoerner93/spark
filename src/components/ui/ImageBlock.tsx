@@ -25,11 +25,11 @@ const ImageBlock: FC<ImageBlockProps> = ({
     <div>
       {imageleft ? (
         <div
-          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-32`}
+          className={`mx-auto flex flex-col gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-20`}
         >
           <div className="lg:w-1/2">
             <img
-              className="rounded-lg object-cover contrast-[115%] lg:min-h-[350px] xl:min-h-[250px]"
+              className="max-h-[275px] min-w-full rounded-lg object-cover contrast-[115%] md:max-h-[350px] md:min-h-[350px] xl:min-h-[250px]"
               src={`/images/${imagepath}`}
               alt={alt}
               sizes="100vw"
@@ -49,7 +49,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
         </div>
       ) : (
         <div
-          className={`mx-auto mb-16 flex flex-col gap-5 fade-in-5 md:flex-col-reverse lg:w-[85%] lg:flex-row lg:justify-center lg:gap-32`}
+          className={`mx-auto flex flex-col-reverse gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-20`}
         >
           <div className="flex flex-col justify-center gap-4 lg:w-1/2">
             <h2 className="text-3xl font-bold text-primary">{title}</h2>
@@ -64,10 +64,10 @@ const ImageBlock: FC<ImageBlockProps> = ({
           </div>
           <div className="lg:w-1/2">
             <img
-              className="rounded-lg object-cover contrast-[115%] lg:min-h-[350px] xl:min-h-[250px]"
+              className="max-h-[275px] min-w-full rounded-lg object-cover contrast-[115%] md:max-h-[350px] md:min-h-[350px] xl:min-h-[250px]"
               src={`/images/${imagepath}`}
               alt={alt}
-              sizes="100vw"
+              sizes="100%"
             />
           </div>
         </div>

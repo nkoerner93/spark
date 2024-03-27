@@ -5,9 +5,9 @@ import ImageBlock from "@/components/ui/ImageBlock";
 export default function Page() {
   return (
     <section className="items-center justify-between gap-8">
-      <div className="relative flex min-h-screen flex-col">
+      <div className="flex flex-col">
         <Header />
-        <div className="mx-auto max-w-screen-2xl">
+        <div className="mx-auto max-w-screen-2xl px-8">
           <HeroSection
             title="All-In-One Utility Dashboard"
             subtitle="Spark is your all-in-one utility toolbox for entertainment & productivity, from planning your day, discovering your favorite new tv/anime series or using popular gaming tools."
@@ -16,7 +16,7 @@ export default function Page() {
             button2="Github"
             button2link="https://github.com/nkoerner93/spark"
           />
-          <div className="flex flex-col gap-16">
+          <div className="flex flex-col gap-32">
             <ImageBlock
               imageleft={false}
               title="Boost your Productivity"
@@ -25,7 +25,7 @@ export default function Page() {
               With our comprehensive suite of resources, you'll have everything you need to 
               streamline your workflow, stay organized, and achieve your goals with ease."
               link="/dashboard/anime"
-              buttontext="Check our productivity tools"
+              buttontext="Check Anime Series"
               alt="Animes"
               imagepath="cards/card_productivity.webp"
             />
