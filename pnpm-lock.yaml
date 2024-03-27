@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  react-slick@0.30.2:
+    hash: aayxnohu5dpbpuvod44bfp7x44
+    path: patches/react-slick@0.30.2.patch
+
 dependencies:
   '@auth/pg-adapter':
     specifier: ^0.5.3
@@ -91,7 +96,7 @@ dependencies:
     version: 7.51.1(react@18.2.0)
   react-slick:
     specifier: ^0.30.2
-    version: 0.30.2(react-dom@18.2.0)(react@18.2.0)
+    version: 0.30.2(patch_hash=aayxnohu5dpbpuvod44bfp7x44)(react-dom@18.2.0)(react@18.2.0)
   tailwind-merge:
     specifier: ^2.2.1
     version: 2.2.2
@@ -4815,7 +4820,7 @@ packages:
       use-sidecar: 1.1.2(@types/react@18.2.70)(react@18.2.0)
     dev: false
 
-  /react-slick@0.30.2(react-dom@18.2.0)(react@18.2.0):
+  /react-slick@0.30.2(patch_hash=aayxnohu5dpbpuvod44bfp7x44)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-XvQJi7mRHuiU3b9irsqS9SGIgftIfdV5/tNcURTb5LdIokRA5kIIx3l4rlq2XYHfxcSntXapoRg/GxaVOM1yfg==}
     peerDependencies:
       react: ^0.14.0 || ^15.0.1 || ^16.0.0 || ^17.0.0 || ^18.0.0
@@ -4829,6 +4834,7 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       resize-observer-polyfill: 1.5.1
     dev: false
+    patched: true
 
   /react-style-singleton@2.2.1(@types/react@18.2.70)(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}

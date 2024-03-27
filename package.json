@@ -59,5 +59,10 @@
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "react-slick@0.30.2": "patches/react-slick@0.30.2.patch"
+    }
   }
 }
