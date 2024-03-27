@@ -22,7 +22,7 @@ interface HeadingProps {
 }
 
 const Spark_Heading: FC<HeadingProps> = ({ size, fontweight, children }) => {
-  return <div className={`${fontweight} ${size}`}>{children}</div>;
+  return <div className={`text-primary ${fontweight} ${size}`}>{children}</div>;
 };
 
 export default Spark_Heading;
