@@ -6,13 +6,15 @@ interface NavBarProps {}
 
 const NavBar: FC<NavBarProps> = ({}) => {
   return (
-    <div className="flex flex-row gap-28 text-primary">
-      {MAINMENU.map((menuitem) => (
-        <span key={menuitem.title} className="text-md font-semibold">
-          <Link href={menuitem.url}>{menuitem.title}</Link>
-        </span>
-      ))}
-    </div>
+    <nav>
+      <div className="hidden flex-row gap-28 text-primary lg:flex">
+        {MAINMENU.map((menuitem) => (
+          <span key={menuitem.title} className="text-md font-semibold">
+            <Link href={menuitem.url}>{menuitem.title}</Link>
+          </span>
+        ))}
+      </div>
+    </nav>
   );
 };
 

@@ -16,6 +16,7 @@ export enum CardCategory {
   Seasonal = "Seasonal",
   Ranking = "Highest Rated",
   PathOfExile = "Path of Exile",
+  MapCalculator = "POE Map and Profit Calculator",
 }
 
 // Define enum for card descriptions
@@ -26,6 +27,7 @@ export enum CardDescriptionEnum {
   Seasonal = "Discover new seasonal animes from",
   Ranking = "Check out the highest rated animes this season or of all time.",
   PathOfExile = "Action-RPG",
+  MapCalculator = "Calculate your profits per Map or over multiple sessions",
 }
 
 interface DashboardCardProps {
@@ -49,6 +51,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return "/images/cards/card_ranking.jpeg";
       case CardCategory.PathOfExile:
         return "/images/cards/card_pathofexile.jpeg";
+      case CardCategory.MapCalculator:
+        return "/images/cards/card_pathofexile.jpeg";
       default:
         return "";
     }
@@ -66,9 +70,11 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
       case CardCategory.Seasonal:
         return `${CardDescriptionEnum.Seasonal} ${getCurrentSeason()} Season.`;
       case CardCategory.Ranking:
-        return `${CardDescriptionEnum.Seasonal}`;
+        return `${CardDescriptionEnum.Ranking}`;
       case CardCategory.PathOfExile:
         return `${CardDescriptionEnum.PathOfExile}`;
+      case CardCategory.MapCalculator:
+        return `${CardDescriptionEnum.MapCalculator}`;
       default:
         return "";
     }
@@ -76,17 +82,19 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
 
   return (
     <div className="flex max-w-[600px]">
-      <Card className="drop-shadow-md md:w-[325px] lg:w-[400px] xl:w-[450px]">
-        <CardHeader>
+      <Card className="rounded-lg drop-shadow-md md:w-[325px] lg:w-[400px] xl:w-[450px]">
+        <CardHeader className="p-0">
           <Link href={link}>
             <img
-              className="h-[350px] w-full rounded object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
+              className="h-[350px] w-full rounded-t-lg object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
               src={getImagePath(title)} // Use getImagePath function
               alt={`${title} Card`}
             />
           </Link>
-          <CardTitle className="py-2 capitalize">{title}</CardTitle>
-          <CardDescription>{getDescription(title)}</CardDescription>
+          <div className="flex flex-col px-6 pb-5 pt-2">
+            <CardTitle className="py-2 capitalize">{title}</CardTitle>
+            <CardDescription>{getDescription(title)}</CardDescription>
+          </div>
         </CardHeader>
       </Card>
     </div>

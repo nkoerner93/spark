@@ -26,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${GeistSans.variable} max-w-screen bg-slate-50`}>
+      <body className={`${GeistSans.variable} max-w-screen`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

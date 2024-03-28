@@ -6,9 +6,9 @@ import { ThemeToggle } from "../ThemeToggle";
 
 const Footer = () => {
   return (
-    <section className="mx-auto max-w-screen-2xl">
-      <Separator className="h-[1px] bg-slate-300" />
-      <div className="p-6">
+    <section className="mx-auto w-full">
+      <Separator className="h-[1px]" />
+      <div className="mx-auto max-w-screen-2xl p-6">
         <div className="flex flex-row justify-between">
           <div className="flex flex-row items-center gap-2">
             <Zap className="text-orange-600" />
