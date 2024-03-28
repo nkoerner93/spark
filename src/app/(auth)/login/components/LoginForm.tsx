@@ -63,9 +63,9 @@ const LoginForm = () => {
 
   return (
     <div className="flex w-full max-w-[700px] flex-col items-center justify-center px-20">
-      <div className="w-full rounded-xl border bg-slate-50 px-16 py-12">
+      <div className="bg-primary-form w-full rounded-xl border px-16 py-12">
         <h2 className="mb-8 flex flex-row items-center justify-center gap-2 text-4xl font-bold antialiased">
-          <Zap color="#d2e826" /> Spark
+          <Zap className="text-orange-600" /> Spark
         </h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(signIn)} className="space-y-8">

@@ -61,9 +61,9 @@ const RegisterForm = () => {
 
   return (
     <div className="flex w-full max-w-[700px] flex-col items-center justify-center px-20">
-      <div className="w-full rounded-xl border bg-slate-50 px-16 py-12">
+      <div className="bg-primary-form w-full rounded-xl border px-16 py-12">
         <h2 className="mb-8 flex flex-row items-center justify-center gap-2 text-4xl font-bold antialiased">
-          <Zap color="#d2e826" /> Spark
+          <Zap className="text-orange-600" /> Spark
         </h2>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(signUp)} className="space-y-4">
@@ -72,7 +72,9 @@ const RegisterForm = () => {
               name="username"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm text-black">Username</FormLabel>
+                  <FormLabel className="text-sm text-primary">
+                    Username
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="text"
@@ -89,7 +91,7 @@ const RegisterForm = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm text-black">Email</FormLabel>
+                  <FormLabel className="text-sm text-primary">Email</FormLabel>
                   <FormControl>
                     <Input
                       type="email"
@@ -106,7 +108,9 @@ const RegisterForm = () => {
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-sm text-black">Password</FormLabel>
+                  <FormLabel className="text-sm text-primary">
+                    Password
+                  </FormLabel>
                   <FormControl>
                     <Input
                       type="password"

@@ -1,3 +1,4 @@
+import Footer from "@/components/ui/Footer";
 import Header from "@/components/ui/Header";
 import HeroSection from "@/components/ui/HeroSection";
 import ImageBlock from "@/components/ui/ImageBlock";
@@ -7,7 +8,7 @@ export default function Page() {
     <section className="items-center justify-between gap-8">
       <div className="flex flex-col">
         <Header />
-        <div className="mx-auto max-w-screen-2xl px-8">
+        <div className="mx-auto max-w-screen-2xl px-8 pb-32">
           <HeroSection
             title="All-In-One Utility Dashboard"
             subtitle="Spark is your all-in-one utility toolbox for entertainment & productivity, from planning your day, discovering your favorite new tv/anime series or using popular gaming tools."
@@ -44,6 +45,7 @@ export default function Page() {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 }
