@@ -60,7 +60,6 @@ const Poe_CurrencyMapCalculator: FC = () => {
   const handleShowMapResults = () => {
     // Retrieve the mapresults cookie
     const mapResultsCookie = Cookies.get("mapresults");
-    console.log(mapResultsCookie);
 
     // Check if the cookie exists
     if (mapResultsCookie) {

@@ -8,7 +8,7 @@ export async function middleware(req: NextRequest, res: NextResponse) {
     cookieName: "spark_session",
   });
 
-  if (!session.username && !session.isLoggedIn) {
+  if (!session.isLoggedIn) {
     const url = req.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);

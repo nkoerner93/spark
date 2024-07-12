@@ -6,6 +6,8 @@ export default function AnimeLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mx-auto w-full max-w-screen-2xl">{children}</section>
+    <section className="mx-auto w-full max-w-screen-2xl px-4 2xl:px-0">
+      {children}
+    </section>
   );
 }

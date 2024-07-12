@@ -53,7 +53,7 @@ const AnimeCards_Ranking = ({
           </button>
         </div>
       ) : (
-        <div className="flex h-16 flex-row items-end justify-between">
+        <div className="flex h-16 flex-row items-end justify-between px-1">
           <ReturnButton />
           <div className="flex flex-row gap-2 pb-1">
             <Button onClick={() => handleRankingTypeChange("all")}>All</Button>
@@ -67,7 +67,7 @@ const AnimeCards_Ranking = ({
       <Slider {...sliderSettings_HighestRated}>
         {animes.map((anime) => (
           <div key={anime.node.id} className="px-2">
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center gap-2">
               <img
                 className="h-[400px] w-full object-cover hover:contrast-125"
                 src={anime.node.main_picture.large}
