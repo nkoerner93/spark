@@ -17,15 +17,15 @@ export default function SettingsLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="mx-auto max-w-screen-2xl">
+    <section className="mx-auto mt-20 w-full max-w-screen-2xl p-4 md:w-auto">
       <Card className="backdrop flex w-full flex-col rounded-lg border-slate-200 shadow-md md:flex-row">
         <CardHeader className="backdrop w-full rounded-t-lg rounded-bl-lg border-slate-200 bg-primary p-5 md:p-7">
-          <CardTitle className="text-white">Settings</CardTitle>
+          <CardTitle className="text-secondary">Settings</CardTitle>
           <CardDescription className="border-b border-slate-700 pb-4">
             Your preferences
           </CardDescription>
           <CardDescription>
-            <ul className="text-md bold my-4 flex flex-row gap-5 font-medium text-white md:flex-col">
+            <ul className="text-md bold my-4 flex flex-row gap-5 font-medium text-secondary md:flex-col">
               <li>
                 <MenuLink link="/dashboard/settings/profile">
                   <CircleUser strokeWidth={1.25} size={20} /> Profile
@@ -38,13 +38,15 @@ export default function SettingsLayout({
               </li>
             </ul>
           </CardDescription>
-          <CardDescription className="border-t border-slate-700 pt-4 font-medium text-white">
+          <CardDescription className="border-t border-slate-700 pt-4 font-medium text-secondary">
             <MenuLink link={handleLogout}>
               <LogOut strokeWidth={1.25} size={20} /> Logout
             </MenuLink>
           </CardDescription>
         </CardHeader>
-        <div className="min-h-[200px] p-4 md:p-7">{children}</div>
+        <div className="min-h-[300px] w-full min-w-[200px] p-4 md:p-7">
+          {children}
+        </div>
       </Card>
     </section>
   );
@@ -62,7 +64,7 @@ function MenuLink({
     return (
       <Link
         href={link}
-        className="flex flex-row items-center gap-2 hover:text-slate-300"
+        className="flex flex-row items-center gap-2 hover:text-secondary"
       >
         {children}
       </Link>
@@ -71,7 +73,7 @@ function MenuLink({
     return (
       <a
         onClick={link}
-        className="flex flex-row items-center gap-2 hover:text-slate-300"
+        className="flex flex-row items-center gap-2 hover:text-secondary"
         href="#"
       >
         {children}

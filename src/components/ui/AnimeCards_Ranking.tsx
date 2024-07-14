@@ -64,9 +64,9 @@ const AnimeCards_Ranking = ({
         </div>
       )}
 
-      <Slider {...sliderSettings_HighestRated}>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
         {animes.map((anime) => (
-          <div key={anime.node.id} className="px-2">
+          <div key={anime.node.id} className="p-2">
             <div className="flex flex-col items-center gap-2">
               <img
                 className="h-[400px] w-full object-cover hover:contrast-125"
@@ -80,7 +80,7 @@ const AnimeCards_Ranking = ({
             </div>
           </div>
         ))}
-      </Slider>
+      </div>
     </div>
   );
 };
