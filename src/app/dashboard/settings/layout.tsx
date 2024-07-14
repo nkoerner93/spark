@@ -1,4 +1,5 @@
 "use client";
+import { getSession } from "@/app/actions/actions";
 import {
   Card,
   CardDescription,
@@ -44,9 +45,7 @@ export default function SettingsLayout({
             </MenuLink>
           </CardDescription>
         </CardHeader>
-        <div className="min-h-[300px] w-full min-w-[200px] p-4 md:p-7">
-          {children}
-        </div>
+        <div className="min-h-[300px] min-w-[450px] p-4 md:p-7">{children}</div>
       </Card>
     </section>
   );
