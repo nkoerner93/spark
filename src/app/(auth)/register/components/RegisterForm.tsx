@@ -50,9 +50,7 @@ const RegisterForm = () => {
         title: "Success!",
         description: "Account has been created. You can now login.",
       });
-      setTimeout(() => {
-        router.push("/login");
-      }, 1500);
+      router.push("/login");
     } catch (error) {
       console.error("Error creating user:", error);
       toast({
