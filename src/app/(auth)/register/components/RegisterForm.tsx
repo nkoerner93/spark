@@ -20,10 +20,12 @@ import { registerSchema } from "src/schemas/form";
 import Link from "next/link";
 import { useToast } from "@/components/ui/shad-cn/use-toast";
 import { createUserToDB } from "@/app/actions/actions";
+import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -48,6 +50,9 @@ const RegisterForm = () => {
         title: "Success!",
         description: "Account has been created. You can now login.",
       });
+      setTimeout(() => {
+        router.push("/login");
+      }, 1500);
     } catch (error) {
       console.error("Error creating user:", error);
       toast({
@@ -61,7 +66,7 @@ const RegisterForm = () => {
 
   return (
     <div className="flex w-full max-w-[700px] flex-col items-center justify-center px-20">
-      <div className="bg-primary-form w-full rounded-xl border px-16 py-12">
+      <div className="w-full rounded-xl border bg-primary-form px-16 py-12">
         <h2 className="mb-8 flex flex-row items-center justify-center gap-2 text-4xl font-bold antialiased">
           <Zap className="text-orange-600" /> Spark
         </h2>
@@ -143,7 +148,11 @@ const RegisterForm = () => {
               disabled={isLoading ? true : false}
               type="submit"
             >
-              {!isLoading ? <span>Register</span> : <Loader2 />}
+              {!isLoading ? (
+                <span>Register</span>
+              ) : (
+                <Loader2 className="animate-spin" />
+              )}
             </Button>
           </form>
         </Form>
