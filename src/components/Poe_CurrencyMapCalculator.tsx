@@ -82,7 +82,10 @@ const Poe_CurrencyMapCalculator: FC = () => {
                 <FormControl>
                   <Select
                     {...field}
-                    onValueChange={(value) => field.onChange(value)}
+                    onValueChange={(value) => {
+                      field.onChange(value);
+                      console.log(value);
+                    }}
                   >
                     <SelectTrigger className="w-[280px]">
                       <SelectValue placeholder="Select a map" />
