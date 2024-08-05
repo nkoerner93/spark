@@ -32,6 +32,7 @@ model MapResult {
   id        Int      @id @default(autoincrement())
   userId    Int
   map       String
+  mapdrops  Int
   divine    Int
   chaos     Int
   createdAt DateTime @default(now())
