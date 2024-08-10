@@ -152,7 +152,6 @@ const Poe_CurrencyMapCalculator: FC = async () => {
                   <Input placeholder="Chaos Orbs" {...field}></Input>
                 </FormControl>
                 <FormDescription>How many Chaos Orbs?</FormDescription>
-                <FormMessage />
               </FormItem>
             )}
           />

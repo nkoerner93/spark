@@ -14,7 +14,7 @@ const AnimeDashboard = async () => {
       />
       <div className="flex flex-row justify-center gap-8">
         <DashboardCard
-          title={CardCategory.Seasonal}
+          title={CardCategory.SeasonalAnime}
           link="/dashboard/anime/seasonal"
         />
         <DashboardCard

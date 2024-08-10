@@ -10,10 +10,10 @@ import Link from "next/link";
 
 // Define enum for card categories
 export enum CardCategory {
-  Anime = "Anime",
+  Anime = "TV Series",
   Productivity = "Productivity",
   Gaming = "Gaming",
-  Seasonal = "Seasonal",
+  SeasonalAnime = "Seasonal Animes",
   Ranking = "Highest Rated",
   PathOfExile = "Path of Exile",
   MapCalculator = "POE Map and Profit Calculator",
@@ -21,10 +21,10 @@ export enum CardCategory {
 
 // Define enum for card descriptions
 export enum CardDescriptionEnum {
-  Anime = "Discover the latest anime or current anime rankings.",
+  Anime = "Discover the latest television or anime series.",
   Productivity = "Boost your productivity with planning tools, task tracking and more.",
   Gaming = "Improve your gameplay with useful gaming tools like POE Map Tracking, POE Currency Coverter and more.",
-  Seasonal = "Discover new seasonal animes from",
+  SeasonalAnime = "Discover new seasonal animes from",
   Ranking = "Check out the highest rated animes this season or of all time.",
   PathOfExile = "Action-RPG",
   MapCalculator = "Calculate your profits per Map or over multiple sessions",
@@ -45,7 +45,7 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return "/images/cards/card_productivity.webp";
       case CardCategory.Gaming:
         return "/images/cards/card_gaming.jpg";
-      case CardCategory.Seasonal:
+      case CardCategory.SeasonalAnime:
         return "/images/cards/card_anime_seasonal.jpg";
       case CardCategory.Ranking:
         return "/images/cards/card_ranking.jpeg";
@@ -67,8 +67,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return CardDescriptionEnum.Productivity;
       case CardCategory.Gaming:
         return CardDescriptionEnum.Gaming;
-      case CardCategory.Seasonal:
-        return `${CardDescriptionEnum.Seasonal} ${getCurrentSeason()} Season.`;
+      case CardCategory.SeasonalAnime:
+        return `${CardDescriptionEnum.SeasonalAnime} ${getCurrentSeason()} Season.`;
       case CardCategory.Ranking:
         return `${CardDescriptionEnum.Ranking}`;
       case CardCategory.PathOfExile:

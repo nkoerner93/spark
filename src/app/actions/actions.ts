@@ -19,26 +19,28 @@ export async function loginUser(email: string, password: string) {
   const session = await getSession();
   try {
     const user = await prisma.users.findUnique({ where: { email } });
+
     // Does the User exist?
     if (!user) {
       return false;
     }
     // Password Validation
     const isPasswordValid = await bcrypt.compare(password, user.password);
-
     if (!isPasswordValid) {
       return false;
     }
+
     session.email = user.email;
     session.userId = user.id;
     session.username = user.username;
     session.isLoggedIn = true;
 
+    // Save Session
     await session.save();
 
     return true;
   } catch (error) {
-    return { success: false, error: error }; // Return error response
+    return { success: false, error: "Login failed." }; // Return error response
   }
 }
 
