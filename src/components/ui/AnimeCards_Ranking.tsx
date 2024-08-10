@@ -3,7 +3,6 @@ import Slider from "react-slick";
 
 import "@nkoerner93/slick-carousel/slick/slick.css";
 import "@nkoerner93/slick-carousel/slick/slick-theme.css";
-import { sliderSettings_HighestRated } from "@/lib/lib";
 
 import { AnimeRankingType, Anime_Data_HighestRated } from "src/types/types";
 import { getAnimeListByRanking } from "@/app/actions/actions";
@@ -69,7 +68,7 @@ const AnimeCards_Ranking = ({
           <div key={anime.node.id} className="p-2">
             <div className="flex flex-col items-center gap-2">
               <img
-                className="h-[400px] w-full object-cover hover:contrast-125"
+                className="object-cover hover:contrast-125"
                 src={anime.node.main_picture.large}
                 alt={anime.node.title}
               />
