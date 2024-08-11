@@ -1,5 +1,6 @@
 import Footer from "@/components/ui/Footer";
 import Header from "@/components/ui/Header";
+import { Toaster } from "@/components/ui/shad-cn/toaster";
 
 export default function DashboardLayout({
   children,
@@ -13,6 +14,7 @@ export default function DashboardLayout({
         {children}
       </div>
       <Footer />
+      <Toaster />
     </section>
   );
 }
