@@ -1,3 +1,5 @@
+import { MapResult, Session } from "@prisma/client";
+
 export type Anime_Data_Seasonal = {
   node: {
     id: number;
@@ -37,4 +39,16 @@ export type AnimeRankingType =
 export type MenuItems_MainMenu = {
   title: string;
   url: string;
+};
+
+export type User = {
+  id: number;
+  email: string;
+  password: string;
+  created_on: Date | null;
+  last_login: Date | null;
+  username: string;
+  isPublic: boolean;
+  sessions: Session[];
+  mapResults: MapResult[];
 };
