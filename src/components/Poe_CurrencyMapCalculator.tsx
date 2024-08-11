@@ -30,7 +30,7 @@ import {
 import { poeMaps } from "src/constants/authImageConstants";
 import { useState } from "react";
 
-const Poe_CurrencyMapCalculator: FC = async () => {
+const Poe_CurrencyMapCalculator: FC = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Initialize react-hook-form
