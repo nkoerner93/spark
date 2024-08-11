@@ -14,8 +14,9 @@ model Users {
   created_on DateTime?   @default(now()) @db.Timestamp(6)
   last_login DateTime?   @db.Timestamp(6)
   username   String      @db.VarChar(255)
-  sessions   Session[] // One-to-many relationship with Session model
-  mapResults MapResult[] // One-to-many relationship with MapResult model
+  isPublic   Boolean     @default(false)
+  sessions   Session[]
+  mapResults MapResult[]
 }
 
 model Session {
