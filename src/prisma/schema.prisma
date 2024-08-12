@@ -42,7 +42,7 @@ model MapResult {
   user Users @relation(fields: [userId], references: [id])
 }
 
-model Anime {
+model TVSeries {
   // Unique identifier for each anime
   id Int @id @default(autoincrement())
 
@@ -69,6 +69,9 @@ model Anime {
 
   // Studio that produced the anime
   studio String?
+
+  // Is Anime?
+  isAnime Boolean
 
   // Date when the anime was added to the database
   createdAt DateTime @default(now())

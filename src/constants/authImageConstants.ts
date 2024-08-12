@@ -20,7 +20,7 @@ export const MAINMENU: MenuItems_MainMenu[] = [
     url: "/dashboard/gaming",
   },
   {
-    title: "Anime",
+    title: "TV Series",
     url: "/dashboard/anime",
   },
 ];
