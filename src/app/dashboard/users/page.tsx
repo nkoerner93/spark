@@ -8,6 +8,7 @@ import {
   TableCell,
   TableBody,
 } from "@/components/ui/shad-cn/table";
+import Link from "next/link";
 import React from "react";
 
 const UserDashboard = async () => {
@@ -18,8 +19,8 @@ const UserDashboard = async () => {
   return (
     <div>
       <HeroSection title="Users" subtitle={`List of all our users.`} />
-      <div className="mx-auto flex max-w-screen-lg flex-row justify-center gap-8">
-        <Table>
+      <div className="flex flex-row justify-center gap-8">
+        <Table className="mx-auto w-[400px] lg:w-[800px]">
           <TableHeader>
             <TableRow>
               <TableHead className="w-[100px]">ID</TableHead>
@@ -29,7 +30,11 @@ const UserDashboard = async () => {
               // Return the JSX element
               <TableRow key={user.id}>
                 <TableCell className="font-medium">{index + 1}</TableCell>
-                <TableCell className="text-right">{user.username}</TableCell>
+                <TableCell className="text-right">
+                  <Link href={`/dashboard/users/${user.username}`}>
+                    {user.username}
+                  </Link>
+                </TableCell>
               </TableRow>
             ))}
           </TableHeader>

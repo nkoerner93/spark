@@ -11,7 +11,7 @@ export default function DashboardLayout({
     <section className="gap-8">
       <div className="relative mx-auto flex min-h-screen flex-col pb-32">
         <Header />
-        {children}
+        <div className="md:mx-auto md:max-w-screen-2xl">{children}</div>
       </div>
       <Footer />
       <Toaster />

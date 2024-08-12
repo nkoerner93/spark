@@ -15,7 +15,8 @@ export default async function UserPage({ params }: { params: Params }) {
 
   return (
     <div className="flex-col gap-2">
-      <div>You are on the profile page of user: {user}</div>
+      <div>You are on the profile page of user: {userData.username}</div>
+      <div>Profile Status: {user}</div>
     </div>
   );
 }

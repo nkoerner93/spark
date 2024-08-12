@@ -21,7 +21,7 @@ export async function getPublicUsers(boolean: boolean): Promise<Users[]> {
 }
 
 // GET CURRENT USER
-export async function getUserByName(username: string): Promise<Users[]> {
+export async function getUserByName(username: string): Promise<Users | null> {
   const session = await getSession();
   if (!session.userId) return redirect("/login");
 
