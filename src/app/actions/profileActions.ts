@@ -7,6 +7,8 @@ import prisma from "@/app/prisma"; // Adjust this import based on your Prisma se
 type Profile = {
   session: SessionData;
   user: {
+    id: number;
+    username: string;
     isPublic: boolean | null;
   } | null;
 };

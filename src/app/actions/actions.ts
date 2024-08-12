@@ -79,7 +79,7 @@ export const createUserToDB = async (userData: {
     console.log(`Hashed Password: ${hashedPassword}`);
     const user = await prisma.users.create({
       data: {
-        username: userData.username,
+        username: userData.username.toLowerCase(),
         email: userData.email,
         password: hashedPassword, // Make sure to hash the password before saving
       },

@@ -38,7 +38,10 @@ export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem>Team</DropdownMenuItem>
+          <MenuItemWithHover
+            link="/dashboard/users"
+            name="All Users"
+          ></MenuItemWithHover>
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
             <DropdownMenuPortal>
