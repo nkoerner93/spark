@@ -24,7 +24,7 @@ describe("Test Login", () => {
       "invalid_password@randomxPl.com",
     );
     cy.get('[data-login="button-submit"]').click();
-    cy.wait(10000);
+    cy.wait(1000);
     cy.get('[data-toast="toast-title"]').should("be.visible").contains("Error");
   });
 
