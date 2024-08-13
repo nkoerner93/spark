@@ -4,6 +4,11 @@ module.exports = {
     // Specify the version of TypeScript being used
     ignoreBuildErrors: true,
   },
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
   images: {
     remotePatterns: [
       {

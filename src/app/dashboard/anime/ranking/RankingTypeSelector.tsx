@@ -1,6 +1,6 @@
 "use client";
 
-import ReturnButton from "@/components/ui/ReturnButton";
+import BlankButton from "@/components/ui/BlankButton";
 import { Button } from "@/components/ui/shad-cn/button";
 import { useRouter } from "next/navigation";
 
@@ -17,7 +17,7 @@ export default function RankingTypeSelector({
 
   return (
     <div className="flex flex-row justify-between gap-2 pb-1 md:px-2">
-      <ReturnButton />
+      <BlankButton href={"/dashboard/anime"} />
       <div className="flex flex-row gap-2">
         <Button
           onClick={() => handleRankingTypeChange("all")}

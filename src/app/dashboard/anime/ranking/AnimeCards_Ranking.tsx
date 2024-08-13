@@ -2,7 +2,7 @@
 
 import { Anime_Data_HighestRated } from "src/types/types";
 
-export default function AnimeCards_Ranking({
+export default function AnimeList({
   animes,
 }: {
   animes: Anime_Data_HighestRated[];
