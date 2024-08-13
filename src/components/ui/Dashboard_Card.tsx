@@ -92,7 +92,7 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
               alt={`${title} Card`}
               width={0}
               height={0}
-              sizes="40vw"
+              sizes="100vw"
             />
           </Link>
           <div className="flex flex-col px-6 pb-5 pt-2">
