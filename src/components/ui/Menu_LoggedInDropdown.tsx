@@ -21,7 +21,9 @@ export function Menu_LoggedInDropdown({ session }: { session: SessionData }) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline">{session.username}</Button>
+        <Button variant="outline" className="capitalize">
+          {session.username}
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
