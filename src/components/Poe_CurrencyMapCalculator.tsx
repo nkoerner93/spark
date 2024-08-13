@@ -1,5 +1,4 @@
 "use client";
-import { FC } from "react";
 import Cookies from "js-cookie";
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,8 +28,11 @@ import {
 } from "./ui/shad-cn/select";
 import { poeMaps } from "src/constants/authImageConstants";
 import { useState } from "react";
+import { MapResult } from "@prisma/client";
+import { Loader2 } from "lucide-react";
+import { createMapResult } from "@/app/actions/mapCalculatorActions";
 
-const Poe_CurrencyMapCalculator: FC = () => {
+const Poe_CurrencyMapCalculator = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
 
   // Initialize react-hook-form
@@ -44,28 +46,16 @@ const Poe_CurrencyMapCalculator: FC = () => {
   });
 
   // Form submission handler
-  const onSubmit = (values: z.infer<typeof currencyInMapFormSchema>) => {
+  const onSubmit = async (values: z.infer<typeof currencyInMapFormSchema>) => {
     setFormSubmitted(true);
-    // Serialize the values into an object
-    const cookieValue = JSON.stringify({
-      map: values.map,
-      divine: values.divine,
-      chaos: values.chaos,
-    });
-
-    // Set the cookie
-    Cookies.set("mapresults", cookieValue);
-  };
-
-  const handleShowMapResults = () => {
-    // Retrieve the mapresults cookie
-    const mapResultsCookie = Cookies.get("mapresults");
-
-    // Check if the cookie exists
-    if (mapResultsCookie) {
-      // Parse the cookie value back into an object
-      const mapResults = JSON.parse(mapResultsCookie);
-      console.log(mapResults);
+    try {
+      await createMapResult(values);
+      // Handle success (e.g., show a success message)
+    } catch (error) {
+      // Handle error (e.g., show an error message)
+      console.error("Error creating map result:", error);
+    } finally {
+      setFormSubmitted(false);
     }
   };
 
@@ -155,7 +145,11 @@ const Poe_CurrencyMapCalculator: FC = () => {
               </FormItem>
             )}
           />
-          <Button type="submit">Submit</Button>
+          {formSubmitted ? (
+            <Loader2 className="animate-spin" />
+          ) : (
+            <Button type="submit">Submit</Button>
+          )}
         </form>
       </Form>
     </section>

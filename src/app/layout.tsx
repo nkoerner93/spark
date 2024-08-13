@@ -1,4 +1,3 @@
-import Footer from "@/components/ui/Footer";
 import "./globals.css";
 
 import { GeistSans } from "geist/font/sans";
