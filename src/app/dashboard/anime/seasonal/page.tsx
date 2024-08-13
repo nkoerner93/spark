@@ -1,4 +1,3 @@
-"use server";
 import { getAnimeListBySeason } from "@/app/actions/actions";
 import AnimeCards_Seasonal from "@/components/ui/AnimeCards_Seasonal";
 import BlankButton from "@/components/ui/BlankButton";

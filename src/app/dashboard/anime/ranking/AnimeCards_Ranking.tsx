@@ -1,5 +1,3 @@
-"use client";
-
 import { Anime_Data_HighestRated } from "src/types/types";
 
 export default function AnimeList({
