@@ -1,4 +1,3 @@
-"use client";
 import { Anime_Data_Seasonal } from "src/types/types";
 import { Plus } from "lucide-react"; // Import the Lucide Plus icon
 
