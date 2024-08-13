@@ -1,5 +1,6 @@
 import { getPublicUsers } from "@/app/actions/memberActions";
 import HeroSection from "@/components/ui/HeroSection";
+import { Button } from "@/components/ui/shad-cn/button";
 import {
   Table,
   TableHeader,
@@ -11,10 +12,18 @@ import {
 import Link from "next/link";
 import React from "react";
 
-const UserDashboard = async () => {
-  // Await the asynchronous function
+const UserDashboard = async ({ searchParams }: any) => {
+  const { page = 1, limit = 1 } = searchParams;
   const allusers = await getPublicUsers(false);
-  console.log(allusers);
+
+  // Calculate the start and end indexes for the current page
+  const startIndex = (page - 1) * limit;
+  const endIndex = startIndex + parseInt(limit);
+
+  // Get the paginated posts for the current page
+
+  // Await the asynchronous function
+  const paginatedPosts = allusers.slice(startIndex, endIndex);
 
   return (
     <div>
@@ -26,7 +35,7 @@ const UserDashboard = async () => {
               <TableHead className="w-[100px]">ID</TableHead>
               <TableHead className="text-right">Username</TableHead>
             </TableRow>
-            {allusers.map((user, index) => (
+            {paginatedPosts.map((user, index) => (
               // Return the JSX element
               <TableRow key={user.id}>
                 <TableCell className="font-medium">{index + 1}</TableCell>
@@ -40,6 +49,22 @@ const UserDashboard = async () => {
           </TableHeader>
           <TableBody></TableBody>
         </Table>
+      </div>
+      <div className="mt-4 flex flex-row justify-end gap-2">
+        <Button>
+          <Link
+            href={`/dashboard/users?page=${parseInt(page) - 1}&limit=${limit}`}
+          >
+            Previous
+          </Link>
+        </Button>
+        <Button>
+          <Link
+            href={`/dashboard/users/?page=${parseInt(page) + 1}&limit=${limit}`}
+          >
+            Next
+          </Link>
+        </Button>
       </div>
     </div>
   );
