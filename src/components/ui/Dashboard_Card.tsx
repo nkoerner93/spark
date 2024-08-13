@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/shad-cn/card";
 import { getCurrentSeason } from "@/lib/utils/utils";
 import Link from "next/link";
+import Image from "next/image";
 
 // Define enum for card categories
 export enum CardCategory {
@@ -85,10 +86,13 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
       <Card className="rounded-lg drop-shadow-md md:w-[325px] lg:w-[400px] xl:w-[450px]">
         <CardHeader className="p-0">
           <Link href={link}>
-            <img
+            <Image
               className="h-[350px] w-full rounded-t-lg object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
               src={getImagePath(title)} // Use getImagePath function
               alt={`${title} Card`}
+              width={0}
+              height={0}
+              sizes="40vw"
             />
           </Link>
           <div className="flex flex-col px-6 pb-5 pt-2">
