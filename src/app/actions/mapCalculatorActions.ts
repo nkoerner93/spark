@@ -39,3 +39,17 @@ export async function createMapResult(values: any) {
 
   return result;
 }
+
+// CLEAR ALL MAPS FROM USER
+export async function deleteAllMapResults() {
+  const session = await getSession();
+  if (!session || !session.userId) return redirect("/login");
+
+  const result = await prisma.mapResult.deleteMany({
+    where: { userId: session.userId },
+  });
+
+  revalidatePath("/dashboard/gaming/pathofexile/mapcalculator");
+
+  return result;
+}

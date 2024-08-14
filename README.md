@@ -13,10 +13,11 @@ and have a centralized website tab for productivity or entertainment purposes.
 ## Tech Stack
 
 - NextJS14 + Server Actions
-- Vercel Serverless PostgreSQL
-- Prisma for ORM
+- Vercel PostgreSQL
+- Prisma ORM
 - Iron Sessions Stateless Authentication
-- Cypress E2E Testing
+- Cypress
+- ShadCN/Radix-UI Component Library
 
 ## External APIs
 

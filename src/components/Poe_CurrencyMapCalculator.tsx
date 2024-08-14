@@ -2,7 +2,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/shad-cn/dialog";
 import { Button } from "@/components/ui/shad-cn/button";
 import {
   Form,
@@ -27,10 +34,15 @@ import {
 import { poeMaps } from "src/constants/authImageConstants";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
-import { createMapResult } from "@/app/actions/mapCalculatorActions";
+import {
+  createMapResult,
+  deleteAllMapResults,
+} from "@/app/actions/mapCalculatorActions";
 
 const Poe_CurrencyMapCalculator = () => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [createSubmitted, setCreateSubmitted] = useState(false);
+  const [deleteSubmitted, setDeleteSubmitted] = useState(false);
 
   // Initialize react-hook-form
   const form = useForm<z.infer<typeof currencyInMapFormSchema>>({
@@ -42,9 +54,11 @@ const Poe_CurrencyMapCalculator = () => {
     },
   });
 
-  // Form submission handler
-  const onSubmit = async (values: z.infer<typeof currencyInMapFormSchema>) => {
-    setFormSubmitted(true);
+  // Create Map Result & Revalidate
+  const onCreateMaps = async (
+    values: z.infer<typeof currencyInMapFormSchema>,
+  ) => {
+    setCreateSubmitted(true);
     try {
       await createMapResult(values);
       // Handle success (e.g., show a success message)
@@ -52,14 +66,29 @@ const Poe_CurrencyMapCalculator = () => {
       // Handle error (e.g., show an error message)
       console.error("Error creating map result:", error);
     } finally {
-      setFormSubmitted(false);
+      setCreateSubmitted(false);
+    }
+  };
+
+  // Delete all MapResults & Revalidate
+  const onDeleteMaps = async () => {
+    setDeleteSubmitted(true);
+    try {
+      await deleteAllMapResults();
+      // Handle success (e.g., show a success message)
+    } catch (error) {
+      // Handle error (e.g., show an error message)
+      console.error("Error deleting maps:", error);
+    } finally {
+      setOpen(false);
+      setDeleteSubmitted(false);
     }
   };
 
   return (
     <section>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+        <form onSubmit={form.handleSubmit(onCreateMaps)} className="space-y-8">
           {/* Render the map select field */}
           <FormField
             control={form.control}
@@ -142,11 +171,38 @@ const Poe_CurrencyMapCalculator = () => {
               </FormItem>
             )}
           />
-          {formSubmitted ? (
-            <Loader2 className="animate-spin" />
-          ) : (
-            <Button type="submit">Submit</Button>
-          )}
+
+          <div className="flex flex-row gap-2">
+            <Dialog open={open} onOpenChange={setOpen}>
+              {/* Use a div or span styled as a button for the trigger */}
+              <DialogTrigger asChild>
+                <div className="inline-flex">
+                  <Button type="button">Delete Maps</Button>
+                </div>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                    This action cannot be undone. This will permanently delete
+                    all your maps from your stored recent maps.
+                  </DialogDescription>
+                </DialogHeader>
+                {deleteSubmitted ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  <Button type="button" onClick={onDeleteMaps}>
+                    Delete Maps
+                  </Button>
+                )}
+              </DialogContent>
+            </Dialog>
+            {createSubmitted ? (
+              <Loader2 className="animate-spin" />
+            ) : (
+              <Button type="submit">Submit</Button>
+            )}
+          </div>
         </form>
       </Form>
     </section>
