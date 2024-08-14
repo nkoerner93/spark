@@ -68,7 +68,7 @@ const UserDashboard = async ({ searchParams }: any) => {
               <Link
                 href={`/dashboard/users?page=${parseInt(page) - 1}&limit=${limit}`}
               >
-                <Button>
+                <Button variant={"outline"}>
                   <ChevronLeft />
                 </Button>
               </Link>
@@ -77,7 +77,7 @@ const UserDashboard = async ({ searchParams }: any) => {
               <Link
                 href={`/dashboard/users/?page=${parseInt(page) + 1}&limit=${limit}`}
               >
-                <Button>
+                <Button variant={"outline"}>
                   <ChevronRight />
                 </Button>
               </Link>

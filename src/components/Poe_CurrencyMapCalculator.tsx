@@ -1,6 +1,4 @@
 "use client";
-import Cookies from "js-cookie";
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
@@ -28,7 +26,6 @@ import {
 } from "./ui/shad-cn/select";
 import { poeMaps } from "src/constants/authImageConstants";
 import { useState } from "react";
-import { MapResult } from "@prisma/client";
 import { Loader2 } from "lucide-react";
 import { createMapResult } from "@/app/actions/mapCalculatorActions";
 

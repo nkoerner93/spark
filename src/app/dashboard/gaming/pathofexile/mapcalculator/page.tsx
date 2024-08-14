@@ -2,6 +2,12 @@ import { getRecentMaps } from "@/app/actions/mapCalculatorActions";
 import Poe_CurrencyMapCalculator from "@/components/Poe_CurrencyMapCalculator";
 import HeroSection from "@/components/ui/HeroSection";
 import { Card, CardContent } from "@/components/ui/shad-cn/card";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/shad-cn/tooltip";
 import React from "react";
 
 const POE_MapCalculator = async () => {
@@ -29,25 +35,33 @@ const POE_MapCalculator = async () => {
                 <h2 className="font-semibold text-primary ">Recent maps:</h2>
                 {mapResults ? (
                   mapResults.map((map) => (
-                    <div key={map.id} className="flex flex-col gap-2">
-                      <span>{map.map}</span>
-                      <span className="flex flex-row gap-1">
-                        {map.divine}{" "}
-                        <img
-                          src="/images/pathofexile/currency_divineorb.png"
-                          alt="divineorb"
-                          width={25}
-                          height={25}
-                        />
-                        {map.chaos}
-                        {"  "}
-                        <img
-                          src="/images/pathofexile/currency_chaosorb.png"
-                          alt="chaosorb"
-                          width={25}
-                          height={25}
-                        />
-                      </span>
+                    <div key={map.id} className="flex flex-col">
+                      <TooltipProvider>
+                        <Tooltip delayDuration={0}>
+                          <TooltipTrigger className="py-0.5 text-left">
+                            <span>{map.map}</span>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <span className="flex flex-row gap-1">
+                              {map.divine}{" "}
+                              <img
+                                src="/images/pathofexile/currency_divineorb.png"
+                                alt="divineorb"
+                                width={25}
+                                height={25}
+                              />
+                              {map.chaos}
+                              {"  "}
+                              <img
+                                src="/images/pathofexile/currency_chaosorb.png"
+                                alt="chaosorb"
+                                width={25}
+                                height={25}
+                              />
+                            </span>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
                   ))
                 ) : (

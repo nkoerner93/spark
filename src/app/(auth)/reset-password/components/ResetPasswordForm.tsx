@@ -21,7 +21,7 @@ import { useToast } from "@/components/ui/shad-cn/use-toast";
 import { useRouter } from "next/navigation";
 import { loginUser } from "@/app/actions/actions";
 
-const LoginForm = () => {
+const ResetPasswordForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
   const router = useRouter();
@@ -129,4 +129,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default ResetPasswordForm;
