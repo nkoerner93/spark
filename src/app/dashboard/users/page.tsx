@@ -51,20 +51,22 @@ const UserDashboard = async ({ searchParams }: any) => {
         </Table>
       </div>
       <div className="mt-4 flex flex-row justify-end gap-2">
-        <Button>
-          <Link
-            href={`/dashboard/users?page=${parseInt(page) - 1}&limit=${limit}`}
-          >
-            Previous
-          </Link>
-        </Button>
-        <Button>
-          <Link
-            href={`/dashboard/users/?page=${parseInt(page) + 1}&limit=${limit}`}
-          >
-            Next
-          </Link>
-        </Button>
+        <span className="flex flex-row gap-2">
+          {parseInt(page) - 1 < 0 ? (
+            <Link
+              href={`/dashboard/users?page=${parseInt(page) - 1}&limit=${limit}`}
+            >
+              <Button>Zurück</Button>
+            </Link>
+          ) : null}
+          {parseInt(page) + 1 <= allusers.length ? (
+            <Link
+              href={`/dashboard/users/?page=${parseInt(page) + 1}&limit=${limit}`}
+            >
+              <Button>Weiter</Button>
+            </Link>
+          ) : null}
+        </span>
       </div>
     </div>
   );
