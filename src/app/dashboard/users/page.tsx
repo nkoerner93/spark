@@ -9,6 +9,7 @@ import {
   TableCell,
   TableBody,
 } from "@/components/ui/shad-cn/table";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import React from "react";
 
@@ -67,14 +68,18 @@ const UserDashboard = async ({ searchParams }: any) => {
               <Link
                 href={`/dashboard/users?page=${parseInt(page) - 1}&limit=${limit}`}
               >
-                <Button>Previous</Button>
+                <Button>
+                  <ChevronLeft />
+                </Button>
               </Link>
             )}
             {parseInt(page) < totalPages && (
               <Link
                 href={`/dashboard/users/?page=${parseInt(page) + 1}&limit=${limit}`}
               >
-                <Button>More</Button>
+                <Button>
+                  <ChevronRight />
+                </Button>
               </Link>
             )}
           </span>

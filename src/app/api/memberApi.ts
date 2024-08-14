@@ -1,5 +1,5 @@
 import prisma from "@/app/prisma";
-import { getSession } from "./actions";
+import { getSession } from "@/app/actions/actions";
 import { Users } from "@prisma/client";
 import { redirect } from "next/navigation";
 
