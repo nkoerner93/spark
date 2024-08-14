@@ -1,4 +1,4 @@
-import { getUserByName } from "@/app/actions/memberActions";
+import { getUserByName } from "@/app/api/memberApi";
 import { notFound } from "next/navigation";
 
 interface Params {

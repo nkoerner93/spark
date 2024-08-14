@@ -1,4 +1,4 @@
-import { getPublicUsers } from "@/app/actions/memberActions";
+import { getPublicUsers } from "@/app/api/memberApi";
 import HeroSection from "@/components/ui/HeroSection";
 import { Button } from "@/components/ui/shad-cn/button";
 import {
