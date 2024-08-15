@@ -17,6 +17,7 @@ model Users {
   isPublic   Boolean     @default(false)
   sessions   Session[]
   mapResults MapResult[]
+  subscribed_series Subscribed_TVSeries[]
 }
 
 model Session {
@@ -58,4 +59,20 @@ model TVSeries {
   createdAt DateTime @default(now())
   // Date when the anime record was last updated
   updatedAt DateTime @updatedAt
+}
+
+model Subscribed_TVSeries {
+  id Int @id @default(autoincrement())
+  userId Int
+  title String
+  description String?
+  imgurl String
+  type SeriesType
+
+  user Users @relation(fields:[userId], references: [id])
+}
+
+enum SeriesType {
+  TVSERIES
+  ANIME
 }
