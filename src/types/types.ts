@@ -11,6 +11,15 @@ export type Anime_Data_Seasonal = {
   };
 };
 
+export type Anime = {
+  id: number;
+  title: string;
+  main_picture: {
+    medium: string;
+    large: string;
+  };
+};
+
 export type Anime_Data_HighestRated = {
   node: {
     id: number;

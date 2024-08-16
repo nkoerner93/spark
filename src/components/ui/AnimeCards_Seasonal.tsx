@@ -1,5 +1,5 @@
-import { Anime_Data_Seasonal } from "src/types/types";
-import { Plus } from "lucide-react"; // Import the Lucide Plus icon
+import { Anime_Data_Seasonal } from "src/types/types"; // Import the Lucide Plus icon
+import AddSeriesToFavorites from "./AddSeriesToFavorites";
 
 const AnimeCards_Seasonal = ({ animes }: { animes: Anime_Data_Seasonal[] }) => {
   return (
@@ -14,9 +14,8 @@ const AnimeCards_Seasonal = ({ animes }: { animes: Anime_Data_Seasonal[] }) => {
                 alt={anime.node.title}
               />
               {/* Overlay icon container */}
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 transition-opacity duration-300 hover:opacity-60">
-                <Plus className="h-14 w-14 text-2xl text-white hover:cursor-pointer hover:text-yellow-400" />{" "}
-                {/* Plus icon */}
+              <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-80 opacity-0 transition-opacity duration-300 hover:opacity-100">
+                <AddSeriesToFavorites series={anime} />
               </div>
             </div>
           </div>

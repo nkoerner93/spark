@@ -50,7 +50,6 @@ const UserDashboard = async ({ searchParams }: any) => {
                 </TableRow>
               ))}
             </TableHeader>
-            <TableBody></TableBody>
           </Table>
         ) : (
           <div className="flex flex-col gap-4 text-center">
