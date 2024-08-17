@@ -16,6 +16,7 @@ jobs:
         with:
           node-version: "18"
 
+      - uses: pnpm/action-setup@v4
       - name: Install dependencies
         run: pnpm install
 
