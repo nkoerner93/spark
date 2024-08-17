@@ -1,32 +1,36 @@
-name: Cypress Tests
+name: CI
 
-on: push
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
 jobs:
-  cypress-run:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20]
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
         with:
-          version: 9
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: "pnpm"
+          node-version: "18"
+
       - name: Install dependencies
         run: pnpm install
-        ## Start Cypress tests
-      - name: Cypress run
-        uses: cypress-io/github-action@v6
+
+      - name: Run Cypress tests
+        uses: cypress-io/github-action@v5
         with:
-          build: pnpm next build
-          start: pnpm next start
-        env:
-          CYPRESS_LOGIN_USERNAME_ADMIN: ${{secrets.CYPRESS_LOGIN_USERNAME_ADMIN}}
-          CYPRESS_LOGIN_PASSWORD_ADMIN: ${{secrets.CYPRESS_LOGIN_PASSWORD_ADMIN}}
+          browser: chrome
+          spec: |
+            cypress/e2e/login.cy.ts
+            cypress/e2e/loginAndVisitTVSeries.cy.ts
+
+      - name: Upload Cypress results
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: cypress-results
+          path: cypress/results
