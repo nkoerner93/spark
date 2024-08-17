@@ -13,7 +13,7 @@ const Header = async () => {
   const sessionData = JSON.parse(JSON.stringify(session));
 
   return (
-    <header className="w-full border border-b-[1px]  p-4">
+    <header className="w-full border-b-[1px]  p-4">
       <div className="mx-auto flex h-14 max-w-screen-2xl items-center justify-between">
         <span className="text-2xl font-bold">
           <Link href={session.isLoggedIn ? "/dashboard" : "/"}>
