@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+env:
+  CYPRESS_LOGIN_USERNAME_ADMIN: ${{secrets.CYPRESS_LOGIN_USERNAME_ADMIN}}
+  CYPRESS_LOGIN_PASSWORD_ADMIN: ${{secrets.CYPRESS_LOGIN_PASSWORD_ADMIN}}
+  CYPRESS_BASE_URL: ${{secrets.CYPRESS_PROD_URL}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -31,10 +36,6 @@ jobs:
           spec: |
             cypress/e2e/login.cy.ts
             cypress/e2e/loginAndVisitTVSeries.cy.ts
-        env:
-          CYPRESS_LOGIN_USERNAME_ADMIN: ${{secrets.CYPRESS_LOGIN_USERNAME_ADMIN}}
-          CYPRESS_LOGIN_PASSWORD_ADMIN: ${{secrets.CYPRESS_LOGIN_PASSWORD_ADMIN}}
-          CYPRESS_BASE_URL: ${{secrets.CYPRESS_PROD_URL}}
 
       - name: Upload Cypress results
         uses: actions/upload-artifact@v3
