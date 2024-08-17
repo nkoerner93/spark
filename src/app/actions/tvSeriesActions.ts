@@ -8,7 +8,8 @@ import { SeriesType } from "@prisma/client";
 // ADD SERIES TO USER FAVORITES
 export async function createTVSeries(anime: Anime) {
   const session = await getSession();
-  if (!session || !session.userId) return redirect("/login");
+  if (!session || !session.userId)
+    return { success: false, reason: "not_logged_in" };
 
   try {
     // Check if the anime already exists for this user

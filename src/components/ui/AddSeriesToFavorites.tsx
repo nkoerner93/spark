@@ -19,6 +19,13 @@ const AddSeriesToFavorites = ({ series }: { series: Anime_Data_Seasonal }) => {
       const result = await createTVSeries(series.node);
 
       if (!result.success) {
+        if (result.reason === "not_logged_in") {
+          toast({
+            title: "Please login!",
+            description: `You have to login to use this feature.`,
+            variant: "destructive",
+          });
+        }
         if (result.reason === "already_exists") {
           toast({
             title: "Already in your list!",

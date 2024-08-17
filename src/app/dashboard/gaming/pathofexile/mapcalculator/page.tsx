@@ -30,8 +30,8 @@ const POE_MapCalculator = async () => {
     <section className="flex h-screen flex-row p-2">
       <div className="relative w-[100%]">
         <HeroSection
-          title="Path of Exile"
-          subtitle={`Add a map to your log or pick an older session from the list on the left`}
+          title="Map Calculator"
+          subtitle={`Pick a map from the list below and add it to your recent maps to calculate your profits per map.`}
         />
         <div className="m-4 flex gap-8 md:flex-row">
           <Card className="p-4 shadow-md">
