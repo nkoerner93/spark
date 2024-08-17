@@ -1,7 +1,7 @@
 describe("Test Login", () => {
   beforeEach(() => {
     cy.reload();
-    cy.visit("http://localhost:3000/login");
+    cy.visit("/login");
   });
 
   it("should successfully log in with correct credentials", () => {

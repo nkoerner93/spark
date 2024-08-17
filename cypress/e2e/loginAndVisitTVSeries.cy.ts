@@ -1,6 +1,6 @@
 describe("Test Login", () => {
   it("should successfully log in with correct credentials", () => {
-    cy.visit("http://localhost:3000/login");
+    cy.visit("/login");
     cy.get('[data-login="input-username"]').type(
       Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"),
     );
