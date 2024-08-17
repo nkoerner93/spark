@@ -23,7 +23,7 @@ export async function getRecentMaps(): Promise<MapResult[] | null> {
 // ADD MAP TO RECENT MAPS
 export async function createMapResult(values: any) {
   const session = await getSession();
-  if (!session || !session.userId) return redirect("/login");
+  if (!session || !session.userId) return false;
 
   const result = await prisma.mapResult.create({
     data: {

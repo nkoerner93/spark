@@ -38,11 +38,13 @@ import {
   createMapResult,
   deleteAllMapResults,
 } from "@/app/actions/mapCalculatorActions";
+import { useToast } from "./ui/shad-cn/use-toast";
 
 const Poe_CurrencyMapCalculator = () => {
   const [open, setOpen] = useState(false);
   const [createSubmitted, setCreateSubmitted] = useState(false);
   const [deleteSubmitted, setDeleteSubmitted] = useState(false);
+  const { toast } = useToast();
 
   // Initialize react-hook-form
   const form = useForm<z.infer<typeof currencyInMapFormSchema>>({
@@ -60,7 +62,14 @@ const Poe_CurrencyMapCalculator = () => {
   ) => {
     setCreateSubmitted(true);
     try {
-      await createMapResult(values);
+      const result = await createMapResult(values);
+      if (!result) {
+        toast({
+          title: "Please login!",
+          description: "You have to login to use this feature.",
+          variant: "destructive",
+        });
+      }
       // Handle success (e.g., show a success message)
     } catch (error) {
       // Handle error (e.g., show an error message)
@@ -100,7 +109,6 @@ const Poe_CurrencyMapCalculator = () => {
                     {...field}
                     onValueChange={(value) => {
                       field.onChange(value);
-                      console.log(value);
                     }}
                   >
                     <SelectTrigger className="w-[280px]">
