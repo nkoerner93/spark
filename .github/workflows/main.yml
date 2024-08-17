@@ -5,11 +5,6 @@ on:
     branches:
       - main
 
-env:
-  CYPRESS_LOGIN_USERNAME_ADMIN: ${{secrets.CYPRESS_LOGIN_USERNAME_ADMIN}}
-  CYPRESS_LOGIN_PASSWORD_ADMIN: ${{secrets.CYPRESS_LOGIN_PASSWORD_ADMIN}}
-  CYPRESS_BASE_URL: ${{secrets.CYPRESS_PROD_URL}}
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -27,12 +22,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Write Cypress environment variables to file
+        run: |
+          echo '{
+            "CYPRESS_LOGIN_USERNAME_ADMIN": "${{ secrets.CYPRESS_LOGIN_USERNAME_ADMIN }}",
+            "CYPRESS_LOGIN_PASSWORD_ADMIN": "${{ secrets.CYPRESS_LOGIN_PASSWORD_ADMIN }}"
+          }' > cypress.env.json
+
       - name: Run Cypress tests
         uses: cypress-io/github-action@v5
         with:
           build: pnpm build
           start: pnpm start
           browser: chrome
+          wait-on: "http://localhost:3000"
           spec: |
             cypress/e2e/login.cy.ts
             cypress/e2e/loginAndVisitTVSeries.cy.ts

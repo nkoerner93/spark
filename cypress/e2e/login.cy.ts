@@ -5,7 +5,7 @@ describe("Test Login", () => {
   });
 
   it("should successfully log in with correct credentials", () => {
-    console.log(Cypress.env());
+    console.log(Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"));
     cy.get('[data-login="input-username"]').type(
       Cypress.env("CYPRESS_LOGIN_USERNAME_ADMIN"),
     );
