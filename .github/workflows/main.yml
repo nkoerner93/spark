@@ -35,7 +35,6 @@ jobs:
           build: pnpm build
           start: pnpm start
           browser: chrome
-          wait-on: "http://localhost:3000"
           spec: |
             cypress/e2e/login.cy.ts
             cypress/e2e/loginAndVisitTVSeries.cy.ts
