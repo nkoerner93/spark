@@ -43,7 +43,7 @@ export async function createMapResult(values: any) {
 // CLEAR ALL MAPS FROM USER
 export async function deleteAllMapResults() {
   const session = await getSession();
-  if (!session || !session.userId) return redirect("/login");
+  if (!session || !session.userId) return false;
 
   const result = await prisma.mapResult.deleteMany({
     where: { userId: session.userId },

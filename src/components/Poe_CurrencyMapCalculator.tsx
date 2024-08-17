@@ -83,7 +83,14 @@ const Poe_CurrencyMapCalculator = () => {
   const onDeleteMaps = async () => {
     setDeleteSubmitted(true);
     try {
-      await deleteAllMapResults();
+      const result = await deleteAllMapResults();
+      if (!result) {
+        toast({
+          title: "Please login!",
+          description: "You have to login to use this feature.",
+          variant: "destructive",
+        });
+      }
       // Handle success (e.g., show a success message)
     } catch (error) {
       // Handle error (e.g., show an error message)
