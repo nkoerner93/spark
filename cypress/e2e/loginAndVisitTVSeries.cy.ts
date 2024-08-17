@@ -8,9 +8,10 @@ describe("Test Login", () => {
       Cypress.env("CYPRESS_LOGIN_PASSWORD_ADMIN"),
     );
     cy.get('[data-login="button-submit"]').click();
-    cy.wait(500);
+    cy.wait(2000);
     cy.url().should("include", "/dashboard");
-    cy.wait(500);
+    cy.wait(2000);
     cy.visit("http://localhost:3000/dashboard/anime");
+    cy.get('[data-card="card-single"]').should("be.visible");
   });
 });

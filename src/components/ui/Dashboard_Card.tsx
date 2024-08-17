@@ -74,7 +74,13 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
             />
           </Link>
           <div className="flex flex-col px-6 pb-5 pt-2">
-            <CardTitle className="py-2 capitalize">{title}</CardTitle>
+            <CardTitle
+              className="py-2 capitalize"
+              data-card="card-single"
+              data-card-title={`card-${title.toLowerCase()}`}
+            >
+              {title}
+            </CardTitle>
             <CardDescription>{getDescription(title)}</CardDescription>
           </div>
         </CardHeader>
