@@ -12,14 +12,20 @@ import React from "react";
 
 const POE_MapCalculator = async () => {
   const mapResults = await getRecentMaps();
-  const totalDivines = mapResults.reduce(
-    (sum, mapResult) => sum + (mapResult.divine || 0),
-    0,
-  );
-  const totalChaos = mapResults.reduce(
-    (sum, mapResult) => sum + (mapResult.chaos || 0),
-    0,
-  );
+  let totalDivines = 0;
+  let totalChaos = 0;
+
+  if (mapResults !== null) {
+    totalDivines = mapResults.reduce(
+      (sum, mapResult) => sum + (mapResult.divine || 0),
+      0,
+    );
+    totalChaos = mapResults.reduce(
+      (sum, mapResult) => sum + (mapResult.chaos || 0),
+      0,
+    );
+  }
+
   return (
     <section className="flex h-screen flex-row p-2">
       <div className="relative w-[100%]">

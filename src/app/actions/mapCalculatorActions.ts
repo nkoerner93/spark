@@ -6,9 +6,9 @@ import { MapResult } from "@prisma/client";
 import { revalidatePath } from "next/cache";
 
 // GET RECENT MAPS OF LOGGED-IN USER
-export async function getRecentMaps(): Promise<MapResult[]> {
+export async function getRecentMaps(): Promise<MapResult[] | null> {
   const session = await getSession();
-  if (!session) return redirect("/login");
+  if (!session.isLoggedIn) return null;
   const recentMaps = await prisma.mapResult.findMany({
     where: { userId: session.userId },
   });
