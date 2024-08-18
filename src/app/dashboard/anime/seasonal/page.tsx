@@ -1,5 +1,5 @@
 import { getAnimeListBySeason } from "@/app/actions/actions";
-import AnimeCards_Seasonal from "@/components/ui/AnimeCards_Seasonal";
+import AnimeCards_Seasonal from "./AnimeCards_Seasonal";
 import BlankButton from "@/components/ui/BlankButton";
 import HeroSection from "@/components/ui/HeroSection";
 import { getCurrentSeason } from "@/lib/utils/utils";

@@ -71,13 +71,14 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
               className="h-[350px] w-full rounded-t-lg object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
               src={getImagePath(title)} // Use getImagePath function
               alt={`${title} Card`}
+              loading="eager"
             />
           </Link>
           <div className="flex flex-col px-6 pb-5 pt-2">
             <CardTitle
               className="py-2 capitalize"
               data-card="card-single"
-              data-card-title={`card-${title.toLowerCase()}`}
+              data-card-title={`card-${title}`}
             >
               {title}
             </CardTitle>

@@ -145,7 +145,6 @@ export const getAnimeListByRanking = async (
         headers: {
           "X-MAL-CLIENT-ID": "55c19f03ea57271a9b33ff0edbaed468",
         },
-        next: { revalidate: 120 }, // Cache for 120 seconds and then revalidate
       },
     );
 

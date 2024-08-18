@@ -1,7 +1,7 @@
 import { CardCategory, DashboardCard } from "@/components/ui/Dashboard_Card";
 import HeroSection from "@/components/ui/HeroSection";
 
-export default async function Dashboard() {
+export default function Dashboard() {
   return (
     <div>
       <HeroSection

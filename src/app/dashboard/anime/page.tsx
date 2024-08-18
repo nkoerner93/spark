@@ -1,10 +1,7 @@
 import { CardCategory, DashboardCard } from "@/components/ui/Dashboard_Card";
 import HeroSection from "@/components/ui/HeroSection";
-import { getCurrentSeason } from "@/lib/utils/utils";
 
-const AnimeDashboard = async () => {
-  const season = getCurrentSeason();
-
+const AnimeDashboard = () => {
   return (
     <section>
       <HeroSection
