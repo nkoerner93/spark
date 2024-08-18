@@ -28,7 +28,6 @@ describe("Go to the login page and test a successfull & incorrect user login.", 
     );
     cy.get('[data-login="button-submit"]').click();
     const toast = cy.get('[data-toast="toast-title"]');
-    cy.wait(7000);
     toast.contains("Error");
   });
 });
