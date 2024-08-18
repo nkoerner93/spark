@@ -10,15 +10,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: "18"
 
       - uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
       - name: Install dependencies
         run: pnpm install
 
@@ -30,7 +30,7 @@ jobs:
           }' > cypress.env.json
 
       - name: Run Cypress tests
-        uses: cypress-io/github-action@v5
+        uses: cypress-io/github-action@v6
         with:
           build: pnpm build
           start: pnpm start
@@ -40,7 +40,7 @@ jobs:
             cypress/e2e/loginAndVisitTVSeries.cy.ts
 
       - name: Upload Cypress results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: failure()
         with:
           name: cypress-results
