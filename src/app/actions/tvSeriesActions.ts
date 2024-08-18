@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import prisma from "../prisma";
 import { getSession } from "./actions";
 import { Anime } from "src/types/types";
-import { SeriesType } from "@prisma/client";
+import { SeriesType, Subscribed_TVSeries } from "@prisma/client";
 
 // ADD SERIES TO USER FAVORITES
 export async function createTVSeries(anime: Anime) {
@@ -38,6 +38,32 @@ export async function createTVSeries(anime: Anime) {
     return { success: true, data: result };
   } catch (error) {
     console.error("Error adding series to favorites:", error);
+    throw error; // Re-throw the error for further handling in the component
+  }
+}
+
+// ADD SERIES TO USER FAVORITES
+export async function getFavoriteTVSeries() {
+  const session = await getSession();
+  if (!session || !session.userId)
+    return { success: false, reason: "not_logged_in" };
+
+  try {
+    // Check if the anime already exists for this user
+    const existingAnime = await prisma.subscribed_TVSeries.findMany({
+      where: {
+        userId: session.userId,
+      },
+    });
+
+    if (!existingAnime) {
+      // If the anime already exists, return a specific object
+      return { success: false, reason: "No favorites found." };
+    }
+
+    return existingAnime;
+  } catch (error) {
+    console.error("Error find favorite series:", error);
     throw error; // Re-throw the error for further handling in the component
   }
 }

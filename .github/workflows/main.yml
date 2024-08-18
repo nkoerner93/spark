@@ -5,6 +5,11 @@ on:
     branches:
       - main
 
+env:
+  "CYPRESS_LOGIN_USERNAME_ADMIN": "${{ secrets.CYPRESS_LOGIN_USERNAME_ADMIN }}"
+  "CYPRESS_LOGIN_PASSWORD_ADMIN": "${{ secrets.CYPRESS_LOGIN_PASSWORD_ADMIN }}"
+  "AUTH_SECRET": "${{ secrets.AUTH_SECRET }}"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,13 +26,6 @@ jobs:
           version: 9
       - name: Install dependencies
         run: pnpm install
-
-      - name: Write Cypress environment variables to file
-        run: |
-          echo '{
-            "CYPRESS_LOGIN_USERNAME_ADMIN": "${{ secrets.CYPRESS_LOGIN_USERNAME_ADMIN }}",
-            "CYPRESS_LOGIN_PASSWORD_ADMIN": "${{ secrets.CYPRESS_LOGIN_PASSWORD_ADMIN }}"
-          }' > cypress.env.json
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
