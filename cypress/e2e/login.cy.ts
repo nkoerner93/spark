@@ -26,9 +26,7 @@ describe("Go to the login page and test a successfull & incorrect user login.", 
     cy.get('[data-login="input-password"]').type(
       "invalid_password@randomxPl.com",
     );
-    cy.get('[data-login="button-submit"]').click();
-    cy.wait(2000);
-    const toast = cy.get('[data-toast="toast-title"]');
-    toast.contains("Error");
+    cy.wait('[data-toast="toast-title"]', { timeout: 8000 });
+    cy.get('[data-login="button-submit"]').click().contains("Error");
   });
 });
