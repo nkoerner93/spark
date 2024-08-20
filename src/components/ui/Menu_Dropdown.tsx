@@ -30,8 +30,12 @@ export function Menu_Dropdown({ session }: { session: SessionData }) {
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <MenuItemWithHover
+            link={`/dashboard/users/${session.username}`}
+            name="My Profile"
+          />
+          <MenuItemWithHover
             link="/dashboard/settings/profile"
-            name="Profile"
+            name="Settings"
           />
           <MenuItemWithHover
             link="/dashboard/settings/preferences"

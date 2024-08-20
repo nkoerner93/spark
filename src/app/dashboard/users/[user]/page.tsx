@@ -1,4 +1,4 @@
-import { getUserByName } from "@/app/api/memberApi";
+import { getSession } from "@/app/actions/actions";
 import { notFound } from "next/navigation";
 
 interface Params {
@@ -6,8 +6,7 @@ interface Params {
 }
 
 export default async function UserPage({ params }: { params: Params }) {
-  const { user } = params;
-  const userData = await getUserByName(user);
+  const userData = await getSession();
 
   if (!userData) {
     notFound();
