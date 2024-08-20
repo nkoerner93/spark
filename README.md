@@ -52,6 +52,17 @@ Run the following command using your preferred Package Manager.
 pnpm run dev
 ```
 
+## Recent Changelog
+
+``
+
+- Added the option to add fetched animes to users favorites list.
+- Added the option to make your profile private and hide it from /users
+- Added all Users page /dashboard/users with pagination.
+- Added POE Map Calculator & connect it with users db to store recently tracked maps.
+- Connect dark/light theme to user preference dashboard
+  ``
+
 ## Questions?
 
 If you have any questions about the project, please dm me at nk.webdevs@gmail.com
