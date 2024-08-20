@@ -29,6 +29,7 @@ The Application currently uses the following external APIs:
 
 Spark uses a custom-built stateless [Iron-Session](https://github.com/vvo/iron-session) Credential Authentication.
 For more information about the Authentication please check the server actions "actions.ts" & (auth) folder.
+The authentication currently has no recover password & nodemailer functionality.
 
 ## How to install locally
 
@@ -49,12 +50,14 @@ git clone "https://github.com/nkoerner93/spark"
 Run the following command using your preferred Package Manager.
 
 ```bash
+pnpm prisma generate
+pnpm prisma db push
 pnpm run dev
 ```
 
 ## Recent Changelog
 
-```bash
+```
 - Added the option to add fetched animes to users favorites list.
 - Added the option to make your profile private and hide it from /users
 - Added all Users page /dashboard/users with pagination.
