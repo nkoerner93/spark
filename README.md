@@ -54,14 +54,13 @@ pnpm run dev
 
 ## Recent Changelog
 
-``
-
+```bash
 - Added the option to add fetched animes to users favorites list.
 - Added the option to make your profile private and hide it from /users
 - Added all Users page /dashboard/users with pagination.
 - Added POE Map Calculator & connect it with users db to store recently tracked maps.
 - Connect dark/light theme to user preference dashboard
-  ``
+```
 
 ## Questions?
 
