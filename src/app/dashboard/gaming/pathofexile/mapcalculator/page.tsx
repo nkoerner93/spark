@@ -33,7 +33,7 @@ const POE_MapCalculator = async () => {
           title="Map Calculator"
           subtitle={`Pick a map from the list below and add it to your recent maps to calculate your profits per map.`}
         />
-        <div className="m-4 flex gap-8 md:flex-row">
+        <div className="m-4 flex justify-center gap-8 md:flex-row">
           <Card className="p-4 shadow-md">
             <div className="flex h-full flex-col justify-between">
               {/* RECENT MAPS */}

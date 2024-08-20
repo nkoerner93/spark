@@ -1,12 +1,11 @@
 import { Button } from "./shad-cn/button";
 import Link from "next/link";
 import { getSession } from "@/app/actions/actions";
-import { Menu_LoggedInDropdown } from "./Menu_LoggedInDropdown";
 import Spark_Heading from "./Spark_Heading";
 import { Zap } from "lucide-react";
 import NavBar from "./NavBar";
-import { Separator } from "./shad-cn/separator";
 import MobileMenu from "./MobileMenu";
+import { Menu_Dropdown } from "./Menu_Dropdown";
 
 const Header = async () => {
   const session = await getSession();
@@ -31,7 +30,7 @@ const Header = async () => {
           <MobileMenu />
           {session.isLoggedIn ? (
             <span>
-              <Menu_LoggedInDropdown session={sessionData} />
+              <Menu_Dropdown session={sessionData} />
             </span>
           ) : (
             <Link href={"/login"}>
