@@ -1,4 +1,5 @@
 import { MapResult, Session } from "@prisma/client";
+import { ComponentType, SVGProps } from "react";
 
 export type Anime_Data_Seasonal = {
   node: {
@@ -48,6 +49,7 @@ export type AnimeRankingType =
 export type MenuItems_MainMenu = {
   title: string;
   url: string;
+  icon?: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
 export type User = {

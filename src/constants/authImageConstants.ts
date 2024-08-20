@@ -1,4 +1,5 @@
 import { MenuItems_MainMenu } from "src/types/types";
+import { Home, BarChart, Gamepad2, Tv, Star, Calendar } from "lucide-react";
 
 export const AUTHIMAGES = [
   "/images/auth/auth_background.jpg",
@@ -10,20 +11,25 @@ export const MAINMENU: MenuItems_MainMenu[] = [
   {
     title: "Dashboard",
     url: "/dashboard",
+    icon: Home, // Assign Home icon
   },
   {
     title: "Productivity",
     url: "/dashboard/productivity",
+    icon: BarChart, // Assign BarChart icon
   },
   {
     title: "Gaming",
     url: "/dashboard/gaming",
+    icon: Gamepad2, // Assign Gamepad2 icon
   },
   {
     title: "TV Series",
     url: "/dashboard/anime",
+    icon: Tv, // Assign Tv icon
   },
 ];
+
 export const ANIMEMENU: MenuItems_MainMenu[] = [
   {
     title: "Seasonal",
