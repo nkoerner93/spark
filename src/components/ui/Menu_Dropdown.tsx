@@ -39,22 +39,19 @@ export function Menu_Dropdown({ session }: { session: SessionData }) {
           />
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
+        <DropdownMenuLabel>TV Series</DropdownMenuLabel>
+        <DropdownMenuGroup>
+          <MenuItemWithHover
+            link="/dashboard/anime/favorites"
+            name="Favorite Series"
+          ></MenuItemWithHover>
+        </DropdownMenuGroup>
+        <DropdownMenuSeparator />
         <DropdownMenuGroup>
           <MenuItemWithHover
             link="/dashboard/users"
             name="All Users"
           ></MenuItemWithHover>
-          <DropdownMenuSub>
-            <DropdownMenuSubTrigger>Invite users</DropdownMenuSubTrigger>
-            <DropdownMenuPortal>
-              <DropdownMenuSubContent>
-                <DropdownMenuItem>Email</DropdownMenuItem>
-                <DropdownMenuItem>Message</DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>More...</DropdownMenuItem>
-              </DropdownMenuSubContent>
-            </DropdownMenuPortal>
-          </DropdownMenuSub>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <DropdownMenuItem
