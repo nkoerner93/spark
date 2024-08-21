@@ -1,13 +1,13 @@
 // components/UserProfile.tsx
-import { Button } from "@/components/ui/shad-cn/button";
+import { GetUserProfileResponse } from "@/app/actions/profileActions";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/shad-cn/avatar";
-import { Card, CardHeader, CardContent } from "@/components/ui/shad-cn/card";
+import { Button } from "@/components/ui/shad-cn/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/shad-cn/card";
 import { MonitorPlay } from "lucide-react";
-import { GetUserProfileResponse } from "@/app/actions/profileActions";
 
 type UserProfileProps = {
   userData: GetUserProfileResponse;

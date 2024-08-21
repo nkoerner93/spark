@@ -1,9 +1,8 @@
 "use server";
-import { redirect } from "next/navigation";
-import prisma from "../prisma";
-import { getSession } from "./actions";
 import { MapResult } from "@prisma/client";
 import { revalidatePath } from "next/cache";
+import prisma from "../prisma";
+import { getSession } from "./actions";
 
 // GET RECENT MAPS OF LOGGED-IN USER
 export async function getRecentMaps(): Promise<MapResult[] | null> {

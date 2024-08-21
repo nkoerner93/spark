@@ -1,8 +1,8 @@
 "use server";
-import prisma from "../prisma";
-import { getSession } from "./actions";
-import { Anime } from "src/types/types";
+import { getSession } from "@/app/actions/actions";
+import prisma from "@/app/prisma";
 import { SeriesType } from "@prisma/client";
+import { Anime } from "src/types/types";
 
 // ADD SERIES TO USER FAVORITES
 export async function createTVSeries(anime: Anime) {

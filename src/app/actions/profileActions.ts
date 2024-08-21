@@ -1,9 +1,9 @@
 "use server";
 
-import { SessionData } from "@/lib/lib";
-import { getSession } from "./actions";
 import prisma from "@/app/prisma"; // Adjust this import based on your Prisma setup
+import { SessionData } from "@/lib/lib";
 import { Users } from "@prisma/client";
+import { getSession } from "./actions";
 
 type Profile = {
   session: SessionData;
