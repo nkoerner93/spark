@@ -8,10 +8,12 @@ export default function DashboardLayout({
   children: React.ReactNode;
 }) {
   return (
-    <section className="gap-8">
+    <section className="flex min-h-screen flex-col">
       <Header />
-      <div className="relative mx-auto flex min-h-screen flex-col pb-32">
-        <div className="md:mx-auto md:max-w-screen-2xl">{children}</div>
+      <div className="flex-grow py-20">
+        <div className="relative mx-auto md:mx-auto md:max-w-screen-2xl">
+          {children}
+        </div>
       </div>
       <Footer />
       <Toaster />

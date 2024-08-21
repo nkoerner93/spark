@@ -7,9 +7,7 @@ type UserProfileProps = {
   userData: GetUserProfileResponse;
 };
 
-const UserProfile_FavoriteSeries: React.FC<UserProfileProps> = ({
-  userData,
-}) => {
+const UserProfile_Favorites: React.FC<UserProfileProps> = ({ userData }) => {
   const { userData: user, totalSeries, totalMaps } = userData;
   if (user) {
     return (
@@ -36,4 +34,4 @@ const UserProfile_FavoriteSeries: React.FC<UserProfileProps> = ({
   }
 };
 
-export default UserProfile_FavoriteSeries;
+export default UserProfile_Favorites;

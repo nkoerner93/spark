@@ -8,7 +8,7 @@ interface Params {
 
 export default function UserPage({ params }: { params: Params }) {
   return (
-    <section className="mt-20 flex">
+    <section>
       <Suspense fallback={<Loader2 />}>
         <UserProfileWrapper username={params.user} />
       </Suspense>

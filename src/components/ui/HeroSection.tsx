@@ -1,7 +1,7 @@
+import { Github } from "lucide-react";
+import Link from "next/link";
 import { FC } from "react";
 import { Button } from "./shad-cn/button";
-import { Github, Target } from "lucide-react";
-import Link from "next/link";
 
 interface HeroSectionProps {
   title: string;
@@ -21,7 +21,7 @@ const HeroSection: FC<HeroSectionProps> = ({
   button2link,
 }) => {
   return (
-    <section className="md mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:pb-8 md:pt-20 lg:pb-20">
+    <section className="md mx-auto flex max-w-[980px] flex-col items-center gap-2 pb-16">
       <h1 className="text-center text-3xl font-bold leading-tight tracking-tighter md:text-5xl lg:leading-[1.1]">
         {title}
       </h1>
