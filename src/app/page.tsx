@@ -5,10 +5,10 @@ import ImageBlock from "@/components/ui/ImageBlock";
 
 export default function Page() {
   return (
-    <section className="items-center justify-between gap-8">
-      <div className="flex flex-col">
-        <Header />
-        <div className="mx-auto max-w-screen-2xl px-8 pb-32">
+    <section className="min-h-screen">
+      <Header />
+      <div className="flex flex-grow flex-col">
+        <div className="mx-auto max-w-screen-2xl px-8 pb-32 pt-20">
           <HeroSection
             title="All-In-One Utility Dashboard"
             subtitle="Spark is your all-in-one utility toolbox for entertainment & productivity, from planning your day, discovering your favorite new tv/anime series or using popular gaming tools."
