@@ -1,11 +1,12 @@
 import HeroSection from "@/components/ui/HeroSection";
 import React from "react";
 import SeriesCards from "./SeriesCards";
-import { getFavoriteTVSeries } from "@/app/actions/tvSeriesActions";
+import { getFavoriteTVSeriesBySession } from "@/app/actions/tvSeriesActions";
 import { Subscribed_TVSeries } from "@prisma/client";
 
 const FavoriteSeries = async () => {
-  const series = (await getFavoriteTVSeries()) as Subscribed_TVSeries[];
+  const series =
+    (await getFavoriteTVSeriesBySession()) as Subscribed_TVSeries[];
   return (
     <div>
       <HeroSection

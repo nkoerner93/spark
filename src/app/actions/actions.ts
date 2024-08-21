@@ -76,7 +76,6 @@ export const createUserToDB = async (userData: {
 }): Promise<Users> => {
   try {
     const hashedPassword = await bcrypt.hash(userData.password, 10);
-    console.log(`Hashed Password: ${hashedPassword}`);
     const user = await prisma.users.create({
       data: {
         username: userData.username.toLowerCase(),

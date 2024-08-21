@@ -1,20 +1,17 @@
-import { getSession } from "@/app/actions/actions";
-import { notFound } from "next/navigation";
+import UserProfile from "@/components/ui/UserProfile";
+import { Loader2 } from "lucide-react";
+import { Suspense } from "react";
 
 interface Params {
   user: string;
 }
 
-export default async function UserPage({ params }: { params: Params }) {
-  const userData = await getSession();
-
-  if (!userData) {
-    notFound();
-  }
-
+export default function UserPage({ params }: { params: Params }) {
   return (
-    <div className="flex-col gap-2">
-      <div>You are on the profile page of user: {userData.username}</div>
-    </div>
+    <section className="mt-20 flex justify-center">
+      <Suspense fallback={<Loader2 />}>
+        <UserProfile username={params.user} />
+      </Suspense>
+    </section>
   );
 }

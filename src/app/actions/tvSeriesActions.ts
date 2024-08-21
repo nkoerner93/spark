@@ -42,8 +42,8 @@ export async function createTVSeries(anime: Anime) {
   }
 }
 
-// ADD SERIES TO USER FAVORITES
-export async function getFavoriteTVSeries() {
+// GET FAVORITE TV SERIES BY ACTIVE SESSION
+export async function getFavoriteTVSeriesBySession() {
   const session = await getSession();
   if (!session || !session.userId)
     return { success: false, reason: "not_logged_in" };
@@ -64,6 +64,32 @@ export async function getFavoriteTVSeries() {
     return existingAnime;
   } catch (error) {
     console.error("Error find favorite series:", error);
+    throw error; // Re-throw the error for further handling in the component
+  }
+}
+
+// GET FAVORITE TV SERIES BY ACTIVE SESSION
+export async function getFavoriteTVSeriesByUsername(username: string) {
+  try {
+    // Fetch the subscribed TV series for a user by their username
+    const favoriteTVSeries = await prisma.subscribed_TVSeries.findMany({
+      where: {
+        user: {
+          username: username, // Filter based on the username in the related Users table
+        },
+      },
+    });
+
+    const totalSeries = favoriteTVSeries.length;
+
+    if (totalSeries === 0) {
+      // If no favorite series found, return a specific object
+      return { success: false, reason: "No favorites found.", totalSeries: 0 };
+    }
+
+    return { success: true, data: favoriteTVSeries, totalSeries };
+  } catch (error) {
+    console.error("Error finding favorite series:", error);
     throw error; // Re-throw the error for further handling in the component
   }
 }
