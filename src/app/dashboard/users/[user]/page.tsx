@@ -1,4 +1,3 @@
-import UserProfile from "@/components/ui/UserProfile";
 import UserProfileWrapper from "@/components/ui/UserProfileWrapper";
 import { Loader2 } from "lucide-react";
 import { Suspense } from "react";

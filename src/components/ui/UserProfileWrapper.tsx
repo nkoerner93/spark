@@ -3,7 +3,8 @@ import {
   getUserProfile,
 } from "@/app/actions/profileActions";
 import Link from "next/link";
-import UserProfile from "./UserProfile";
+import UserProfile_FavoriteSeries from "./UserProfile_FavoriteSeries";
+import UserProfile_Profile from "./UserProfile_Profile";
 import { Button } from "./shad-cn/button";
 
 const UserProfileWrapper = async ({ username }: { username: string }) => {
@@ -12,7 +13,7 @@ const UserProfileWrapper = async ({ username }: { username: string }) => {
   return (
     <>
       {!userData ? (
-        <div className="flex h-[500px] flex-col items-center justify-center gap-4">
+        <div className="flex flex-col items-center justify-center gap-4">
           <h2 className="font-bold md:text-xl">User not found.</h2>
           <Link href={"/dashboard"}>
             <Button>Back to Dashboard</Button>
@@ -20,8 +21,8 @@ const UserProfileWrapper = async ({ username }: { username: string }) => {
         </div>
       ) : (
         <div className="flex flex-row gap-4">
-          <UserProfile userData={userData} />
-          <UserProfile userData={userData} />
+          <UserProfile_Profile userData={userData} />
+          <UserProfile_FavoriteSeries userData={userData} />
         </div>
       )}
     </>
