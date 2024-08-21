@@ -4,20 +4,8 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/shad-cn/avatar";
-import {
-  Card,
-  CardHeader,
-  CardContent,
-  CardFooter,
-} from "@/components/ui/shad-cn/card";
-import { Badge } from "@/components/ui/shad-cn/badge";
-import {
-  CalendarIcon,
-  MapPinIcon,
-  BriefcaseIcon,
-  MailIcon,
-} from "lucide-react";
-import { getUserByName } from "@/app/api/memberApi";
+import { Card, CardHeader, CardContent } from "@/components/ui/shad-cn/card";
+import { MonitorPlay } from "lucide-react";
 import { getFavoriteTVSeriesByUsername } from "@/app/actions/tvSeriesActions";
 
 interface UserProfileProps {
@@ -25,9 +13,9 @@ interface UserProfileProps {
 }
 
 export default async function UserProfile({ username }: UserProfileProps) {
-  const userData = await getUserByName(username);
+  const { success, userData, totalSeries, reason } =
+    await getFavoriteTVSeriesByUsername(username);
   const usernameShort = userData?.username.slice(0, 2);
-  const FavoriteSeries = await getFavoriteTVSeriesByUsername(username);
 
   return (
     <>
@@ -54,20 +42,8 @@ export default async function UserProfile({ username }: UserProfileProps) {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center space-x-2">
-              <BriefcaseIcon className="text-muted-foreground" />
-              <span>Works at TechCorp</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <MapPinIcon className="text-muted-foreground" />
-              <span>San Francisco, CA</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <CalendarIcon className="text-muted-foreground" />
-              <span>Joined January 2020</span>
-            </div>
-            <div className="flex items-center space-x-2">
-              <MailIcon className="text-muted-foreground" />
-              <span>jane.doe@example.com</span>
+              <MonitorPlay className="text-muted-foreground" />
+              <span>Favorite Series: {totalSeries}</span>
             </div>
           </CardContent>
         </Card>
