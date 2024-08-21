@@ -13,7 +13,9 @@ type UserProfileProps = {
   userData: GetUserProfileResponse;
 };
 
-const UserProfile: React.FC<UserProfileProps> = ({ userData }) => {
+const UserProfile_FavoriteSeries: React.FC<UserProfileProps> = ({
+  userData,
+}) => {
   const { userData: user, totalSeries } = userData;
   if (user) {
     const usernameShort = user.username.slice(0, 2);
@@ -48,4 +50,4 @@ const UserProfile: React.FC<UserProfileProps> = ({ userData }) => {
   }
 };
 
-export default UserProfile;
+export default UserProfile_FavoriteSeries;

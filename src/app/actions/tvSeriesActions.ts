@@ -2,6 +2,7 @@
 import { getSession } from "@/app/actions/actions";
 import prisma from "@/app/prisma";
 import { SeriesType } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import { Anime } from "src/types/types";
 
 // ADD SERIES TO USER FAVORITES
@@ -33,7 +34,7 @@ export async function createTVSeries(anime: Anime) {
         type: SeriesType.ANIME,
       },
     });
-
+    revalidatePath(`/dashboard/user/${session.username}`);
     return { success: true, data: result };
   } catch (error) {
     console.error("Error adding series to favorites:", error);
