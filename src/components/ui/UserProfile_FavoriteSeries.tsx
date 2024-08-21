@@ -1,6 +1,6 @@
 // components/UserProfile.tsx
 import { GetUserProfileResponse } from "@/app/actions/profileActions";
-import { MonitorPlay } from "lucide-react";
+import { Globe, MonitorPlay } from "lucide-react";
 import { Card, CardContent, CardHeader } from "./shad-cn/card";
 
 type UserProfileProps = {
@@ -10,7 +10,7 @@ type UserProfileProps = {
 const UserProfile_FavoriteSeries: React.FC<UserProfileProps> = ({
   userData,
 }) => {
-  const { userData: user, totalSeries } = userData;
+  const { userData: user, totalSeries, totalMaps } = userData;
   if (user) {
     return (
       <Card>
@@ -20,9 +20,15 @@ const UserProfile_FavoriteSeries: React.FC<UserProfileProps> = ({
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="flex items-center space-x-2">
-            <MonitorPlay className="text-muted-foreground" />
-            <span>Favorite Series: {totalSeries}</span>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-row gap-2">
+              <MonitorPlay className="text-muted-foreground" />
+              <p>Favorite Series: {totalSeries}</p>
+            </div>
+            <div className="flex flex-row gap-2">
+              <Globe className="text-muted-foreground" />
+              <p>Favorite Maps: {totalMaps}</p>
+            </div>
           </div>
         </CardContent>
       </Card>

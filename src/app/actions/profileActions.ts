@@ -41,6 +41,7 @@ export interface GetUserProfileResponse {
   success: boolean;
   reason: string;
   totalSeries: number;
+  totalMaps: number;
   userData: Users | null; // Prisma type for Users
 }
 
@@ -52,7 +53,7 @@ export async function getUserProfile(
     // Fetch the user and their subscribed TV series by their username
     const user = await prisma.users.findUnique({
       where: { username },
-      include: { subscribed_series: true },
+      include: { subscribed_series: true, mapResults: true },
     });
 
     if (!user) {
@@ -61,25 +62,20 @@ export async function getUserProfile(
         reason: "User not found.",
         totalSeries: 0,
         userData: null,
+        totalMaps: 0,
       };
     }
 
     const favoriteTVSeries = user.subscribed_series;
+    const favoriteMaps = user.mapResults;
     const totalSeries = favoriteTVSeries.length;
-
-    if (totalSeries === 0) {
-      return {
-        success: false,
-        reason: "No favorites found.",
-        totalSeries: 0,
-        userData: user,
-      };
-    }
+    const totalMaps = favoriteMaps.length;
 
     return {
       success: true,
       userData: user,
       totalSeries,
+      totalMaps,
       reason: "",
     };
   } catch (error) {
