@@ -6,8 +6,9 @@ import {
   AvatarImage,
 } from "@/components/ui/shad-cn/avatar";
 import { Button } from "@/components/ui/shad-cn/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/shad-cn/card";
 import { MonitorPlay } from "lucide-react";
+import Link from "next/link";
+import { Card, CardContent, CardHeader } from "./shad-cn/card";
 
 type UserProfileProps = {
   userData: GetUserProfileResponse;
@@ -18,7 +19,14 @@ const UserProfile: React.FC<UserProfileProps> = ({ userData }) => {
   const usernameShort = user?.username.slice(0, 2);
 
   if (!user) {
-    return <div>No user found.</div>;
+    return (
+      <div className="flex h-[500px] flex-col items-center justify-center gap-4">
+        <h2 className="font-bold md:text-xl">User not found.</h2>
+        <Link href={"/dashboard"}>
+          <Button>Back to Dashboard</Button>
+        </Link>
+      </div>
+    );
   }
 
   return (
