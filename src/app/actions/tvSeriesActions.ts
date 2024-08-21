@@ -1,9 +1,8 @@
 "use server";
-import { redirect } from "next/navigation";
 import prisma from "../prisma";
 import { getSession } from "./actions";
 import { Anime } from "src/types/types";
-import { SeriesType, Subscribed_TVSeries } from "@prisma/client";
+import { SeriesType } from "@prisma/client";
 
 // ADD SERIES TO USER FAVORITES
 export async function createTVSeries(anime: Anime) {
@@ -64,53 +63,6 @@ export async function getFavoriteTVSeriesBySession() {
     return existingAnime;
   } catch (error) {
     console.error("Error find favorite series:", error);
-    throw error; // Re-throw the error for further handling in the component
-  }
-}
-
-// GET FAVORITE TV SERIES BY USERNAME
-export async function getFavoriteTVSeriesByUsername(username: string) {
-  try {
-    // Fetch the user and their subscribed TV series by their username
-    const user = await prisma.users.findUnique({
-      where: {
-        username: username,
-      },
-      include: {
-        subscribed_series: true, // Include the subscribed TV series
-      },
-    });
-
-    if (!user) {
-      return {
-        success: false,
-        reason: "User not found.",
-        totalSeries: 0,
-        userData: null,
-      };
-    }
-
-    const favoriteTVSeries = user.subscribed_series;
-    const totalSeries = favoriteTVSeries.length;
-
-    if (totalSeries === 0) {
-      // If no favorite series found, return a specific object
-      return {
-        success: false,
-        reason: "No favorites found.",
-        totalSeries: 0,
-        userData: user, // Return the user data even if no favorites are found
-      };
-    }
-
-    return {
-      success: true,
-      userData: user, // Return the user object with favorite series
-      totalSeries,
-      reason: "", // No error message
-    };
-  } catch (error) {
-    console.error("Error finding favorite series:", error);
     throw error; // Re-throw the error for further handling in the component
   }
 }
