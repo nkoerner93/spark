@@ -1,6 +1,6 @@
 // components/UserProfile.tsx
 import { GetUserProfileResponse } from "@/app/actions/profileActions";
-import { Globe, MonitorPlay } from "lucide-react";
+import { MonitorPlay } from "lucide-react";
 import { Card, CardContent, CardHeader } from "./shad-cn/card";
 
 type UserProfileProps = {
@@ -20,11 +20,16 @@ const UserProfile_Favorites: React.FC<UserProfileProps> = ({ userData }) => {
         <CardContent className="space-y-4">
           <div className="flex flex-col gap-4">
             <div className="flex flex-row gap-2">
-              <MonitorPlay className="text-muted-foreground" />
+              <MonitorPlay className="text-primary" />
               <p>Favorite Series: {totalSeries}</p>
             </div>
             <div className="flex flex-row gap-2">
-              <Globe className="text-muted-foreground" />
+              <img
+                src="/images/pathofexile/map_base.png"
+                width={25}
+                className="h-6"
+                alt="Path of Exile Map"
+              />
               <p>Favorite Maps: {totalMaps}</p>
             </div>
           </div>
