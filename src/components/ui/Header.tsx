@@ -15,7 +15,7 @@ const Header = async () => {
     <header className="w-full border-b-[1px] p-4">
       <div className="mx-auto flex h-14 max-w-screen-2xl items-center justify-between">
         <span className="text-2xl font-bold">
-          <Link href={session.isLoggedIn ? "/dashboard" : "/"}>
+          <Link href={"/"}>
             <div className="flex flex-row items-center gap-2">
               <Zap className="text-orange-600" />
               <Spark_Heading fontweight="font-bold" size="text-2xl">
