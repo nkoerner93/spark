@@ -7,6 +7,7 @@ export enum CardCategory {
   Ranking = "Highest Rated",
   PathOfExile = "Path of Exile",
   MapCalculator = "POE Map and Profit Calculator",
+  Kanban = "Kanban Board",
 }
 
 // Define enum for card descriptions
@@ -18,4 +19,5 @@ export enum CardDescriptionEnum {
   Ranking = "Check out the highest rated animes this season or of all time.",
   PathOfExile = "Action-RPG",
   MapCalculator = "Calculate your profits per Map or over multiple sessions",
+  Kanban = "Improve your project management with your own personal kanban board.",
 }

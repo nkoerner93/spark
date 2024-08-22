@@ -1,4 +1,3 @@
-import { FC } from "react";
 import {
   Card,
   CardDescription,
@@ -7,6 +6,7 @@ import {
 } from "@/components/ui/shad-cn/card";
 import { getCurrentSeason } from "@/lib/utils/utils";
 import Link from "next/link";
+import { FC } from "react";
 import {
   CardCategory,
   CardDescriptionEnum,
@@ -35,6 +35,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return "/images/cards/card_pathofexile.jpeg";
       case CardCategory.MapCalculator:
         return "/images/cards/card_pathofexile.jpeg";
+      case CardCategory.Kanban:
+        return "/images/cards/card_kanban.svg";
       default:
         return "";
     }
@@ -57,6 +59,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return `${CardDescriptionEnum.PathOfExile}`;
       case CardCategory.MapCalculator:
         return `${CardDescriptionEnum.MapCalculator}`;
+      case CardCategory.Kanban:
+        return `${CardDescriptionEnum.Kanban}`;
       default:
         return "";
     }
