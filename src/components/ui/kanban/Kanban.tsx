@@ -1,5 +1,4 @@
 "use client"; // This is a client component
-
 import { Boardtype } from "@/app/actions/kanbanActions";
 import {
   Select,
@@ -9,10 +8,11 @@ import {
   SelectValue,
 } from "@/components/ui/shad-cn/select";
 import { Separator } from "@/components/ui/shad-cn/separator";
+import { resetServerContext } from "@hello-pangea/dnd";
 import { useState } from "react";
 import KanbanBoard from "./KanbanBoard";
 
-const KanbanClient = ({ boards }: { boards: Boardtype[] }) => {
+const Kanban = ({ boards }: { boards: Boardtype[] }) => {
   // Initialize state with the first board or a default value
   const [selectedBoardTitle, setSelectedBoardTitle] = useState(
     boards?.[0]?.title || "Untitled",
@@ -23,10 +23,11 @@ const KanbanClient = ({ boards }: { boards: Boardtype[] }) => {
     (board) => board.title === selectedBoardTitle,
   );
 
+  resetServerContext();
   return (
     <section>
       <Select onValueChange={(value) => setSelectedBoardTitle(value)}>
-        <SelectTrigger className="w-auto gap-4 border-0 text-lg font-bold">
+        <SelectTrigger className="w-auto gap-4 border-0 bg-primary text-lg font-medium text-secondary">
           <SelectValue placeholder={selectedBoardTitle || "Select a board"} />
         </SelectTrigger>
         <SelectContent>
@@ -47,4 +48,4 @@ const KanbanClient = ({ boards }: { boards: Boardtype[] }) => {
   );
 };
 
-export default KanbanClient;
+export default Kanban;

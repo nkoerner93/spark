@@ -22,17 +22,17 @@ const KanbanColumn = ({ column }: { column: Columntype }) => {
   };
 
   return (
-    <section className="mt-6 flex flex-row">
-      <div className="kanban-column w-auto max-w-[400px]">
+    <section className="mt-6 flex flex-col rounded">
+      <div className="kanban-column flex w-auto max-w-[400px] flex-col gap-4 rounded-lg bg-slate-200 p-4">
         <input
           type="text"
-          className="py-2 text-center text-xl font-semibold text-primary"
+          className="rounded bg-white py-2 text-center text-xl font-semibold text-primary dark:bg-secondary"
           value={columnTitle}
           onChange={(e) => setColumnTitle(e.target.value)}
           onBlur={handleBlur}
           disabled={isPending}
         />
-        <Card className="bg-slate-100 p-6">
+        <Card className="bg-slate-100">
           <div className="kanban-tasks">
             {column.tasks.map((task) => (
               <Task key={task.id} taskdata={task} />

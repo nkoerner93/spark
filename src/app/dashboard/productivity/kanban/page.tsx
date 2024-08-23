@@ -1,6 +1,6 @@
 import { getKanbanBoardDataBySession } from "@/app/actions/kanbanActions";
 import HeroSection from "@/components/ui/HeroSection";
-import KanbanClient from "@/components/ui/kanban/KanbanClient";
+import Kanban from "@/components/ui/kanban/Kanban";
 import Link from "next/link";
 
 // This is a server component
@@ -23,7 +23,7 @@ const KanbanPage = async () => {
   }
 
   // Pass the fetched data to the client component
-  return <KanbanClient boards={data} />;
+  return <Kanban boards={data} />;
 };
 
 export default KanbanPage;
