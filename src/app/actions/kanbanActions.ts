@@ -1,5 +1,6 @@
 "use server";
 import { TaskStatus } from "@prisma/client";
+import { revalidatePath } from "next/cache";
 import prisma from "../prisma";
 import { getSession } from "./actions";
 
@@ -38,7 +39,7 @@ type KanbanBoardResponse = {
 };
 
 // Get the Kanban board data for the logged-in user (based on active-session)
-export async function getKanbanBoardDataBySession(): Promise<KanbanBoardResponse> {
+export async function getKanbanBoardDataBySession() {
   const session = await getSession();
 
   if (!session || !session.userId) {
@@ -68,5 +69,47 @@ export async function getKanbanBoardDataBySession(): Promise<KanbanBoardResponse
   } catch (error) {
     console.error("Error fetching Kanban board data:", error);
     return { success: false, reason: "Error fetching data" };
+  }
+}
+
+// Update the column title in the kanban input & update the users database
+// i.E. change "Todo" to "In Progress"
+export async function updateColumnTitle(columnId: number, newTitle: string) {
+  // Retrieve the user session
+  const session = await getSession();
+
+  // Ensure the user is authenticated
+  if (!session || !session.userId) {
+    return { success: false, message: "Unauthorized" };
+  }
+
+  try {
+    // Verify that the column belongs to the authenticated user
+    const column = await prisma.column.findFirst({
+      where: {
+        id: columnId,
+        board: {
+          userId: session.userId,
+        },
+      },
+    });
+
+    if (!column) {
+      return {
+        success: false,
+        message: "Column not found or you do not have access to it",
+      };
+    }
+
+    // Update the column title
+    const updatedColumn = await prisma.column.update({
+      where: { id: columnId },
+      data: { title: newTitle },
+    });
+    revalidatePath("/dashboard/productivity/kanban");
+    return { success: true, column: updatedColumn };
+  } catch (error) {
+    console.error("Failed to update column title", error);
+    return { success: false, message: "Failed to update column title", error };
   }
 }
