@@ -89,7 +89,7 @@ model Board {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   user      Users     @relation(fields: [userId], references: [id])
-  columns   Column[]  // Relation to columns in the board
+  columns   Column[]
 }
 
 model Column {

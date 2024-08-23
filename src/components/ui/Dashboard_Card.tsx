@@ -86,7 +86,9 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
             >
               {title}
             </CardTitle>
-            <CardDescription>{getDescription(title)}</CardDescription>
+            <CardDescription className="text-md">
+              {getDescription(title)}
+            </CardDescription>
           </div>
         </CardHeader>
       </Card>

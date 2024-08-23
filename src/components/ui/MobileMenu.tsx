@@ -1,20 +1,20 @@
 "use client";
+import { AlignJustify } from "lucide-react";
+import Link from "next/link";
+import { FC } from "react";
+import { MAINMENU } from "src/constants/authImageConstants";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./shad-cn/dropdown-menu";
-import { AlignJustify } from "lucide-react";
-import Link from "next/link";
-import { FC } from "react";
-import { MAINMENU } from "src/constants/authImageConstants";
 
 interface MobileMenuProps {}
 
 const MobileMenu: FC<MobileMenuProps> = ({}) => {
   return (
-    <div className="block pt-1 md:hidden">
+    <div className="block pt-1 lg:hidden">
       <DropdownMenu>
         <DropdownMenuTrigger>
           <AlignJustify />

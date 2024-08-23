@@ -9,7 +9,7 @@ const NavBar: FC<NavBarProps> = ({}) => {
     <nav>
       <div className="hidden flex-row gap-28 text-primary lg:flex">
         {MAINMENU.map((menuitem) => (
-          <span key={menuitem.title} className="text-md font-semibold">
+          <span key={menuitem.title} className="text-md font-medium">
             <Link href={menuitem.url}>{menuitem.title}</Link>
           </span>
         ))}

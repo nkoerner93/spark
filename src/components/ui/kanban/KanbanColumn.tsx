@@ -1,6 +1,7 @@
+import { Columntype } from "@/app/actions/kanbanActions";
 import Task from "./Task";
 
-const KanbanColumn = ({ column }) => {
+const KanbanColumn = ({ column }: { column: Columntype }) => {
   return (
     <div className="kanban-column">
       <h3>{column.title}</h3>

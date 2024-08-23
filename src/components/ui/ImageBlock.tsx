@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { FC } from "react";
-import { Button, buttonVariants } from "./shad-cn/button";
+import { Button } from "./shad-cn/button";
 
 interface ImageBlockProps {
   imageleft: boolean;

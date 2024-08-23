@@ -1,9 +1,14 @@
+import { Boardtype } from "@/app/actions/kanbanActions";
 import KanbanColumn from "./KanbanColumn";
 
-const KanbanBoard = ({ UserBoardData }) => {
+const KanbanBoard = ({
+  UserBoardData,
+}: {
+  UserBoardData: Boardtype[] | undefined;
+}) => {
   return (
     <div>
-      {UserBoardData.map((board) => (
+      {UserBoardData?.map((board) => (
         <div key={board.id}>
           <h2>{board.title}</h2>
           <div className="kanban-columns">
