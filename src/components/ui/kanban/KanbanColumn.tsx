@@ -22,11 +22,11 @@ const KanbanColumn = ({ column }: { column: Columntype }) => {
   };
 
   return (
-    <section className="mt-6 flex flex-col rounded">
-      <div className="kanban-column flex w-auto max-w-[400px] flex-col gap-4 rounded-lg bg-slate-200 p-4">
+    <section className="flex flex-col rounded ">
+      <div className="kanban-column flex flex-col gap-4 rounded-lg border-[1px] border-neutral-200 bg-slate-100 p-4">
         <input
           type="text"
-          className="rounded bg-white py-2 text-center text-xl font-semibold text-primary dark:bg-secondary"
+          className="text-medium rounded border-[1px] border-neutral-200 bg-white py-2 text-center font-semibold text-primary dark:bg-secondary"
           value={columnTitle}
           onChange={(e) => setColumnTitle(e.target.value)}
           onBlur={handleBlur}

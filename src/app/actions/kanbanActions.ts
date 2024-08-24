@@ -113,3 +113,47 @@ export async function updateColumnTitle(columnId: number, newTitle: string) {
     return { success: false, message: "Failed to update column title", error };
   }
 }
+
+// Add Column to Kanban Board
+export async function addColumnToKanbanBoard(boardId: number | undefined) {
+  // Retrieve the user session
+  const session = await getSession();
+
+  // Ensure the user is authenticated
+  if (!session || !session.userId) {
+    return { success: false, message: "Unauthorized" };
+  }
+
+  try {
+    // Verify that the board belongs to the authenticated user
+    const board = await prisma.board.findFirst({
+      where: {
+        id: boardId,
+        userId: session.userId,
+      },
+    });
+
+    if (!board) {
+      return {
+        success: false,
+        message: "Board not found or you don't have access to it.",
+      };
+    }
+
+    // Create a new column for the board
+    const createdColumn = await prisma.column.create({
+      data: {
+        boardId: boardId!,
+        title: "New Column",
+      },
+    });
+
+    // Revalidate the path after the update
+    revalidatePath("/dashboard/productivity/kanban");
+
+    return { success: true, column: createdColumn };
+  } catch (error) {
+    console.error("Failed to create column", error);
+    return { success: false, message: "Failed to create column", error };
+  }
+}
