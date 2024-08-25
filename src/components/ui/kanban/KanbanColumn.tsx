@@ -1,11 +1,35 @@
 "use client";
-import { Columntype, updateColumnTitle } from "@/app/actions/kanbanActions";
-import { useState, useTransition } from "react";
-import { Card } from "../shad-cn/card";
+import {
+  AddTaskToKanbanColumn,
+  Columntype,
+  updateColumnTitle,
+} from "@/app/actions/kanbanActions";
+import { Button } from "@/components/ui/shad-cn/button";
+import { Card } from "@/components/ui/shad-cn/card";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTrigger,
+} from "@/components/ui/shad-cn/dialog";
+import { Loader2 } from "lucide-react";
+import { ChangeEvent, FormEvent, useState, useTransition } from "react";
 import Task from "./Task";
 
-const KanbanColumn = ({ column }: { column: Columntype }) => {
-  const [columnTitle, setColumnTitle] = useState(column.title);
+// Define the prop types
+interface KanbanColumnProps {
+  column: Columntype;
+}
+
+const KanbanColumn = ({ column }: KanbanColumnProps) => {
+  // Task-related states
+  const [open, setOpen] = useState<boolean>(false);
+  const [title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
+  // Column-related states
+  const [columnTitle, setColumnTitle] = useState<string>(column.title);
   const [isPending, startTransition] = useTransition();
 
   const handleBlur = () => {
@@ -13,12 +37,42 @@ const KanbanColumn = ({ column }: { column: Columntype }) => {
       updateColumnTitle(column.id, columnTitle).then((result) => {
         if (!result.success) {
           console.error(result.message);
-        } else {
+        } else if (result.column) {
+          // Ensure the column exists
           // Optionally refetch or update local state to ensure UI sync
           setColumnTitle(result.column.title);
         }
       });
     });
+  };
+
+  const handleAddTask = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const result = await AddTaskToKanbanColumn(
+      column.boardId,
+      column.id,
+      title,
+      description,
+    );
+    if (result.success) {
+      setTitle("");
+      setDescription("");
+      setOpen(false);
+    } else {
+      console.error(result.message);
+    }
+
+    setIsSubmitting(false);
+  };
+
+  const handleTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+  };
+
+  const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    setDescription(e.target.value);
   };
 
   return (
@@ -39,6 +93,47 @@ const KanbanColumn = ({ column }: { column: Columntype }) => {
             ))}
           </div>
         </Card>
+        <Button
+          className="mx-auto w-fit"
+          variant={"ghost"}
+          onClick={() => setOpen(true)}
+        >
+          Add Task
+        </Button>
+        <Dialog open={open} onOpenChange={setOpen}>
+          <DialogTrigger asChild>
+            <div className="inline-flex">
+              <Button type="button">Add Task</Button>
+            </div>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <form onSubmit={handleAddTask}>
+                <input
+                  type="text"
+                  placeholder="Task Title"
+                  value={title}
+                  onChange={handleTitleChange}
+                  required
+                  className="mb-2 w-full rounded border p-2"
+                />
+                <textarea
+                  placeholder="Add a task description..."
+                  value={description}
+                  onChange={handleDescriptionChange}
+                  className="mb-2 w-full rounded border p-2"
+                ></textarea>
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? (
+                    <Loader2 className="animate-spin" />
+                  ) : (
+                    "Add Task"
+                  )}
+                </Button>
+              </form>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
     </section>
   );

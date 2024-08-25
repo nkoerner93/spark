@@ -13,14 +13,15 @@ export type Boardtype = {
   columns: Columntype[];
 };
 
-export type Columntype = {
+export interface Columntype {
   id: number;
   title: string;
-  userId: number;
+  boardId: number; // Make sure this property is present
+  columnOrder: number;
   createdAt: Date;
   updatedAt: Date;
   tasks: Tasktype[];
-};
+}
 
 export type Tasktype = {
   id: number;
@@ -114,7 +115,7 @@ export async function updateColumnTitle(columnId: number, newTitle: string) {
   }
 }
 
-// Add Column to Kanban Board
+// Add Column to Kanban Board in the Database
 export async function addColumnToKanbanBoard(boardId: number | undefined) {
   // Retrieve the user session
   const session = await getSession();
@@ -123,6 +124,7 @@ export async function addColumnToKanbanBoard(boardId: number | undefined) {
   if (!session || !session.userId) {
     return { success: false, message: "Unauthorized" };
   }
+  console.log(boardId);
 
   try {
     // Verify that the board belongs to the authenticated user
@@ -155,5 +157,76 @@ export async function addColumnToKanbanBoard(boardId: number | undefined) {
   } catch (error) {
     console.error("Failed to create column", error);
     return { success: false, message: "Failed to create column", error };
+  }
+}
+
+interface AddTaskResult {
+  success: boolean;
+  message?: string;
+  task?: Tasktype; // Assuming you have a TaskType interface for the task model
+  error?: any;
+}
+
+export async function AddTaskToKanbanColumn(
+  boardId: number,
+  columnId: number,
+  title: string,
+  description: string,
+): Promise<AddTaskResult> {
+  const session = await getSession();
+
+  if (!session || !session.userId) {
+    return { success: false, message: "Unauthorized" };
+  }
+
+  try {
+    const board = await prisma.board.findFirst({
+      where: {
+        id: boardId,
+        userId: session.userId,
+      },
+    });
+
+    if (!board) {
+      return {
+        success: false,
+        message: "Board not found or you don't have access to it.",
+      };
+    }
+
+    const createdTask = await prisma.task.create({
+      data: {
+        columnId: columnId,
+        title: title,
+        description: description,
+      },
+    });
+
+    revalidatePath("/dashboard/productivity/kanban");
+
+    return { success: true, task: createdTask };
+  } catch (error) {
+    console.error("Failed to create task", error);
+    return { success: false, message: "Failed to create task", error };
+  }
+}
+
+// Update Kanban-Boards Column Order in the Database when swapping columns with drag and drop.
+export async function updateColumnOrderInDB(columns: Columntype[]) {
+  try {
+    // Start a transaction to update all columns
+    await prisma.$transaction(
+      columns.map((column, index) => {
+        return prisma.column.update({
+          where: { id: column.id },
+          data: { columnOrder: index + 1 }, // Update the column order in the database
+        });
+      }),
+    );
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update column order", error);
+    return { success: false, error: "Failed to update column order" };
   }
 }

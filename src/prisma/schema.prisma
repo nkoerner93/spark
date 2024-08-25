@@ -96,6 +96,7 @@ model Column {
   id        Int       @id @default(autoincrement())
   title     String
   boardId   Int
+  columnOrder Int     @default(0)
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   board     Board     @relation(fields: [boardId], references: [id])

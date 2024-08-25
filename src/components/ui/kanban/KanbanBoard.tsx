@@ -1,30 +1,47 @@
 "use client";
-import { Boardtype } from "@/app/actions/kanbanActions";
-import { DragDropContext, Draggable, Droppable } from "@hello-pangea/dnd";
+import { Boardtype, Columntype } from "@/app/actions/kanbanActions";
+import {
+  DragDropContext,
+  Draggable,
+  DropResult,
+  Droppable,
+} from "@hello-pangea/dnd";
 import { useEffect, useState } from "react";
 import KanbanColumn from "./KanbanColumn";
 
-const reorder = (list: any[], startIndex: number, endIndex: number) => {
+// Type for reorder function
+const reorder = (
+  list: Columntype[],
+  startIndex: number,
+  endIndex: number,
+): Columntype[] => {
   const result = Array.from(list);
   const [removed] = result.splice(startIndex, 1);
   result.splice(endIndex, 0, removed);
   return result;
 };
 
-const KanbanBoard = ({
-  UserBoardData,
-}: {
+// Define the props type
+interface KanbanBoardProps {
   UserBoardData: Boardtype | undefined;
-}) => {
-  const [columns, setColumns] = useState(UserBoardData?.columns || []);
+}
+
+const KanbanBoard = ({ UserBoardData }: KanbanBoardProps) => {
+  const [columns, setColumns] = useState<Columntype[]>(
+    UserBoardData?.columns || [],
+  );
+
+  const sortedColumns = UserBoardData?.columns.sort(
+    (a, b) => a.columnOrder - b.columnOrder,
+  );
 
   useEffect(() => {
     if (UserBoardData) {
-      setColumns(UserBoardData.columns);
+      setColumns(sortedColumns || []);
     }
-  }, [UserBoardData]);
+  }, [UserBoardData, sortedColumns]);
 
-  const onDragEnd = (result) => {
+  const onDragEnd = (result: DropResult) => {
     const { source, destination } = result;
 
     // Dropped outside the list
@@ -44,7 +61,7 @@ const KanbanBoard = ({
   };
 
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative mt-4 overflow-hidden">
       <DragDropContext onDragEnd={onDragEnd}>
         <Droppable
           droppableId="kanban-board"
@@ -71,10 +88,10 @@ const KanbanBoard = ({
                       style={{
                         ...provided.draggableProps.style,
                         opacity: snapshot.isDragging ? 0.5 : 1,
-                        flex: `1 0 ${100 / columns.length}%`, // Dynamically adjust width
-                        maxWidth: `calc(${100 / columns.length}% - 16px)`, // Account for gap
-                        minWidth: "150px", // Set a reasonable min width
-                        boxSizing: "border-box", // Include padding in width calculations
+                        flex: `1 1 0`,
+                        maxWidth: "300px",
+                        minWidth: "120px",
+                        boxSizing: "border-box",
                       }}
                     >
                       <KanbanColumn column={column} />
