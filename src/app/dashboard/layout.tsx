@@ -11,7 +11,7 @@ export default function DashboardLayout({
     <section className="flex min-h-screen flex-col">
       <Header />
       <div className="flex-grow py-20">
-        <div className="relative mx-auto px-4 md:mx-auto md:max-w-screen-2xl">
+        <div className="relative mx-auto px-8 md:mx-auto md:max-w-screen-2xl">
           {children}
         </div>
       </div>

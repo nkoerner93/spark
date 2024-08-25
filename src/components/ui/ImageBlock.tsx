@@ -35,7 +35,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
               sizes="100vw"
             />
           </div>
-          <div className="flex flex-col justify-center gap-4 lg:w-1/2">
+          <div className="flex flex-col justify-center gap-6 lg:w-1/2">
             <h2 className="text-3xl font-bold text-primary">{title}</h2>
             <p className="text-muted-foreground">{description}</p>
             {link && (
@@ -51,7 +51,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
         <div
           className={`mx-auto flex flex-col-reverse gap-5 fade-in-5 lg:w-[85%] lg:flex-row lg:justify-center lg:gap-20`}
         >
-          <div className="flex flex-col justify-center gap-4 lg:w-1/2">
+          <div className="flex flex-col justify-center gap-6 lg:w-1/2">
             <h2 className="text-3xl font-bold text-primary">{title}</h2>
             <p className="text-muted-foreground">{description}</p>
             {link && (

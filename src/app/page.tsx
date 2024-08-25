@@ -8,7 +8,7 @@ export default function Page() {
     <section className="min-h-screen">
       <Header />
       <div className="flex flex-grow flex-col">
-        <div className="mx-auto max-w-screen-2xl px-8 pb-32 pt-20">
+        <div className="mx-auto max-w-screen-2xl px-20 pb-32 pt-20">
           <HeroSection
             title="All-In-One Utility Dashboard"
             subtitle="Spark is your all-in-one utility toolbox for entertainment & productivity, from planning your day, discovering your favorite new tv/anime series or using popular gaming tools."
