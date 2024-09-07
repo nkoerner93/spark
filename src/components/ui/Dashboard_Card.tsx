@@ -68,11 +68,11 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
 
   return (
     <div className="flex max-w-[600px]">
-      <Card className="w-[325px] rounded-lg drop-shadow-md lg:w-[400px] xl:w-[450px]">
+      <Card className="w-[325px] rounded-lg drop-shadow-md lg:w-[375px] xl:w-[375px]">
         <CardHeader className="p-0">
           <Link href={link}>
             <img
-              className="h-[250px] w-full rounded-t-lg object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125 lg:h-[350px]"
+              className="h-[250px] w-full rounded-t-lg object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
               src={getImagePath(title)} // Use getImagePath function
               alt={`${title} Card`}
               loading="eager"
@@ -86,9 +86,7 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
             >
               {title}
             </CardTitle>
-            <CardDescription className="text-md">
-              {getDescription(title)}
-            </CardDescription>
+            <CardDescription>{getDescription(title)}</CardDescription>
           </div>
         </CardHeader>
       </Card>

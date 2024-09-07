@@ -1,6 +1,7 @@
 import { getKanbanBoardDataBySession } from "@/app/actions/kanbanActions";
 import HeroSection from "@/components/ui/HeroSection";
 import Kanban from "@/components/ui/kanban/Kanban";
+import { Button } from "@/components/ui/shad-cn/button";
 import Link from "next/link";
 
 // This is a server component
@@ -16,7 +17,7 @@ const KanbanPage = async () => {
           subtitle="Please login to access your Kanban Boards"
         />
         <Link href={"/login"}>
-          <button className="mx-auto flex w-[100px]">Login</button>
+          <Button className="mx-auto flex w-[100px]">Login</Button>
         </Link>
       </section>
     );

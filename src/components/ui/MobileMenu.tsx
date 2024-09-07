@@ -21,7 +21,7 @@ const MobileMenu: FC<MobileMenuProps> = ({}) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent onCloseAutoFocus={(e) => e.preventDefault()}>
           {MAINMENU.map((menuitem) => (
-            <span key={menuitem.title} className="text-md font-semibold">
+            <span key={menuitem.title} className="text-sm font-semibold">
               <Link href={menuitem.url}>
                 <DropdownMenuItem>{menuitem.title}</DropdownMenuItem>
               </Link>

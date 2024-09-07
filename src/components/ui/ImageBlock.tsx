@@ -40,7 +40,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
             <p className="text-muted-foreground">{description}</p>
             {link && (
               <Link href={link}>
-                <Button className=" bg-orange-600 text-sm">
+                <Button className="bg-orange-600 text-white hover:bg-primary dark:hover:bg-secondary">
                   {buttontext !== undefined ? buttontext : "Get Started"}
                 </Button>
               </Link>
@@ -56,7 +56,7 @@ const ImageBlock: FC<ImageBlockProps> = ({
             <p className="text-muted-foreground">{description}</p>
             {link && (
               <Link href={link}>
-                <Button className=" bg-orange-600 text-sm">
+                <Button className="bg-orange-600 text-white hover:bg-primary dark:hover:bg-secondary">
                   {buttontext !== undefined ? buttontext : "Get Started"}
                 </Button>
               </Link>

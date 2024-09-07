@@ -12,13 +12,13 @@ const Header = async () => {
   const sessionData = JSON.parse(JSON.stringify(session));
 
   return (
-    <header className="w-full border-b-[1px] px-8 py-4">
-      <div className="mx-auto flex h-14 max-w-screen-2xl items-center justify-between">
-        <span className="text-2xl font-bold">
+    <header className="w-full border-b-[1px] py-2">
+      <div className="mx-auto flex h-14 max-w-screen-2xl items-center justify-between px-8">
+        <span className="font-bold">
           <Link href={"/"}>
             <div className="flex flex-row items-center gap-2">
               <Zap className="text-orange-600" />
-              <Spark_Heading fontweight="font-bold" size="text-2xl">
+              <Spark_Heading fontweight="font-bold" size="text-lg">
                 Spark
               </Spark_Heading>
             </div>

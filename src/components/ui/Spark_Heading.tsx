@@ -2,7 +2,7 @@ import { FC, ReactNode } from "react";
 
 type HeadingSize =
   | "text-sm"
-  | "text-md"
+  | "text-base"
   | "text-lg"
   | "text-xl"
   | "text-2xl"
