@@ -3,7 +3,7 @@ import {
   getUserProfile,
 } from "@/app/actions/profileActions";
 import Link from "next/link";
-import UserProfile_FavoriteSeries from "./UserProfile_FavoriteSeries";
+import UserProfile_Favorites from "./UserProfile_FavoriteSeries";
 import UserProfile_Profile from "./UserProfile_Profile";
 import { Button } from "./shad-cn/button";
 
@@ -22,7 +22,7 @@ const UserProfileWrapper = async ({ username }: { username: string }) => {
       ) : (
         <div className="flex flex-row gap-4">
           <UserProfile_Profile userData={userData} />
-          <UserProfile_FavoriteSeries userData={userData} />
+          <UserProfile_Favorites userData={userData} />
         </div>
       )}
     </>

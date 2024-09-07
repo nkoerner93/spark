@@ -1,7 +1,7 @@
 import "./globals.css";
 
-import { GeistSans } from "geist/font/sans";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { GeistSans } from "geist/font/sans";
 
 let title = "Spark - Anime, Gaming and Gaming-Tools all in one place!";
 let description =

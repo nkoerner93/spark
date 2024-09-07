@@ -1,11 +1,11 @@
 "use client";
 import { createTVSeries } from "@/app/actions/tvSeriesActions";
-import { Check, Loader2, Plus } from "lucide-react";
-import React, { useState } from "react";
-import { Anime_Data_Seasonal } from "src/types/types";
 import { useToast } from "@/components/ui/shad-cn/use-toast";
-import { Tooltip, TooltipContent } from "./shad-cn/tooltip";
 import { TooltipProvider, TooltipTrigger } from "@radix-ui/react-tooltip";
+import { Check, Loader2, Plus } from "lucide-react";
+import { useState } from "react";
+import { Anime_Data_Seasonal } from "src/types/types";
+import { Tooltip, TooltipContent } from "./shad-cn/tooltip";
 
 const AddSeriesToFavorites = ({ series }: { series: Anime_Data_Seasonal }) => {
   const { toast } = useToast();

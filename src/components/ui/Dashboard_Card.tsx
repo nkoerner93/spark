@@ -1,4 +1,3 @@
-import { FC } from "react";
 import {
   Card,
   CardDescription,
@@ -7,6 +6,7 @@ import {
 } from "@/components/ui/shad-cn/card";
 import { getCurrentSeason } from "@/lib/utils/utils";
 import Link from "next/link";
+import { FC } from "react";
 import {
   CardCategory,
   CardDescriptionEnum,
@@ -35,6 +35,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return "/images/cards/card_pathofexile.jpeg";
       case CardCategory.MapCalculator:
         return "/images/cards/card_pathofexile.jpeg";
+      case CardCategory.Kanban:
+        return "/images/cards/card_kanban.svg";
       default:
         return "";
     }
@@ -57,6 +59,8 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
         return `${CardDescriptionEnum.PathOfExile}`;
       case CardCategory.MapCalculator:
         return `${CardDescriptionEnum.MapCalculator}`;
+      case CardCategory.Kanban:
+        return `${CardDescriptionEnum.Kanban}`;
       default:
         return "";
     }
@@ -64,11 +68,11 @@ export const DashboardCard: FC<DashboardCardProps> = ({ title, link }) => {
 
   return (
     <div className="flex max-w-[600px]">
-      <Card className="w-[325px] rounded-lg drop-shadow-md lg:w-[400px] xl:w-[450px]">
+      <Card className="w-[325px] rounded-lg drop-shadow-md lg:w-[375px] xl:w-[375px]">
         <CardHeader className="p-0">
           <Link href={link}>
             <img
-              className="h-[250px] w-full rounded-t-lg object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125 lg:h-[350px]"
+              className="h-[250px] w-full rounded-t-lg object-cover opacity-100 contrast-[108%] transition duration-200 hover:cursor-pointer hover:contrast-125"
               src={getImagePath(title)} // Use getImagePath function
               alt={`${title} Card`}
               loading="eager"

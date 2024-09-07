@@ -18,6 +18,7 @@ model Users {
   sessions   Session[]
   mapResults MapResult[]
   subscribed_series Subscribed_TVSeries[]
+  boards     Board[]     // Relation to Kanban boards
 }
 
 model Session {
@@ -30,6 +31,7 @@ model Session {
   user Users @relation(fields: [userId], references: [id])
 }
 
+// Path of Exile Map Models
 model MapResult {
   id        Int      @id @default(autoincrement())
   userId    Int
@@ -43,6 +45,7 @@ model MapResult {
   user Users @relation(fields: [userId], references: [id])
 }
 
+// TV Series Models
 model TVSeries {
   // Unique identifier for each anime
   id Int @id @default(autoincrement())
@@ -75,4 +78,44 @@ model Subscribed_TVSeries {
 enum SeriesType {
   TVSERIES
   ANIME
+}
+
+// Kanban Models
+
+model Board {
+  id        Int       @id @default(autoincrement())
+  title     String
+  userId    Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  user      Users     @relation(fields: [userId], references: [id])
+  columns   Column[]
+}
+
+model Column {
+  id        Int       @id @default(autoincrement())
+  title     String
+  boardId   Int
+  columnOrder Int     @default(0)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  board     Board     @relation(fields: [boardId], references: [id])
+  tasks     Task[]    // Relation to tasks in the column
+}
+
+model Task {
+  id        Int       @id @default(autoincrement())
+  title     String
+  description String?
+  columnId  Int
+  status    TaskStatus @default(TODO)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  column    Column     @relation(fields: [columnId], references: [id])
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  DONE
 }
