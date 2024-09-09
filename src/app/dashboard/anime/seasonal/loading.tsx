@@ -12,7 +12,7 @@ export default function Loading() {
         subtitle={`Discover all the latest animes from ${season} season.`}
       />
       <div className="w-full">
-        <Loader2 className="mx-auto text-center" />
+        <Loader2 className="mx-auto animate-spin text-center" />
       </div>
     </div>
   );
